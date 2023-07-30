@@ -11,12 +11,13 @@
 		"sourceMap": true,
 		"strict": true,
 		"paths": {
-			"$lib":["./src/lib"],
-  		"$lib/*":["./src/lib/*"],
+			"styled-system": ["./styled-system/*"],
+			"$lib": ["./src/lib"],
+			"$lib/*": ["./src/lib/*"],
 			"$page": ["./src/components/page"],
 			"$page/*": ["./src/components/page/*"],
 			"$model": ["./src/components/model"],
-			"$model/*": ["./src/components/model/*"],
+			"$model/*": ["./src/components/model/*"]
 		}
 	}
 	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
