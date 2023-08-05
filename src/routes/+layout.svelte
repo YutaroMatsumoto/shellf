@@ -1,5 +1,8 @@
 <script>
+	import Layout from '$page/Layout.svelte'
 	import '../app.css'
 </script>
 
-<slot />
+<Layout>
+	<slot />
+</Layout>
