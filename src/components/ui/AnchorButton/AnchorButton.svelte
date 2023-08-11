@@ -11,7 +11,6 @@
 		color: 'white',
 		fontSize: '16px',
 		fontWeight: 'bold',
-		border: 'none',
 		borderRadius: 'sm',
 		bg: 'green.500',
 		transition: 'background',
