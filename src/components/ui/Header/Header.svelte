@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { css } from 'styled-system/css'
 	import Logo from '$ui/Logo/Logo.svelte'
-	import AnchorButton from '$ui/AnchorButton/AnchorButton.svelte'
+	import Button from '$ui/Button/Button.svelte'
 
 	const styles = css({
 		gridRow: '1',
@@ -17,7 +17,7 @@
 
 <header class={styles}>
 	<Logo />
-	<AnchorButton title="ログイン" href="login" />
+	<Button onClick={() => console.log('ログイン')}>ログイン</Button>
 </header>
 
 <style>
