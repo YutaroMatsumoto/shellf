@@ -38,3 +38,11 @@ You can preview the production build with `yarn preview`.
 // dev環境
 supabase gen types typescript --project-id opdsugupdbgnwyuunhdz --schema public > src/database.ts
 ```
+
+## グローバルな状態管理能方法について
+
+現状、どの方法に統一するか決められていない。
+現状以下の 2 パターンがベストだと考えている。
+
+- subscribe を利用して、store の更新内容を限定的にする.
+- store と context を利用して、状態にアクセス可能な範囲を限定的にする（API 経由で取得した値の管理に良さそう）。
