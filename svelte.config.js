@@ -23,7 +23,16 @@ const config = {
 			'styled-system': './styled-system/*',
 			'$page/*': 'src/components/page/*',
 			'$model/*': 'src/components/model/*',
-			'$ui/*': 'src/components/ui/*'
+			'$ui/*': 'src/components/ui/*',
+			'$repositories/*': 'src/repositories/*',
+			'$globalStates/*': 'src/globalStates/*'
+		},
+		files: {
+			// clientとserverのみ
+			hooks: {
+				client: 'src/hooks/hooks.client.ts',
+				server: 'src/hooks/hooks.server.ts'
+			}
 		}
 	}
 }

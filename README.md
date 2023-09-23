@@ -32,6 +32,13 @@ You can preview the production build with `yarn preview`.
 - padding, margin 等の余白は基本的に 4 の倍数の数字を利用する。
 - margin は基本 top, right につける
 
+## データベースから型を自動生成
+
+```
+// dev環境
+supabase gen types typescript --project-id opdsugupdbgnwyuunhdz --schema public > src/database.ts
+```
+
 ## グローバルな状態管理能方法について
 
 現状、どの方法に統一するか決められていない。
