@@ -16,7 +16,9 @@
 			"$lib/*": ["./src/lib/*"],
 			"$page/*": ["./src/components/page/*"],
 			"$model/*": ["./src/components/model/*"],
-			"$ui/*": ["./src/components/ui/*"]
+			"$ui/*": ["./src/components/ui/*"],
+			"$repositories/*": ["./src/repositories/*"],
+			"$globalStates/*": ["./src/globalStates/*"]
 		}
 	}
 	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
