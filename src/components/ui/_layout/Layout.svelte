@@ -3,7 +3,7 @@
 	import Footer from '$ui/_layout/Footer/Footer.svelte'
 	import { css } from 'styled-system/css'
 	import { createModal } from '$globalStates/modal'
-	import Modal from '$ui/_layout/Modal/Modal.svelte'
+	import Modal from '$ui/Modal/Modal.svelte'
 
 	const wrapperStyles = css({
 		display: 'grid',
@@ -27,7 +27,6 @@
 	<Footer />
 </div>
 
-<!-- ここにmodalを差し込む仕組みを作る -->
 {#if $modal !== 'hidden'}
 	<Modal />
 {/if}

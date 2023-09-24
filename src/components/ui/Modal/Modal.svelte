@@ -1,15 +1,12 @@
 <!-- 背景色を暗くし、ユーザーの注意を集中させるコンポーネント -->
 
 <script lang="ts">
-	import { createModal, type Modal } from '$globalStates/modal'
-	import { content, overlay } from '$ui/_layout/Modal/modal.style'
-	import LoginContent from '$ui/_layout/Modal/modalContent/LoginContent.svelte'
-	import { useFocusTrap } from '$ui/_layout/Modal/useFocusTrap'
+	import { createModal } from '$globalStates/modal'
+	import { content, overlay } from '$ui/Modal/modal.style'
+	import LoginContent from '$ui/Modal/modalContent/LoginContent.svelte'
+	import { useFocusTrap } from '$ui/Modal/useFocusTrap'
 
-	// export let modalType: Modal
 	let ref: HTMLDivElement | null = null
-	// let ariaLabelledby: string
-	let ariaDescribedby: string
 
 	const modal = createModal
 
