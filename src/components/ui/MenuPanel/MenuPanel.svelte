@@ -3,13 +3,12 @@
 
 	const menuPanel = css({
 		position: 'absolute',
-		borderWidth: '1px',
-		borderColor: 'gray.300',
 		borderRadius: 'sm',
-		shadow: 'sm',
+		shadow: 'lg',
 		minWidth: '240px',
 		left: '-200px',
-		marginY: '4px'
+		marginY: '4px',
+		bg: 'white'
 	})
 </script>
 
