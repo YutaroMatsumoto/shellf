@@ -13,9 +13,7 @@
 		alignItems: 'center',
 		justifyContent: 'space-between',
 		width: '100%',
-		padding: '8px 20px',
-		borderBottomWidth: '1px',
-		borderColor: 'gray.200'
+		padding: '8px 20px'
 	})
 
 	const session = getSession()
