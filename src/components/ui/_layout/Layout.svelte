@@ -13,7 +13,6 @@
 
 	const mainStyles = css({
 		gridRow: 2,
-		padding: '20px',
 		bg: 'gray.50'
 	})
 
