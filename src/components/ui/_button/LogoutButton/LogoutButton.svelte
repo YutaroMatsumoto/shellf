@@ -7,9 +7,7 @@
 	const supabase = getSupabase()
 </script>
 
-<button data-sveltekit-reload on:click={() => handleSignOut($supabase)} class={style}>
-	ログアウト
-</button>
+<button on:click={() => handleSignOut($supabase)} class={style}> ログアウト </button>
 
 <style>
 	button {
