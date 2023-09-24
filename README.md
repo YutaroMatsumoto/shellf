@@ -22,16 +22,6 @@ You can preview the production build with `yarn preview`.
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
 > ß
 
-## デザインシステムについて
-
-基本的に、panda-css に存在するスタイルを当てるように実装する。
-将来的に必要になれば、panda-css の[Desygn Tokens](https://panda-css.com/docs/theming/tokens)を活用する。
-
-最低限のルールとして、
-
-- padding, margin 等の余白は基本的に 4 の倍数の数字を利用する。
-- margin は基本 top, right につける
-
 ## データベースから型を自動生成
 
 ```
@@ -46,3 +36,7 @@ supabase gen types typescript --project-id opdsugupdbgnwyuunhdz --schema public 
 
 - subscribe を利用して、store の更新内容を限定的にする.
 - store と context を利用して、状態にアクセス可能な範囲を限定的にする（API 経由で取得した値の管理に良さそう）。
+
+## デザインシステムについて
+
+[wiki を参照](https://github.com/YutaroMatsumoto/shellf/wiki/%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0)
