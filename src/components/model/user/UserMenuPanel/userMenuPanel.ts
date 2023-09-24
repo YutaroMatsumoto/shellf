@@ -1,3 +1,6 @@
+/**
+ * userMenuPanelで利用するあらゆる定数や型定義
+ */
 import { css } from 'styled-system/css'
 
 export type MenuItem = ItemLink
