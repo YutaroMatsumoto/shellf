@@ -13,7 +13,7 @@
 		alignItems: 'center',
 		justifyContent: 'space-between',
 		width: '100%',
-		padding: '8px 20px'
+		padding: '8px 24px'
 	})
 
 	const session = getSession()
