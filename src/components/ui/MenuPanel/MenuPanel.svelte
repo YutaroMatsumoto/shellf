@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { css } from 'styled-system/css'
+	import { onMount } from 'svelte'
+
+	export let onClose: () => void
 
 	const menuPanel = css({
 		position: 'absolute',
@@ -9,6 +12,14 @@
 		left: '-200px',
 		marginY: '4px',
 		bg: 'white'
+	})
+
+	onMount(() => {
+		document.addEventListener('mousedown', onClose)
+
+		return () => {
+			document.removeEventListener('mousedown', onClose)
+		}
 	})
 </script>
 
