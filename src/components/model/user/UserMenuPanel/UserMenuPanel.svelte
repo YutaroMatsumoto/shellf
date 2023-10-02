@@ -2,9 +2,11 @@
 	import { menuItem, userMenu } from '$model/user/UserMenuPanel/userMenuPanel'
 	import MenuPanel from '$ui/MenuPanel/MenuPanel.svelte'
 	import LogoutButton from '$ui/_button/LogoutButton/LogoutButton.svelte'
+
+	export let onClose: () => void
 </script>
 
-<MenuPanel>
+<MenuPanel {onClose}>
 	{#each userMenu as userMenuItem}
 		<a class={menuItem} href={userMenuItem.href}>
 			{userMenuItem.title}

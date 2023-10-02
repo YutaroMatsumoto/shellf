@@ -9,6 +9,10 @@
 		displayMenuPanel = !displayMenuPanel
 	}
 
+	function onClose() {
+		displayMenuPanel = false
+	}
+
 	const avatarWrapper = css({
 		position: 'relative'
 	})
@@ -22,7 +26,7 @@
 		<img {src} alt="profile icon" />
 	</button>
 	{#if displayMenuPanel}
-		<UserMenuPanel />
+		<UserMenuPanel {onClose} />
 	{/if}
 </div>
 

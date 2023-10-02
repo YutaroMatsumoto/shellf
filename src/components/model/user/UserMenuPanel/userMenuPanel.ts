@@ -6,7 +6,7 @@ import { css } from 'styled-system/css'
 export type MenuItem = ItemLink
 type ItemLink = { href: string; title: string }
 
-export const userMenu: MenuItem[] = [{ href: '#', title: 'マイページ' }]
+export const userMenu: MenuItem[] = [{ href: '/my', title: 'マイページ' }]
 
 /**
  * style
