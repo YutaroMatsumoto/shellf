@@ -8,9 +8,9 @@
 
 <MenuPanel {onClose}>
 	{#each userMenu as userMenuItem}
-		<a class={menuItem} href={userMenuItem.href}>
+		<a class={menuItem} href={userMenuItem.href} on:click={onClose}>
 			{userMenuItem.title}
 		</a>
 	{/each}
-	<LogoutButton style={menuItem} />
+	<LogoutButton style={menuItem} {onClose} />
 </MenuPanel>

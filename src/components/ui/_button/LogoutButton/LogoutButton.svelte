@@ -4,10 +4,17 @@
 	import { handleSignOut } from '$repositories/auth/repository'
 
 	export let style: string
+	export let onClose: (() => void) | undefined = undefined
+
 	const supabase = getSupabase()
+
+	const onClick = () => {
+		onClose && onClose()
+		handleSignOut($supabase)
+	}
 </script>
 
-<button on:click={() => handleSignOut($supabase)} class={style}> ログアウト </button>
+<button on:click={onClick} class={style}>ログアウト</button>
 
 <style>
 	button {
