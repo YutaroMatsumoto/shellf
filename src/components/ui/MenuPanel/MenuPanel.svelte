@@ -1,8 +1,11 @@
+<!-- 一般的にはpopoverと呼ばれるUI? -->
 <script lang="ts">
 	import { css } from 'styled-system/css'
 	import { onMount } from 'svelte'
 
 	export let onClose: () => void
+
+	let ref: HTMLDivElement | null = null
 
 	const menuPanel = css({
 		position: 'absolute',
@@ -15,14 +18,20 @@
 	})
 
 	onMount(() => {
-		document.addEventListener('mousedown', onClose)
+		function handleClickOutside(event: MouseEvent) {
+			if (ref && !ref?.contains(event.target as Node)) {
+				onClose()
+			}
+		}
+
+		document.addEventListener('mousedown', handleClickOutside)
 
 		return () => {
-			document.removeEventListener('mousedown', onClose)
+			document.removeEventListener('mousedown', handleClickOutside)
 		}
 	})
 </script>
 
-<div tabindex="-1" class={menuPanel}>
+<div tabindex="-1" class={menuPanel} bind:this={ref}>
 	<slot />
 </div>
