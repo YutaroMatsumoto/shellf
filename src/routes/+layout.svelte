@@ -23,8 +23,6 @@
 	// コンポーネントがマウントされた時に実行される
 	onMount(() => {
 		// MEMO: onMountの中じゃないとsession等の値はundefinedになる。
-		console.log({ data, supabase, session })
-
 		const {
 			data: { subscription }
 		} = supabase.auth.onAuthStateChange((event, _session) => {
