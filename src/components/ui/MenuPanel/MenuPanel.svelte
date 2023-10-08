@@ -19,7 +19,11 @@
 
 	onMount(() => {
 		function handleClickOutside(event: MouseEvent) {
-			if (ref && !ref?.contains(event.target as Node)) {
+			if (
+				ref &&
+				!ref?.contains(event.target as Node) &&
+				(event.target as HTMLElement).id !== 'profile-icon'
+			) {
 				onClose()
 			}
 		}
