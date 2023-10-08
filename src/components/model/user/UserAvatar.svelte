@@ -23,7 +23,7 @@
 
 <div class={avatarWrapper}>
 	<button class={avatarButton} on:click={changePanelDiaplayState}>
-		<img {src} alt="profile icon" />
+		<img {src} alt="profile icon" id="profile-icon" />
 	</button>
 	{#if displayMenuPanel}
 		<UserMenuPanel {onClose} />
