@@ -10,11 +10,18 @@ export const button = cva({
 		borderRadius: 'sm',
 		color: 'white',
 		fontWeight: 'bold',
-		transition: 'background'
+		transition: 'background',
+		cursor: 'pointer'
 	},
 	variants: {
 		type: {
 			primary: { bg: 'green.500', _hover: { bg: 'green.600' } },
+			secondary: {
+				bg: 'white',
+				border: '1px solid',
+				color: 'green.500',
+				_hover: { bg: 'gray.50' }
+			},
 			danger: { color: 'red' }
 		},
 		size: {
