@@ -5,7 +5,7 @@ import { cva } from 'styled-system/css'
 
 export const button = cva({
 	base: {
-		display: 'flex',
+		display: 'inline-flex',
 		border: 'none',
 		borderRadius: 'sm',
 		color: 'white',
@@ -25,8 +25,8 @@ export const button = cva({
 			danger: { color: 'red' }
 		},
 		size: {
-			sm: { padding: '4px 8px', fontSize: '12px' },
-			lg: { padding: '8px 16px', fontSize: '16px' }
+			sm: { padding: '4px 8px', fontSize: '12px', lineHeight: '20px' },
+			lg: { padding: '8px 16px', fontSize: '16px', lineHeight: '24px' }
 		}
 	},
 	defaultVariants: {
