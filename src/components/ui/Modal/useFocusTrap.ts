@@ -25,13 +25,9 @@ export function useFocusTrap(
 	}
 
 	afterUpdate(() => {
-		console.log('unchocho')
-		console.log({ ref, modal })
 		if (modal === 'hidden' || !ref) {
 			return
 		}
-		console.log('unchocho2')
-
 		// 元々handleKeydownを定義していた場所
 
 		document.body.addEventListener('keydown', handleKeydown)
