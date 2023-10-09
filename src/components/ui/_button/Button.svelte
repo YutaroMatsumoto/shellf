@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { button } from './recipe'
 
-	export let type: 'primary' | 'danger' = 'primary'
+	export let type: 'primary' | 'secondary' | 'danger' = 'primary'
 	export let size: 'sm' | 'lg' = 'lg'
 	export let onClick: () => void
 </script>
