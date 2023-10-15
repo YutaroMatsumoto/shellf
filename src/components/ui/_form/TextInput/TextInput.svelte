@@ -12,7 +12,7 @@
 		borderColor: 'gray.300',
 		borderRadius: 'sm',
 		_focusWithin: {
-			borderColor: 'green.300'
+			borderColor: 'green.500'
 		}
 	})
 </script>
@@ -32,11 +32,13 @@
 	}
 
 	label {
-		font-size: 12px;
+		font-size: 16px;
 		font-weight: bold;
 	}
 
 	input {
+		width: 100%;
+		font-size: 16px;
 		border: none;
 		outline: none;
 	}
