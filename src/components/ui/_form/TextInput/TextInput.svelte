@@ -1,25 +1,15 @@
 <script lang="ts">
-	import { css } from 'styled-system/css'
+	import { field, fieldWrapper } from '$ui/_form/commonStyle'
 
 	export let name: string
 	export let label: string
 	export let fildId: string
-
-	const fieldWrapper = css({
-		display: 'inline-flex',
-		padding: '4px',
-		borderWidth: '1px',
-		borderColor: 'gray.300',
-		borderRadius: 'sm',
-		_focusWithin: {
-			borderColor: 'green.500'
-		}
-	})
+	export let space: 0 | 20 = 0
 </script>
 
-<div>
+<div class={fieldWrapper({ space })}>
 	<label for={fildId}>{label}</label>
-	<span class={fieldWrapper}>
+	<span class={field}>
 		<input {name} id={fildId} type="text" />
 	</span>
 </div>
