@@ -7570,10 +7570,12 @@ __metadata:
     prettier-plugin-svelte: ^2.10.1
     svelte: ^4.0.5
     svelte-check: ^3.4.3
+    sveltekit-superforms: ^1.8.0
     tabbable: ^6.2.0
     tslib: ^2.4.1
     typescript: ^5.0.0
     vite: ^4.4.2
+    zod: ^3.22.4
   languageName: unknown
   linkType: soft
 
@@ -7980,6 +7982,17 @@ __metadata:
     magic-string: ^0.30.0
     periscopic: ^3.1.0
   checksum: 156c65a559a15915b74c17cf057dd3d4b9ffc39c7c072f0f549e3d11b24e3dbc3c77d828640106c3bef07b62e2df8c6503bec32dd149b1ae8ac0cba2f4c8de2b
+  languageName: node
+  linkType: hard
+
+"sveltekit-superforms@npm:^1.8.0":
+  version: 1.8.0
+  resolution: "sveltekit-superforms@npm:1.8.0"
+  peerDependencies:
+    "@sveltejs/kit": 1.x
+    svelte: 3.x || 4.x
+    zod: 3.x
+  checksum: 80d06f215270c3e1bce1a8e415b375facc38c0f9076785c4add0b34b07051faf366e33929646d56de9427c832dc9baeb56466449963097dde21d400b8d8357f1
   languageName: node
   linkType: hard
 
@@ -8913,6 +8926,13 @@ __metadata:
   version: 3.21.4
   resolution: "zod@npm:3.21.4"
   checksum: f185ba87342ff16f7a06686767c2b2a7af41110c7edf7c1974095d8db7a73792696bcb4a00853de0d2edeb34a5b2ea6a55871bc864227dace682a0a28de33e1f
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.22.4":
+  version: 3.22.4
+  resolution: "zod@npm:3.22.4"
+  checksum: 80bfd7f8039b24fddeb0718a2ec7c02aa9856e4838d6aa4864335a047b6b37a3273b191ef335bf0b2002e5c514ef261ffcda5a589fb084a48c336ffc4cdbab7f
   languageName: node
   linkType: hard
 
