@@ -14,7 +14,7 @@ export const button = cva({
 		cursor: 'pointer'
 	},
 	variants: {
-		type: {
+		variant: {
 			primary: { bg: 'green.500', _hover: { bg: 'green.600' } },
 			secondary: {
 				bg: 'white',
@@ -30,7 +30,7 @@ export const button = cva({
 		}
 	},
 	defaultVariants: {
-		type: 'primary',
+		variant: 'primary',
 		size: 'lg'
 	}
 })
