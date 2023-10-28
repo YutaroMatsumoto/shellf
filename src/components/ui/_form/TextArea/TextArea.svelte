@@ -1,19 +1,15 @@
 <script lang="ts">
-	import { cva } from 'styled-system/css'
-	import { field, fieldWrapper } from '$ui/_form//commonStyle'
+	import { field } from '$ui/_form//commonStyle'
 
 	export let name: string
 	export let label: string
 	export let fildId: string
 
-	/** marginTop */
-	export let space: 0 | 20 = 0
-
 	/** 初期行数 */
 	export let rows: number = 5
 </script>
 
-<div class={fieldWrapper({ space })}>
+<div>
 	<label for={fildId}>{label}</label>
 	<span class={field}>
 		<textarea {name} id={fildId} {rows} />

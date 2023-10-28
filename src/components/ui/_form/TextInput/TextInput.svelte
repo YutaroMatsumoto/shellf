@@ -1,13 +1,12 @@
 <script lang="ts">
-	import { field, fieldWrapper } from '$ui/_form/commonStyle'
+	import { field } from '$ui/_form/commonStyle'
 
 	export let name: string
 	export let label: string
 	export let fildId: string
-	export let space: 0 | 20 = 0
 </script>
 
-<div class={fieldWrapper({ space })}>
+<div>
 	<label for={fildId}>{label}</label>
 	<span class={field}>
 		<input {name} id={fildId} type="text" />

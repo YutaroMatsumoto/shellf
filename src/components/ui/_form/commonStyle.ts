@@ -1,5 +1,4 @@
 import type { SystemStyleObject } from 'styled-system/types'
-import { cva } from 'styled-system/css'
 import { css } from 'styled-system/css'
 
 export const commonTextStyle: SystemStyleObject = {
@@ -14,16 +13,3 @@ export const commonTextStyle: SystemStyleObject = {
 }
 
 export const field = css(commonTextStyle)
-
-/** recipe */
-export const fieldWrapper = cva({
-	variants: {
-		space: {
-			0: { marginTop: '0px' },
-			20: { marginTop: '20px' }
-		}
-	},
-	defaultVariants: {
-		space: 0
-	}
-})
