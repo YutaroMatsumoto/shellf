@@ -1,5 +1,5 @@
 import type { SystemStyleObject } from 'styled-system/types'
-import { css } from 'styled-system/css'
+import { cva } from 'styled-system/css'
 
 export const commonTextStyle: SystemStyleObject = {
 	display: 'inline-flex',
@@ -12,4 +12,14 @@ export const commonTextStyle: SystemStyleObject = {
 	}
 }
 
-export const field = css(commonTextStyle)
+export const fieldStyle = cva({
+	base: commonTextStyle,
+	variants: {
+		isError: {
+			true: { borderColor: 'red.500' }
+		}
+	},
+	defaultVariants: {
+		isError: false
+	}
+})
