@@ -6,4 +6,4 @@
 	export let onClick: () => void
 </script>
 
-<button class={button({ size, variant })} on:click={onClick}><slot /></button>
+<button class={button({ size, variant })} on:click={onClick} {...$$restProps}><slot /></button>
