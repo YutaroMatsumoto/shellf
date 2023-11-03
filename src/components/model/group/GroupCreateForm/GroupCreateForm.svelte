@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { GroupNewSchema } from '$repositories/group/schema'
-	import Loading from '$ui/Loading/Loading.svelte'
 	import Spacer from '$ui/Spacer/Spacer.svelte'
 	import PrimaryButton from '$ui/_button/PrimaryButton/PrimaryButton.svelte'
 	import TextArea from '$ui/_form/TextArea/TextArea.svelte'
