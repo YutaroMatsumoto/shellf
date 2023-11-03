@@ -13,7 +13,8 @@
 
 	const mainStyles = css({
 		gridRow: 2,
-		bg: 'gray.50'
+		bg: 'gray.50',
+		overflow: 'auto'
 	})
 
 	const modal = createModal
