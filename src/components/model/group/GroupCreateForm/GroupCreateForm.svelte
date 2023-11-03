@@ -36,7 +36,16 @@
 		rows={9}
 	/>
 	<Spacer />
-	<Button type="submit" variant="primary" onClick={() => console.log('保存')} aria-busy={loading}>
-		保存
-	</Button>
+	<div>
+		<Button type="submit" variant="primary" onClick={() => console.log('保存')} aria-busy={loading}>
+			保存
+		</Button>
+	</div>
 </form>
+
+<style>
+	div {
+		width: 100%;
+		text-align: center;
+	}
+</style>

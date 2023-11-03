@@ -6,6 +6,8 @@
 	export let data
 
 	const wrapper = css({
+		width: '50%',
+		padding: '32px',
 		backgroundColor: 'white',
 		borderWidth: '1px',
 		borderColor: 'gray.300',
@@ -17,11 +19,3 @@
 	<PageHeading title="グループを作成する" />
 	<GroupCreateForm data={data.form} />
 </div>
-
-<style>
-	div {
-		width: 60%;
-		height: 90%;
-		padding: 20px;
-	}
-</style>
