@@ -1,7 +1,8 @@
 <script lang="ts">
 	import type { GroupNewSchema } from '$repositories/group/schema'
+	import Loading from '$ui/Loading/Loading.svelte'
 	import Spacer from '$ui/Spacer/Spacer.svelte'
-	import Button from '$ui/_button/Button.svelte'
+	import PrimaryButton from '$ui/_button/PrimaryButton/PrimaryButton.svelte'
 	import TextArea from '$ui/_form/TextArea/TextArea.svelte'
 	import TextInput from '$ui/_form/TextInput/TextInput.svelte'
 	import { css } from 'styled-system/css'
@@ -17,6 +18,8 @@
 		onResult: () => (loading = false)
 	})
 	let loading = false
+
+	const { submitting } = form
 
 	const formWrapper = css({
 		width: '100%',
@@ -37,9 +40,15 @@
 	/>
 	<Spacer />
 	<div>
-		<Button type="submit" variant="primary" onClick={() => console.log('保存')} aria-busy={loading}>
+		<PrimaryButton
+			type="submit"
+			variant="primary"
+			onClick={() => console.log('保存')}
+			loading={$submitting}
+			aria-busy={$submitting}
+		>
 			保存
-		</Button>
+		</PrimaryButton>
 	</div>
 </form>
 
