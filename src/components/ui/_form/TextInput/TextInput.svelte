@@ -16,7 +16,12 @@
 	export let field: FormPathLeaves<z.infer<T>>
 	export let label: string
 
-	// formFieldProxyのconstraintsは利用しない
+	/**
+	 * MEMO: 注意点
+	 * - formFieldProxyのconstraintsは利用しない。
+	 * - formFieldProxyのerrorsは、submitのたびに一度errorsがundefinedになるデメリットがある。
+	 *   - それにより画面のかつくきが発生する。
+	 */
 	const { value, errors } = formFieldProxy(form, field)
 
 	const errormessageId = `errormessage-${$$restProps.id}`
