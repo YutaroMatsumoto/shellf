@@ -22,8 +22,8 @@ export const primaryButton = cva({
 	},
 	variants: {
 		size: {
-			sm: { padding: '4px 8px', fontSize: '12px', lineHeight: '20px' },
-			lg: { padding: '8px 16px', fontSize: '16px', lineHeight: '24px' }
+			sm: { padding: '4px 8px', fontSize: '12px', lineHeight: '20px', height: '28px' },
+			lg: { padding: '8px 16px', fontSize: '16px', lineHeight: '24px', height: '40px' }
 		}
 	},
 	defaultVariants: {
