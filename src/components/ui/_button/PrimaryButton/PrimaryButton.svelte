@@ -4,7 +4,7 @@
 
 	export let loading: boolean = false
 	export let size: 'sm' | 'lg' = 'lg'
-	export let onClick: () => void
+	export let onClick: (() => void) | undefined = undefined
 </script>
 
 <button class={primaryButton({ size })} on:click={onClick} {...$$restProps}>
