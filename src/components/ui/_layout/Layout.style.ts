@@ -11,3 +11,11 @@ export const mainStyles = css({
 	bg: 'gray.50',
 	overflow: 'auto'
 })
+
+export const snackbarContainer = css({
+	position: 'fixed',
+	bottom: '20px',
+	right: '20px',
+	display: 'flex',
+	flexDirection: 'column'
+})

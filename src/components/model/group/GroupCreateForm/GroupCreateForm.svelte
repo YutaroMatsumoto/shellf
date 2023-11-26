@@ -1,24 +1,30 @@
 <script lang="ts">
+	import { goto } from '$app/navigation'
+	import { css } from 'styled-system/css'
 	import type { GroupNewSchema } from '$repositories/group/schema'
 	import Spacer from '$ui/Spacer/Spacer.svelte'
 	import PrimaryButton from '$ui/_button/PrimaryButton/PrimaryButton.svelte'
 	import TextArea from '$ui/_form/TextArea/TextArea.svelte'
 	import TextInput from '$ui/_form/TextInput/TextInput.svelte'
-	import { css } from 'styled-system/css'
 
 	import type { SuperValidated } from 'sveltekit-superforms'
 	import { superForm } from 'sveltekit-superforms/client'
+	import SecondaryButton from '$ui/_button/SecondaryButton/SecondaryButton.svelte'
+	import { pathName } from '$lib/route'
+	import { createSnackbar } from '$globalStates/snackbar'
 
 	export let data: SuperValidated<GroupNewSchema>
 
 	const form = superForm(data, {
-		// taintedMessage: false,
-		onSubmit: () => (loading = true),
-		onResult: () => (loading = false)
+		delayMs: 50,
+		onResult: ({ result }) => {
+			if (result.type === 'success') {
+				createSnackbar.addSnackbar('success', 'グループの登録に成功しました')
+				return goto(pathName.my)
+			}
+		}
 	})
-	let loading = false
-
-	const { submitting } = form
+	const { delayed, enhance } = form
 
 	const formWrapper = css({
 		width: '100%',
@@ -26,7 +32,7 @@
 	})
 </script>
 
-<form class={formWrapper} method="POST" use:form.enhance>
+<form class={formWrapper} method="POST" use:enhance>
 	<TextInput {form} field="name" label="グループ名" id="group-new-fieldid-name" />
 	<Spacer />
 	<TextArea
@@ -39,21 +45,17 @@
 	/>
 	<Spacer />
 	<div>
-		<PrimaryButton
-			type="submit"
-			variant="primary"
-			onClick={() => console.log('保存')}
-			loading={$submitting}
-			aria-busy={$submitting}
-		>
-			保存
-		</PrimaryButton>
+		<SecondaryButton type="button" onClick={() => goto(pathName.my)}>戻る</SecondaryButton>
+		<PrimaryButton type="submit" loading={$delayed} aria-busy={$delayed}>保存</PrimaryButton>
 	</div>
 </form>
 
 <style>
 	div {
 		width: 100%;
-		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 20px;
 	}
 </style>
