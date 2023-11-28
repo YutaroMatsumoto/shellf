@@ -14,7 +14,8 @@
 	}
 
 	const avatarWrapper = css({
-		position: 'relative'
+		position: 'relative',
+		height: '40px'
 	})
 	const avatarButton = css({
 		cursor: 'pointer'

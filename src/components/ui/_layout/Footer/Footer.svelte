@@ -4,6 +4,7 @@
 	const styles = css({
 		gridRow: 3,
 		width: '100%',
+		height: '120px',
 		padding: '24px',
 		backgroundColor: 'gray.200'
 	})

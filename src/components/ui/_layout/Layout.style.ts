@@ -1,15 +1,16 @@
 import { css } from 'styled-system/css'
 
 export const wrapperStyles = css({
-	display: 'grid',
-	gridTemplateRows: '58px 1fr auto',
-	height: '100vh'
+	height: '100vh',
+	overflow: 'auto'
 })
 
 export const mainStyles = css({
 	gridRow: 2,
 	bg: 'gray.50',
-	overflow: 'auto'
+	overflow: 'auto',
+	marginTop: '58px',
+	minH: 'calc(100vh - 178px)'
 })
 
 export const snackbarContainer = css({

@@ -8,12 +8,15 @@
 	import { getSession } from '$globalStates/session'
 
 	const styles = css({
-		gridRow: '1',
+		position: 'fixed',
+		top: '0',
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'space-between',
+		height: '60px',
 		width: '100%',
-		padding: '8px 24px'
+		padding: '8px 24px',
+		bg: 'white'
 	})
 
 	const session = getSession()
