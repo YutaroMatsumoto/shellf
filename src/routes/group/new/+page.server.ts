@@ -1,6 +1,6 @@
 import { fail } from '@sveltejs/kit'
 import type { Actions } from './$types'
-import { error, redirect, type ServerLoad } from '@sveltejs/kit'
+import { error, type ServerLoad } from '@sveltejs/kit'
 
 import { groupNewSchema } from '$repositories/group/schema'
 import { superValidate } from 'sveltekit-superforms/server'
@@ -18,7 +18,6 @@ export const load: ServerLoad = async () => {
 export const actions: Actions = {
 	default: async ({ request, locals }) => {
 		const form = await superValidate(request, groupNewSchema)
-		console.log('POST', form)
 
 		if (!form.valid) {
 			// Again, return { form } and things will just work.
@@ -32,11 +31,14 @@ export const actions: Actions = {
 			throw error(401, 'ログインが必要です。')
 		}
 
+		// TODO: supabaseErrorがあった場合のエラーハンドリングを考える
 		const { error: supabaseError } = await locals.supabase
 			.from('group')
 			.insert([{ name, description, created_by: session.user.id }])
 
-		console.log({ supabaseError })
+		// 	if(!supabaseError) {
+		// 		redirect()
+		// 	}
 
 		return { form }
 	}
