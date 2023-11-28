@@ -22,7 +22,8 @@
 				createSnackbar.addSnackbar('success', 'グループの登録に成功しました')
 				return goto(pathName.my)
 			}
-		}
+		},
+		onError: () => createSnackbar.addSnackbar('failure', 'グループの登録に失敗しました')
 	})
 	const { delayed, enhance } = form
 
