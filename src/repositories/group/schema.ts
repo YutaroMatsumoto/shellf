@@ -6,7 +6,7 @@ const requiredMessage = 'この項目は必須です'
 export const groupNewSchema = z.object({
 	name: z
 		.string()
-		.max(10, { message: '10文字以下で入力してください' })
+		.max(50, { message: '50文字以下で入力してください' })
 		.min(1, { message: requiredMessage }),
 	description: z.string().min(1, { message: requiredMessage })
 })
