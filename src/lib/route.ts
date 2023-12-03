@@ -2,7 +2,7 @@ export const pathName = {
 	home: '/',
 	login: '/login',
 	my: '/my',
-	groupNew: '/group/new'
+	groupNew: '/my/group/new'
 } as const
 
 export type PathName = keyof typeof pathName
