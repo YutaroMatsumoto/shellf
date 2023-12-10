@@ -1,1 +1,1 @@
-// place files you want to import through the `$lib` alias in this folder.
+// domainに依存しない関数等を定義する場所
