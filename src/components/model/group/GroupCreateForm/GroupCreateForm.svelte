@@ -12,8 +12,10 @@
 	import SecondaryButton from '$ui/_button/SecondaryButton/SecondaryButton.svelte'
 	import { pathName } from '$lib/route'
 	import { createSnackbar } from '$globalStates/snackbar'
+	import FileInput from '$ui/_form/FileInput/FileInput.svelte'
 
 	export let data: SuperValidated<GroupNewSchema>
+	export let imgError: string | undefined = undefined
 
 	const form = superForm(data, {
 		delayMs: 50,
@@ -33,7 +35,7 @@
 	})
 </script>
 
-<form class={formWrapper} method="POST" use:enhance>
+<form enctype="multipart/form-data" class={formWrapper} method="POST" use:enhance>
 	<TextInput {form} field="name" label="グループ名" id="group-new-fieldid-name" />
 	<Spacer />
 	<TextArea
@@ -44,6 +46,8 @@
 		fildId="group-new-fieldid-description"
 		rows={9}
 	/>
+	<Spacer />
+	<FileInput name="img" label="画像" {imgError} />
 	<Spacer />
 	<div>
 		<SecondaryButton type="button" onClick={() => goto(pathName.my)}>戻る</SecondaryButton>
