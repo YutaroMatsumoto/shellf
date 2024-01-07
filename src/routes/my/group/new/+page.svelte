@@ -4,6 +4,7 @@
 	import { css } from 'styled-system/css'
 
 	export let data
+	export let form
 
 	const wrapper = css({
 		width: '50%',
@@ -17,5 +18,5 @@
 
 <div class={wrapper}>
 	<PageHeading title="グループを作成する" />
-	<GroupCreateForm data={data.form} />
+	<GroupCreateForm data={data.form} imgError={form?.imgError} />
 </div>
