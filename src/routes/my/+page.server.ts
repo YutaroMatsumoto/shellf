@@ -7,7 +7,7 @@ export const load: PageServerLoad = async ({ locals: { supabase, getSession } })
 
 	const session = await getSession()
 	if (!session) {
-		throw error(401, 'ログインが必要です。')
+		error(401, 'ログインが必要です。');
 	}
 
 	// const groups = await supabase.from('group').select('*').eq('created_by', session.user.id)
