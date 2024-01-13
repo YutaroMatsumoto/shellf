@@ -16,7 +16,7 @@ export const actions: Actions = {
 		const session = await getSession()
 
 		if (!session) {
-			error(401, 'ログインが必要です。');
+			error(401, 'ログインが必要です。')
 		}
 
 		// formDataを利用する場合、superValidateの第二引数はrequestではなくformDataをセットする必要がある
@@ -48,7 +48,7 @@ export const actions: Actions = {
 
 			if (uploadError) {
 				// TODO: エラーハンドリング
-				error(400, 'エラーハンドリング機能は開発中です');
+				error(400, 'エラーハンドリング機能は開発中です')
 			}
 
 			if (data.path)
@@ -63,7 +63,7 @@ export const actions: Actions = {
 
 		if (groupError) {
 			// TODO: エラーハンドリング
-			error(400, 'エラーハンドリング機能は開発中です');
+			error(400, 'エラーハンドリング機能は開発中です')
 		}
 
 		return { form }
