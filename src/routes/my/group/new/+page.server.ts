@@ -51,7 +51,7 @@ export const actions: Actions = {
 				error(400, 'エラーハンドリング機能は開発中です')
 			}
 
-			if (data?.path)
+			if (data.path)
 				imgPublicUrl = await supabase.storage.from('images').getPublicUrl(path).data.publicUrl
 		}
 
@@ -59,7 +59,7 @@ export const actions: Actions = {
 
 		const { error: groupError } = await supabase
 			.from('group')
-			.insert([{ name, description, img_url: imgPublicUrl, created_by: session?.user.id }])
+			.insert([{ name, description, img_url: imgPublicUrl, created_by: session.user.id }])
 
 		if (groupError) {
 			// TODO: エラーハンドリング
