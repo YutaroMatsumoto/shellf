@@ -16,7 +16,7 @@ export const actions: Actions = {
 		const session = await getSession()
 
 		if (!session) {
-			error(401, 'ログインが必要です。');
+			error(401, 'ログインが必要です。')
 		}
 
 		// formDataを利用する場合、superValidateの第二引数はrequestではなくformDataをセットする必要がある
@@ -48,10 +48,10 @@ export const actions: Actions = {
 
 			if (uploadError) {
 				// TODO: エラーハンドリング
-				error(400, 'エラーハンドリング機能は開発中です');
+				error(400, 'エラーハンドリング機能は開発中です')
 			}
 
-			if (data.path)
+			if (data?.path)
 				imgPublicUrl = await supabase.storage.from('images').getPublicUrl(path).data.publicUrl
 		}
 
@@ -59,11 +59,11 @@ export const actions: Actions = {
 
 		const { error: groupError } = await supabase
 			.from('group')
-			.insert([{ name, description, img_url: imgPublicUrl, created_by: session.user.id }])
+			.insert([{ name, description, img_url: imgPublicUrl, created_by: session?.user.id }])
 
 		if (groupError) {
 			// TODO: エラーハンドリング
-			error(400, 'エラーハンドリング機能は開発中です');
+			error(400, 'エラーハンドリング機能は開発中です')
 		}
 
 		return { form }
