@@ -14,6 +14,6 @@ export const load: PageServerLoad = async ({ locals: { supabase, getSession } })
 	// const groups = await supabase.from('group').select(`*`).eq()
 	// .in('id', (await supabase.from('group_member').select('group_id').eq('user_id', session.user.id)?.data))
 
-	const groups = supabase.rpc('get_belong_group', { user_id: session?.user.id ?? '' })
+	const groups = await supabase.rpc('get_belong_group', { user_id: session.user.id })
 	return { groups }
 }
