@@ -5,15 +5,18 @@
 
 	export let tabItemInfo: TabItemType
 
-	$: isSelectedTab = $page.route.id === tabItemInfo.href
+	$: ({ id, href, title, ariaControles } = tabItemInfo)
+	$: tabId = id ?? href
+	$: isSelectedTab = $page.route.id === tabId
+	console.log({ $page })
 </script>
 
 <a
 	class={tabItem({ isSelectedTab })}
-	href={tabItemInfo.href}
+	{href}
 	role="tab"
-	aria-controls={tabItemInfo.ariaControles}
+	aria-controls={ariaControles}
 	aria-selected={isSelectedTab}
 >
-	{tabItemInfo.title}
+	{title}
 </a>
