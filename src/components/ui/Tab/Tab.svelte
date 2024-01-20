@@ -14,10 +14,8 @@
 	})
 </script>
 
-<!-- aria-selectedを活用する -->
 <div role="tablist" class={tabWrapper}>
 	{#each tabs as tabItemInfo}
-		<!-- svelte-ignore missing-declaration -->
 		<TabItem {tabItemInfo} />
 	{/each}
 </div>
