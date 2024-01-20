@@ -8,7 +8,6 @@
 	$: ({ id, href, title, ariaControles } = tabItemInfo)
 	$: tabId = id ?? href
 	$: isSelectedTab = $page.route.id === tabId
-	console.log({ $page })
 </script>
 
 <a
