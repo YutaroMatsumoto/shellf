@@ -3,7 +3,7 @@
 	import Logo from '$ui/_layout/Logo/Logo.svelte'
 	import Button from '$ui/_button/Button.svelte'
 	import { getUser } from '$globalStates/user'
-	import UserAvatar from '$model/user/UserAvatar.svelte'
+	import UserAvatarButton from '$model/user/UserAvatarButton/UserAvatarButton.svelte'
 	import { createModal } from '$globalStates/modal'
 	import { getSession } from '$globalStates/session'
 
@@ -27,7 +27,7 @@
 <header class={styles}>
 	<Logo />
 	{#if session}
-		<UserAvatar src={$user?.avatar_url} />
+		<UserAvatarButton src={$user?.avatar_url} />
 	{:else if !session}
 		<Button onClick={modal.login}>ログイン</Button>
 	{/if}

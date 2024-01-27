@@ -1,5 +1,6 @@
 <script lang="ts">
-	import UserMenuPanel from '$model/user/UserMenuPanel/UserMenuPanel.svelte'
+	import UserAvatar from '$model/user/UserAvatar/UserAvatar.svelte'
+	import UserMenuPanel from '$model/user/UserAvatarButton/UserMenuPanel/UserMenuPanel.svelte'
 	import { css } from 'styled-system/css'
 
 	let displayMenuPanel: boolean = false
@@ -24,16 +25,9 @@
 
 <div class={avatarWrapper}>
 	<button class={avatarButton} on:click={changePanelDiaplayState}>
-		<img {src} alt="profile icon" id="profile-icon" />
+		<UserAvatar {src} />
 	</button>
 	{#if displayMenuPanel}
 		<UserMenuPanel {onClose} />
 	{/if}
 </div>
-
-<style>
-	img {
-		height: 40px;
-		border-radius: 3px;
-	}
-</style>

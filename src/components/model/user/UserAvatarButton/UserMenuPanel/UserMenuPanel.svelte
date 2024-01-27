@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { menuItem, userMenu } from '$model/user/UserMenuPanel/userMenuPanel'
+	import { menuItem, userMenu } from '$model/user/UserAvatarButton/UserMenuPanel/userMenuPanel'
 	import MenuPanel from '$ui/MenuPanel/MenuPanel.svelte'
 	import LogoutButton from '$ui/_button/LogoutButton/LogoutButton.svelte'
 
