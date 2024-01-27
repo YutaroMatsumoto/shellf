@@ -128,6 +128,21 @@ export interface Database {
           is_admin: boolean
         }[]
       }
+      get_group_with_create_user: {
+        Args: {
+          group_id: string
+        }
+        Returns: {
+          id: string
+          name: string
+          description: string
+          img_url: string
+          created_by: string
+          created_at: string
+          display_name: string
+          avatar_url: string
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
