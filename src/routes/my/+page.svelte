@@ -9,7 +9,7 @@
 	$: ({ data: groups } = data.groups)
 </script>
 
-<AnchorButton href="/my/group/new" title="グループ作成" />
+<AnchorButton pathKey="groupNew" title="グループ作成" />
 <Spacer />
 {#if !groups || groups.length === 0}
 	所属グループはありません。
