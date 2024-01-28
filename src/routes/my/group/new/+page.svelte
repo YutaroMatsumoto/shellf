@@ -2,9 +2,10 @@
 	import GroupCreateForm from '$model/group/GroupCreateForm/GroupCreateForm.svelte'
 	import PageHeading from '$ui/_heading/PageHeading/PageHeading.svelte'
 	import { css } from 'styled-system/css'
+	import type { ActionData, PageData } from './$types'
 
-	export let data
-	export let form
+	export let data: PageData
+	export let form: ActionData
 
 	const wrapper = css({
 		width: '50%',
