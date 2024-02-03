@@ -7,7 +7,7 @@
 	import { createModal } from '$globalStates/modal'
 	import { getSession } from '$globalStates/session'
 
-	const styles = css({
+	const header = css({
 		position: 'fixed',
 		top: '0',
 		display: 'flex',
@@ -16,7 +16,8 @@
 		height: '60px',
 		width: '100%',
 		padding: '8px 24px',
-		bg: 'white'
+		bg: 'white',
+		shadow: 'sm'
 	})
 
 	const session = getSession()
@@ -24,7 +25,7 @@
 	const modal = createModal
 </script>
 
-<header class={styles}>
+<header class={header}>
 	<Logo />
 	{#if session}
 		<UserAvatarButton src={$user?.avatar_url} />
