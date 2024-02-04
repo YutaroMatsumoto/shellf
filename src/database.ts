@@ -9,6 +9,50 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      event: {
+        Row: {
+          created_at: string
+          description: string | null
+          end_datetime: string | null
+          has_time: boolean
+          id: number
+          organized_by: string | null
+          participant_count: number | null
+          start_datetime: string
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          end_datetime?: string | null
+          has_time?: boolean
+          id?: number
+          organized_by?: string | null
+          participant_count?: number | null
+          start_datetime: string
+          title: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          end_datetime?: string | null
+          has_time?: boolean
+          id?: number
+          organized_by?: string | null
+          participant_count?: number | null
+          start_datetime?: string
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "event_organized_by_fkey"
+            columns: ["organized_by"]
+            isOneToOne: false
+            referencedRelation: "user"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       group: {
         Row: {
           created_at: string
