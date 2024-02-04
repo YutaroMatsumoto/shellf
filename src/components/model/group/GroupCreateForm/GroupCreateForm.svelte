@@ -6,13 +6,13 @@
 	import PrimaryButton from '$ui/_button/PrimaryButton/PrimaryButton.svelte'
 	import TextArea from '$ui/_form/TextArea/TextArea.svelte'
 	import TextInput from '$ui/_form/TextInput/TextInput.svelte'
+	import FileInput from '$ui/_form/FileInput/FileInput.svelte'
 
 	import type { SuperValidated } from 'sveltekit-superforms'
 	import { superForm } from 'sveltekit-superforms/client'
 	import SecondaryButton from '$ui/_button/SecondaryButton/SecondaryButton.svelte'
 	import { pathName } from '$lib/route'
 	import { createSnackbar } from '$globalStates/snackbar'
-	import FileInput from '$ui/_form/FileInput/FileInput.svelte'
 
 	export let data: SuperValidated<GroupNewSchema>
 	export let imgError: string | undefined = undefined
