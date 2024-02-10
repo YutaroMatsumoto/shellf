@@ -19,7 +19,7 @@
 <div>
 	<label for={$$restProps.id}>{label}</label>
 	<input
-		id={name}
+		id={$$restProps.id}
 		type="file"
 		accept="image/*"
 		{name}

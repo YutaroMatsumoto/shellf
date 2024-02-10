@@ -27,6 +27,7 @@
 	<label for={$$restProps.id}>{label}</label>
 	<span class={fieldStyle({ isError: !!$errors })}>
 		<textarea
+			id={$$restProps.id}
 			name={field}
 			{rows}
 			bind:value={$value}

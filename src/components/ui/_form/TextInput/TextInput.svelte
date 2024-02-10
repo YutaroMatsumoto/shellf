@@ -31,6 +31,7 @@
 	<label for={$$restProps.id}>{label}</label>
 	<span class={fieldStyle({ isError: !!$errors })}>
 		<input
+			id={$$restProps.id}
 			name={field}
 			type="text"
 			bind:value={$value}
