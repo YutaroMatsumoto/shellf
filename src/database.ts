@@ -12,43 +12,56 @@ export interface Database {
       event: {
         Row: {
           created_at: string
+          created_by: string | null
           description: string | null
           end_datetime: string | null
+          group_id: string | null
           has_time: boolean
-          id: number
-          organized_by: string | null
+          id: string
+          is_public: boolean | null
           participant_count: number | null
           start_datetime: string
           title: string
         }
         Insert: {
           created_at?: string
+          created_by?: string | null
           description?: string | null
           end_datetime?: string | null
+          group_id?: string | null
           has_time?: boolean
-          id?: number
-          organized_by?: string | null
+          id?: string
+          is_public?: boolean | null
           participant_count?: number | null
           start_datetime: string
           title: string
         }
         Update: {
           created_at?: string
+          created_by?: string | null
           description?: string | null
           end_datetime?: string | null
+          group_id?: string | null
           has_time?: boolean
-          id?: number
-          organized_by?: string | null
+          id?: string
+          is_public?: boolean | null
           participant_count?: number | null
           start_datetime?: string
           title?: string
         }
         Relationships: [
           {
-            foreignKeyName: "event_organized_by_fkey"
-            columns: ["organized_by"]
+            foreignKeyName: "event_created_by_fkey"
+            columns: ["created_by"]
             isOneToOne: false
             referencedRelation: "user"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "event_group_id_fkey"
+            columns: ["group_id"]
+            isOneToOne: false
+            referencedRelation: "group"
             referencedColumns: ["id"]
           }
         ]
