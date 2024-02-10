@@ -6,7 +6,7 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[]
 
-export interface Database {
+export type Database = {
   public: {
     Tables: {
       event: {
@@ -19,7 +19,6 @@ export interface Database {
           has_time: boolean
           id: string
           is_public: boolean | null
-          participant_count: number | null
           start_datetime: string
           title: string
         }
@@ -32,7 +31,6 @@ export interface Database {
           has_time?: boolean
           id?: string
           is_public?: boolean | null
-          participant_count?: number | null
           start_datetime: string
           title: string
         }
@@ -45,7 +43,6 @@ export interface Database {
           has_time?: boolean
           id?: string
           is_public?: boolean | null
-          participant_count?: number | null
           start_datetime?: string
           title?: string
         }
@@ -73,6 +70,7 @@ export interface Database {
           description: string
           id: string
           img_url: string | null
+          is_publish: boolean | null
           name: string
         }
         Insert: {
@@ -81,6 +79,7 @@ export interface Database {
           description?: string
           id?: string
           img_url?: string | null
+          is_publish?: boolean | null
           name: string
         }
         Update: {
@@ -89,6 +88,7 @@ export interface Database {
           description?: string
           id?: string
           img_url?: string | null
+          is_publish?: boolean | null
           name?: string
         }
         Relationships: [
