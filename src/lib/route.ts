@@ -3,7 +3,7 @@ export const pathName = {
 	login: '/login',
 	my: '/my',
 	groupNew: '/my/group/new',
-	group: '/group/:[id]',
+	group: (groupId: string) => `/group/${groupId}`,
 	eventNew: (groupId: string) => `/group/${groupId}/event/new`
 } as const
 
