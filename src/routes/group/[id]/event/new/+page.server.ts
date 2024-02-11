@@ -27,16 +27,38 @@ export const actions: Actions = {
 			return fail(400, { form })
 		}
 
-		const { title, description, hasTime, startDate, startTime, isPublic } = form.data
+		const {
+			title,
+			description,
+			hasTime,
+			hasEndDate,
+			startDate,
+			startTime,
+			endDate,
+			endTime,
+			isPublic
+		} = form.data
 
 		const startDatetime = hasTime && !!startTime ? formatDate(startDate, startTime) : startDate
 
+		// 終了日だけが入力された場合 -> 時間話でも問題ない
+		// 終了日の時間だけが入力された場合 -> 日付はstartDateを使う
+
+		// endDateは必須ではないので、入力されてなければstartDateを利用する
+		const endDateOrStartDate = endDate ?? startDate
+		const endDatetime =
+			hasTime && hasEndDate && !!endTime
+				? formatDate(endDateOrStartDate, endTime)
+				: endDateOrStartDate
+
 		const startDatetimeISOS = new Date(startDatetime).toISOString()
+		const endDatetimeISOS = hasEndDate ? new Date(endDatetime).toISOString() : null
 		const { error: eventNewError } = await supabase.from('event').insert([
 			{
 				title,
 				description,
 				start_datetime: startDatetimeISOS,
+				end_datetime: endDatetimeISOS,
 				has_time: hasTime,
 				is_public: isPublic,
 				created_by: session.user.id,
