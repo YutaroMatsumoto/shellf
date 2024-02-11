@@ -7,7 +7,7 @@
 	import type { EventNewSchema } from '$repositories/event/schema'
 	import TextArea from '$ui/_form/TextArea/TextArea.svelte'
 	import Spacer from '$ui/Spacer/Spacer.svelte'
-	import { dateTimeArea, flexBox, formWrapper } from './eventCreateForm.style'
+	import { dateTimeArea, flexBox, formWrapper, timeToggleArea } from './eventCreateForm.style'
 	import DateInput from '$ui/_form/_date/DateInput/DateInput.svelte'
 	import TimeInput from '$ui/_form/_date/TimeInput/TimeInput.svelte'
 	import ToggleInput from '$ui/_form/ToggleInput/ToggleInput.svelte'
@@ -30,6 +30,7 @@
 	})
 
 	const { value: hasTiemValue } = formFieldProxy(form, 'hasTime')
+	const { value: hasEndDateValue } = formFieldProxy(form, 'hasEndDate')
 
 	const { delayed, enhance } = form
 </script>
@@ -37,20 +38,35 @@
 <form class={formWrapper} method="POST" use:enhance>
 	<section>
 		<div class={flexBox}>
-			<div class={dateTimeArea}>
-				<DateInput {form} field="startDate" label="開催日" id="event-new-fieldid-start-date" />
-				{#if $hasTiemValue}
-					<TimeInput {form} field="startTime" label="時間" id="event-new-fieldid-start-time" />
+			<div>
+				<div class={dateTimeArea}>
+					<DateInput {form} field="startDate" label="開催日" id="event-new-fieldid-start-date" />
+					{#if $hasTiemValue}
+						<TimeInput {form} field="startTime" label="時間" id="event-new-fieldid-start-time" />
+					{/if}
+				</div>
+
+				<!-- TODO: 開始日が入力されているかつ終了日が入力されていなければ、自動的に開始日と同じ値を入れる -->
+				{#if $hasEndDateValue}
+					<Spacer />
+					<div class={dateTimeArea}>
+						<DateInput {form} field="endDate" label="終了日" id="event-new-fieldid-start-date" />
+						{#if $hasTiemValue}
+							<TimeInput {form} field="endTime" label="時間" id="event-new-fieldid-start-time" />
+						{/if}
+					</div>
 				{/if}
 			</div>
 
-			<ToggleInput {form} field="hasTime" label="時間表示" id="event-new-fieldid-has-time" />
-			<ToggleInput
-				{form}
-				field="hasEndDate"
-				label="終了日時表示"
-				id="event-new-fieldid-has-end-date"
-			/>
+			<div class={timeToggleArea}>
+				<ToggleInput {form} field="hasTime" label="時間表示" id="event-new-fieldid-has-time" />
+				<ToggleInput
+					{form}
+					field="hasEndDate"
+					label="終了日時表示"
+					id="event-new-fieldid-has-end-date"
+				/>
+			</div>
 		</div>
 		<Spacer />
 		<TextInput {form} field="title" label="イベント名" id="event-new-fieldid-title" />

@@ -12,11 +12,10 @@ export const dateTimeArea = css({
 })
 
 export const flexBox = css({
-	...flexRowBaseStyle
+	display: 'flex'
 })
 
 export const timeToggleArea = css({
-	display: 'flex',
-	flexDirection: 'column',
-	gap: '20px'
+	...flexRowBaseStyle,
+	marginLeft: '52px'
 })
