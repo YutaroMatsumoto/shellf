@@ -8,6 +8,7 @@
 	import TextArea from '$ui/_form/TextArea/TextArea.svelte'
 	import TextInput from '$ui/_form/TextInput/TextInput.svelte'
 	import FileInput from '$ui/_form/FileInput/FileInput.svelte'
+	import { buttonGroupArea } from '$ui/_button/button.style'
 
 	import type { SuperValidated } from 'sveltekit-superforms'
 	import { superForm } from 'sveltekit-superforms/client'
@@ -49,18 +50,8 @@
 	<Spacer />
 	<FileInput name="img" label="画像" {imgError} />
 	<Spacer />
-	<div>
+	<div class={buttonGroupArea}>
 		<SecondaryButton type="button" onClick={() => goto(pathName.my)}>戻る</SecondaryButton>
 		<PrimaryButton type="submit" loading={$delayed} aria-busy={$delayed}>保存</PrimaryButton>
 	</div>
 </form>
-
-<style>
-	div {
-		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 20px;
-	}
-</style>
