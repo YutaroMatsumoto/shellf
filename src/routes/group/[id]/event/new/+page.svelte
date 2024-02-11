@@ -1,11 +1,9 @@
 <script lang="ts">
-	import GroupCreateForm from '$model/group/GroupCreateForm/GroupCreateForm.svelte'
+	import EventCreateForm from '$model/event/EventCreateForm/EventCreateForm.svelte'
 	import PageHeading from '$ui/_heading/PageHeading/PageHeading.svelte'
 	import { css } from 'styled-system/css'
-	import type { ActionData, PageData } from './$types'
 
-	export let data: PageData
-	export let form: ActionData
+	export let data
 
 	const wrapper = css({
 		width: '60%',
@@ -18,6 +16,6 @@
 </script>
 
 <div class={wrapper}>
-	<PageHeading title="グループを作成する" />
-	<GroupCreateForm data={data.form} imgError={form?.imgError} />
+	<PageHeading title="イベントを作成する" />
+	<EventCreateForm data={data.form} />
 </div>
