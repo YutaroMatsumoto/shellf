@@ -9,9 +9,11 @@ export const eventNewSchema = z.object({
 		.min(1, { message: requiredMessage }),
 	description: z.string().min(1, { message: requiredMessage }),
 	// participantCount: z.number().int().positive().min(0).nullable(),
-	isPublic: z.boolean(),
 	hasTime: z.boolean(),
-	startDatetime: z.date(), // 要確認
+	hasEndDate: z.boolean(),
+	startDate: z.date(), // 要確認
+	startTime: z.string().nullable(), // 要確認
+	isPublic: z.boolean(),
 	endDatetime: z.date().nullable() // 要確認
 })
 
