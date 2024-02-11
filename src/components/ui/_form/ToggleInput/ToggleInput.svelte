@@ -35,7 +35,6 @@
 	const errormessageId = `errormessage-${$$restProps.id}`
 
 	$: boolValue = value as Writable<boolean>
-	$: console.log({ $boolValue })
 </script>
 
 <!-- エラーメッセージは不要 -->
