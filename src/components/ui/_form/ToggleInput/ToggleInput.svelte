@@ -40,7 +40,8 @@
 
 <!-- エラーメッセージは不要 -->
 <div class={fieldWrapper}>
-	<label for={$$restProps.id}>{label}</label>
+	<!-- MEMO: labelの領域をクリックして値が変わって欲しくないのでspanタグを利用 -->
+	<span>{label}</span>
 	<div class={toggleWrapper}>
 		<div class={toggleArea({ checked: $boolValue })}>
 			<div class={circle({ checked: $boolValue })} />
@@ -61,11 +62,9 @@
 <style>
 	div {
 		display: flex;
-		flex-direction: column;
-		gap: 8px;
 	}
 
-	label {
+	span {
 		font-size: 16px;
 		font-weight: bold;
 	}
