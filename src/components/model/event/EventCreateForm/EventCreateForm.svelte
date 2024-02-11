@@ -2,21 +2,36 @@
 	import { goto } from '$app/navigation'
 	import { page } from '$app/stores'
 	import TextInput from '$ui/_form/TextInput/TextInput.svelte'
-	import { superForm } from 'sveltekit-superforms/client'
+	import { superForm, formFieldProxy } from 'sveltekit-superforms/client'
 	import type { SuperValidated } from 'sveltekit-superforms'
 	import type { EventNewSchema } from '$repositories/event/schema'
 	import TextArea from '$ui/_form/TextArea/TextArea.svelte'
 	import Spacer from '$ui/Spacer/Spacer.svelte'
-	import { buttonSection, flexBox, formWrapper, smallFieldWrapper } from './eventCreateForm.style'
-	import DatetimeInput from '$ui/_form/DatetimeInput/DatetimeInput.svelte'
+	import { dateTimeArea, flexBox, formWrapper } from './eventCreateForm.style'
+	import DateInput from '$ui/_form/_date/DateInput/DateInput.svelte'
+	import TimeInput from '$ui/_form/_date/TimeInput/TimeInput.svelte'
 	import ToggleInput from '$ui/_form/ToggleInput/ToggleInput.svelte'
 	import PrimaryButton from '$ui/_button/PrimaryButton/PrimaryButton.svelte'
 	import SecondaryButton from '$ui/_button/SecondaryButton/SecondaryButton.svelte'
 	import { generatePath } from '$lib/route'
+	import { createSnackbar } from '$globalStates/snackbar'
+	import { buttonGroupArea } from '$ui/_button/button.style'
 
 	export let data: SuperValidated<EventNewSchema>
 
-	const form = superForm(data)
+	const form = superForm(data, {
+		delayMs: 50,
+		onResult: ({ result }) => {
+			if (result.type === 'success') {
+				createSnackbar.addSnackbar('success', 'グループの登録に成功しました')
+				return goto(generatePath('group', $page.params.id))
+			}
+		}
+	})
+
+	const { value: hasTiemValue } = formFieldProxy(form, 'hasTime')
+	const { value: startDateValue } = formFieldProxy(form, 'startDate')
+	const { value: startTimeValue } = formFieldProxy(form, 'startTime')
 
 	const { delayed, enhance } = form
 </script>
@@ -24,14 +39,20 @@
 <form class={formWrapper} method="POST" use:enhance>
 	<section>
 		<div class={flexBox}>
-			<div class={smallFieldWrapper}>
-				<DatetimeInput
-					{form}
-					field="startDatetime"
-					label="開催日時"
-					id="event-new-fieldid-start-datetime"
-				/>
+			<div class={dateTimeArea}>
+				<DateInput {form} field="startDate" label="開催日" id="event-new-fieldid-start-date" />
+				{#if $hasTiemValue}
+					<TimeInput {form} field="startTime" label="時間" id="event-new-fieldid-start-time" />
+				{/if}
 			</div>
+
+			<ToggleInput {form} field="hasTime" label="時間表示" id="event-new-fieldid-has-time" />
+			<ToggleInput
+				{form}
+				field="hasEndDate"
+				label="終了日時表示"
+				id="event-new-fieldid-has-end-date"
+			/>
 		</div>
 		<Spacer />
 		<TextInput {form} field="title" label="イベント名" id="event-new-fieldid-title" />
@@ -50,10 +71,10 @@
 	<ToggleInput {form} field="isPublic" label="公開する" id="event-new-fieldid-is-public" />
 	<Spacer />
 
-	<section class={buttonSection}>
+	<div class={buttonGroupArea}>
 		<SecondaryButton type="button" onClick={() => goto(generatePath('group', $page.params.id))}
 			>戻る</SecondaryButton
 		>
 		<PrimaryButton type="submit" loading={$delayed} aria-busy={$delayed}>保存</PrimaryButton>
-	</section>
+	</div>
 </form>
