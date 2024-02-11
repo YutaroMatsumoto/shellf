@@ -4,6 +4,7 @@ import { error, type ServerLoad } from '@sveltejs/kit'
 
 import { superValidate } from 'sveltekit-superforms/server'
 import { eventNewSchema } from '$repositories/event/schema'
+import { formatDate } from '$lib/date'
 
 export const load: ServerLoad = async () => {
 	const form = await superValidate(eventNewSchema)
@@ -26,21 +27,22 @@ export const actions: Actions = {
 			return fail(400, { form })
 		}
 
-		const { title, description, startDatetime, isPublic } = form.data
-		const startDatetimeISOS = startDatetime.toISOString()
+		const { title, description, hasTime, startDate, startTime, isPublic } = form.data
+
+		const startDatetime = hasTime && !!startTime ? formatDate(startDate, startTime) : startDate
+
+		const startDatetimeISOS = new Date(startDatetime).toISOString()
 		const { error: eventNewError } = await supabase.from('event').insert([
 			{
 				title,
 				description,
 				start_datetime: startDatetimeISOS,
+				has_time: hasTime,
 				is_public: isPublic,
-				// end_datetime: startDatetimeISOS,
 				created_by: session.user.id,
 				group_id: params.id
 			}
 		])
-
-		console.log({ eventNewError, startDatetimeISOS })
 
 		return { form }
 	}
