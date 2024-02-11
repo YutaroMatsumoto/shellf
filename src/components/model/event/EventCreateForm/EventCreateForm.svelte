@@ -30,8 +30,6 @@
 	})
 
 	const { value: hasTiemValue } = formFieldProxy(form, 'hasTime')
-	const { value: startDateValue } = formFieldProxy(form, 'startDate')
-	const { value: startTimeValue } = formFieldProxy(form, 'startTime')
 
 	const { delayed, enhance } = form
 </script>
