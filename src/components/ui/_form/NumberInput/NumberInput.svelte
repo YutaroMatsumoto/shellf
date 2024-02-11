@@ -25,8 +25,6 @@
 	const { value, errors } = formFieldProxy(form, field)
 
 	const errormessageId = `errormessage-${$$restProps.id}`
-
-	$: console.log({ $value })
 </script>
 
 <div>
