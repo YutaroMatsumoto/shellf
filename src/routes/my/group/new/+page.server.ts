@@ -55,11 +55,19 @@ export const actions: Actions = {
 				imgPublicUrl = await supabase.storage.from('images').getPublicUrl(path).data.publicUrl
 		}
 
-		const { name, description } = form.data
+		const { name, description, isPrivate } = form.data
 
 		const { error: groupError } = await supabase
 			.from('group')
-			.insert([{ name, description, img_url: imgPublicUrl, created_by: session.user.id }])
+			.insert([
+				{
+					name,
+					description,
+					is_private: isPrivate,
+					img_url: imgPublicUrl,
+					created_by: session.user.id
+				}
+			])
 
 		if (groupError) {
 			// TODO: エラーハンドリング

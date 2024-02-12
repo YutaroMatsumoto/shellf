@@ -8,7 +8,8 @@ export const groupNewSchema = z.object({
 		.string()
 		.max(50, { message: '50文字以下で入力してください' })
 		.min(1, { message: requiredMessage }),
-	description: z.string().min(1, { message: requiredMessage })
+	description: z.string().min(1, { message: requiredMessage }),
+	isPrivate: z.boolean().default(true)
 
 	/**
 	 * NOTE: File object に関して

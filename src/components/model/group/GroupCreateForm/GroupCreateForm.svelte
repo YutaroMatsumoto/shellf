@@ -8,6 +8,7 @@
 	import TextArea from '$ui/_form/TextArea/TextArea.svelte'
 	import TextInput from '$ui/_form/TextInput/TextInput.svelte'
 	import FileInput from '$ui/_form/FileInput/FileInput.svelte'
+	import ToggleInput from '$ui/_form/ToggleInput/ToggleInput.svelte'
 	import { buttonGroupArea } from '$ui/_button/button.style'
 
 	import type { SuperValidated } from 'sveltekit-superforms'
@@ -49,6 +50,15 @@
 	/>
 	<Spacer />
 	<FileInput name="img" label="画像" {imgError} />
+	<Spacer />
+	<ToggleInput
+		{form}
+		field="isPrivate"
+		label="プライベートグループとして登録"
+		id="event-new-fieldid-is-public"
+		defaultValue={true}
+		checked
+	/>
 	<Spacer />
 	<div class={buttonGroupArea}>
 		<SecondaryButton type="button" onClick={() => goto(pathName.my)}>戻る</SecondaryButton>
