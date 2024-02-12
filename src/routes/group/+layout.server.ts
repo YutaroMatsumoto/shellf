@@ -1,4 +1,4 @@
-// export const prerender = false
+// group/[id]のlayout uiを継承したくない場合もあるため、group/直下にdata取得のserverファイルを配置
 
 import type { LayoutServerLoad } from './$types'
 import { error } from '@sveltejs/kit'
