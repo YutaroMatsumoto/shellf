@@ -70,7 +70,7 @@ export type Database = {
           description: string
           id: string
           img_url: string | null
-          is_publish: boolean | null
+          is_private: boolean
           name: string
         }
         Insert: {
@@ -79,7 +79,7 @@ export type Database = {
           description?: string
           id?: string
           img_url?: string | null
-          is_publish?: boolean | null
+          is_private?: boolean
           name: string
         }
         Update: {
@@ -88,7 +88,7 @@ export type Database = {
           description?: string
           id?: string
           img_url?: string | null
-          is_publish?: boolean | null
+          is_private?: boolean
           name?: string
         }
         Relationships: [
