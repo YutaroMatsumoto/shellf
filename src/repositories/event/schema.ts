@@ -14,8 +14,8 @@ export const eventNewSchema = z.object({
 	startDate: z.date(), // 要確認
 	startTime: z.string().nullable(), // 要確認
 	endDate: z.date().nullable(), // 要確認
-	endTime: z.string().nullable(), // 要確認
-	isPublic: z.boolean()
+	endTime: z.string().nullable() // 要確認
+	// isPublic: z.boolean()
 })
 
 export type EventNewSchema = typeof eventNewSchema

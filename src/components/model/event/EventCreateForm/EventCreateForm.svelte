@@ -82,7 +82,8 @@
 	</section>
 	<Spacer />
 
-	<ToggleInput {form} field="isPublic" label="公開する" id="event-new-fieldid-is-public" />
+	<!-- MEMO: MVPではリリース対象外とする -->
+	<!-- <ToggleInput {form} field="isPublic" label="公開する" id="event-new-fieldid-is-public" /> -->
 	<Spacer />
 
 	<div class={buttonGroupArea}>
