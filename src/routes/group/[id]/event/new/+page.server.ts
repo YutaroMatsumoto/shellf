@@ -36,7 +36,7 @@ export const actions: Actions = {
 			startTime,
 			endDate,
 			endTime,
-			isPublic
+			groupIsPrivate
 		} = form.data
 
 		const startDatetime = hasTime && !!startTime ? formatDate(startDate, startTime) : startDate
@@ -60,7 +60,7 @@ export const actions: Actions = {
 				start_datetime: startDatetimeISOS,
 				end_datetime: endDatetimeISOS,
 				has_time: hasTime,
-				is_public: isPublic,
+				is_private: groupIsPrivate, // MEMO: MVPではgroupのisPrivateを登録
 				created_by: session.user.id,
 				group_id: params.id
 			}

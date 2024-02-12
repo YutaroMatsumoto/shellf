@@ -16,14 +16,17 @@
 	import { generatePath } from '$lib/route'
 	import { createSnackbar } from '$globalStates/snackbar'
 	import { buttonGroupArea } from '$ui/_button/button.style'
+	import type { PostgrestSingleResponse } from '@supabase/supabase-js'
+	import type { GroupWithCreateUser } from 'src/models/group'
 
 	export let data: SuperValidated<EventNewSchema>
+	export let group: PostgrestSingleResponse<GroupWithCreateUser[]>
 
 	const form = superForm(data, {
 		delayMs: 50,
 		onResult: ({ result }) => {
 			if (result.type === 'success') {
-				createSnackbar.addSnackbar('success', 'グループの登録に成功しました')
+				createSnackbar.addSnackbar('success', 'イベントの登録に成功しました')
 				return goto(generatePath('group', $page.params.id))
 			}
 		}
@@ -31,6 +34,7 @@
 
 	const { value: hasTiemValue } = formFieldProxy(form, 'hasTime')
 	const { value: hasEndDateValue } = formFieldProxy(form, 'hasEndDate')
+	$: groupIsPrivate = !!group?.data?.[0].is_private
 
 	const { delayed, enhance } = form
 </script>
@@ -79,6 +83,7 @@
 			fildId="event-new-fieldid-description"
 			rows={9}
 		/>
+		<input type="hidden" name="groupIsPrivate" bind:value={groupIsPrivate} />
 	</section>
 	<Spacer />
 

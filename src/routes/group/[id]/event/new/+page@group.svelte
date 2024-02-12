@@ -26,6 +26,6 @@
 <div class={wrapper}>
 	<div class={content}>
 		<PageHeading title="イベントを作成する" />
-		<EventCreateForm data={data.form} />
+		<EventCreateForm data={data.form} group={data.group} />
 	</div>
 </div>
