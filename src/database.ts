@@ -194,6 +194,7 @@ export type Database = {
           name: string
           description: string
           img_url: string
+          is_private: boolean
           created_by: string
           created_at: string
           display_name: string
