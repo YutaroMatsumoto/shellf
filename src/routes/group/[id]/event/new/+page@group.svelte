@@ -6,6 +6,14 @@
 	export let data
 
 	const wrapper = css({
+		height: '100%',
+		padding: '24px',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center'
+	})
+
+	const content = css({
 		width: '60%',
 		padding: '32px',
 		backgroundColor: 'white',
@@ -16,6 +24,8 @@
 </script>
 
 <div class={wrapper}>
-	<PageHeading title="イベントを作成する" />
-	<EventCreateForm data={data.form} />
+	<div class={content}>
+		<PageHeading title="イベントを作成する" />
+		<EventCreateForm data={data.form} />
+	</div>
 </div>
