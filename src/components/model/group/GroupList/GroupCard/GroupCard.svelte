@@ -1,11 +1,12 @@
 <script lang="ts">
+	import { generatePath } from '$lib/route'
 	import { card, cardLink, img, noImg } from '$model/group/GroupList/GroupCard/groupCard.style'
 
 	export let id: string
 	export let name: string
 	export let imgSrc: string = ''
 
-	$: groupPageUrl = `/group/${id}`
+	$: groupPageUrl = generatePath('group', [id])
 </script>
 
 <li>

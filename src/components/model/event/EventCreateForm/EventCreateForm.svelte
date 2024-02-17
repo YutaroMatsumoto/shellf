@@ -27,7 +27,7 @@
 		onResult: ({ result }) => {
 			if (result.type === 'success') {
 				createSnackbar.addSnackbar('success', 'イベントの登録に成功しました')
-				return goto(generatePath('group', $page.params.id))
+				return goto(generatePath('group', [$page.params.id]))
 			}
 		}
 	})
@@ -92,7 +92,7 @@
 	<Spacer />
 
 	<div class={buttonGroupArea}>
-		<SecondaryButton type="button" onClick={() => goto(generatePath('group', $page.params.id))}
+		<SecondaryButton type="button" onClick={() => goto(generatePath('group', [$page.params.id]))}
 			>戻る</SecondaryButton
 		>
 		<PrimaryButton type="submit" loading={$delayed} aria-busy={$delayed}>保存</PrimaryButton>
