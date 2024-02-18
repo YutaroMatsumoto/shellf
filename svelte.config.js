@@ -24,6 +24,7 @@ const config = {
 			'$page/*': 'src/components/page/*',
 			'$model/*': 'src/components/model/*',
 			'$ui/*': 'src/components/ui/*',
+			'$models/*': 'src/models/*',
 			'$repositories/*': 'src/repositories/*',
 			'$globalStates/*': 'src/globalStates/*'
 		},

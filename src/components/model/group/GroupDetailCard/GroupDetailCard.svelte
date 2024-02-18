@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { GroupWithCreateUser } from 'src/models/group'
+	import type { GroupWithCreateUser } from '$models/group'
 	import { cardWrapper, groupName, groupImage } from './gorupDetailCard.style'
 
 	export let group: GroupWithCreateUser

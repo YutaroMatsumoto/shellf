@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { GroupWithCreateUser } from 'src/models/group'
+	import type { GroupWithCreateUser } from '$models/group'
 	import UserAvatar from '$model/user/UserAvatar/UserAvatar.svelte'
 	import { administratorSection, sectionWrapper, title } from './administratorWithAvatar.style'
 

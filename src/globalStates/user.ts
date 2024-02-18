@@ -1,4 +1,4 @@
-import type { User } from 'src/models/user'
+import type { User } from '$models/user'
 import { getContext, setContext } from 'svelte'
 import { writable, type Writable } from 'svelte/store'
 

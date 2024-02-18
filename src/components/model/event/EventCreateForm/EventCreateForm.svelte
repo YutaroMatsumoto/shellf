@@ -17,7 +17,7 @@
 	import { createSnackbar } from '$globalStates/snackbar'
 	import { buttonGroupArea } from '$ui/_button/button.style'
 	import type { PostgrestSingleResponse } from '@supabase/supabase-js'
-	import type { GroupWithCreateUser } from 'src/models/group'
+	import type { GroupWithCreateUser } from '$models/group'
 
 	export let data: SuperValidated<EventNewSchema>
 	export let group: PostgrestSingleResponse<GroupWithCreateUser[]>

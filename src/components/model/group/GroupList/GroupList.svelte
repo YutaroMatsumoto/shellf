@@ -1,6 +1,6 @@
 <script lang="ts">
 	import GroupCard from '$model/group/GroupList/GroupCard/GroupCard.svelte'
-	import type { Groups } from 'src/models/group'
+	import type { Groups } from '$models/group'
 
 	export let groups: Groups
 </script>
