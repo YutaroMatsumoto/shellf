@@ -16,6 +16,7 @@
 	"dependencies": {
 		"@supabase/auth-helpers-sveltekit": "^0.10.2",
 		"@supabase/supabase-js": "^2.32.0",
+		"dayjs": "^1.11.10",
 		"tabbable": "^6.2.0",
 		"uuid": "^9.0.1"
 	},
