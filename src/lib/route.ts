@@ -6,7 +6,8 @@ export const pathName = {
 	groupNew: '/my/group/new',
 	group: ([groupId]: Params) => `/group/${groupId}`,
 	eventNew: ([groupId]: Params) => `/group/${groupId}/event/new`,
-	event: ([groupId, eventId]: Params) => `/group/${groupId}/event/${eventId}`
+	groupEventList: ([groupId]: Params) => `/group/${groupId}/event`,
+	eventDetail: ([groupId, eventId]: Params) => `/group/${groupId}/event/${eventId}`
 } as const
 
 export function generatePath(pathKey: PathName, params?: string[]): string {
