@@ -2,7 +2,7 @@
 	import { page } from '$app/stores'
 	import { generatePath } from '$lib/route'
 	import dayjs from '$lib/dayjs'
-	import { item } from './eventItem.style'
+	import { item, timeAndLabel } from './eventItem.style'
 	import EventLabel from '$model/event/EventLabel/EventLabel.svelte'
 
 	export let id: string
@@ -25,12 +25,15 @@
 <li>
 	<a href={eventPageUrl}>
 		<article class={item}>
-			<span>
-				{formatdate}
-			</span>
-			{#if isToday || isAfter}
-				<EventLabel status={isToday ? 'today' : 'future'} />
-			{/if}
+			<div class={timeAndLabel}>
+				{#if isToday || isAfter}
+					<EventLabel status={isToday ? 'today' : 'future'} />
+				{/if}
+				<span>
+					{formatdate}
+				</span>
+			</div>
+
 			<h2>{title}</h2>
 		</article>
 	</a>

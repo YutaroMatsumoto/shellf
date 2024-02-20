@@ -1,18 +1,25 @@
 <script lang="ts">
-	import { css } from 'styled-system/css'
 	import { EventLabel, type EventLabelKey } from '$models/event'
+	import { cva } from 'styled-system/css'
 
 	export let status: EventLabelKey
 
-	const eventLabel = css({
-		borderRadius: 'sm',
-		padding: '4px',
-		backgroundColor: status === 'future' ? 'green.400' : 'orange.400',
-		color: 'white',
-		fontWeight: 'bold'
+	const eventLabel = cva({
+		base: {
+			borderRadius: 'sm',
+			padding: '4px',
+			color: 'white',
+			fontWeight: 'bold'
+		},
+		variants: {
+			status: {
+				future: { backgroundColor: 'green.400' },
+				today: { backgroundColor: 'orange.400' }
+			}
+		}
 	})
 </script>
 
 <div>
-	<span class={eventLabel}>{EventLabel[status]}</span>
+	<span class={eventLabel({ status })}>{EventLabel[status]}</span>
 </div>

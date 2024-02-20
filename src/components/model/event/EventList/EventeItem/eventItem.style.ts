@@ -11,3 +11,8 @@ export const item = css({
 		backgroundColor: 'gray.100'
 	}
 })
+
+export const timeAndLabel = css({
+	display: 'flex',
+	gap: '8px'
+})
