@@ -1,3 +1,4 @@
+<!-- root直下のlayout -->
 <script lang="ts">
 	import Header from '$ui/_layout/Header/Header.svelte'
 	import Footer from '$ui/_layout/Footer/Footer.svelte'

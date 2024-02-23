@@ -9,7 +9,7 @@ export const mainStyles = css({
 	gridRow: 2,
 	bg: 'gray.50',
 	overflow: 'auto',
-	marginTop: '58px',
+	marginTop: '60px',
 	minH: 'calc(100vh - 178px)'
 })
 
