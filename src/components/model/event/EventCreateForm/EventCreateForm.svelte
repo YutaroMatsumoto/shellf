@@ -67,9 +67,10 @@
 				<ToggleInput
 					{form}
 					field="hasEndDate"
-					label="終了日時表示"
+					label="終了時間表示"
 					id="event-new-fieldid-has-end-date"
 				/>
+				<!-- 何時間開催なのかを入力できるようにした方が良いのでは -->
 			</div>
 		</div>
 		<Spacer />
