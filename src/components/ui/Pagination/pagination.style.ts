@@ -9,7 +9,7 @@ export const paginationStyle = css({
 })
 
 export const currentPageStype = css({
-	padding: '4px',
+	padding: '4px 8px',
 	backgroundColor: 'green.500',
 	color: 'white',
 	borderRadius: 'sm'
