@@ -17,7 +17,6 @@
 	import { createSnackbar } from '$globalStates/snackbar'
 
 	export let data: SuperValidated<GroupNewSchema>
-	export let imgError: string | undefined = undefined
 
 	const form = superForm(data, {
 		delayMs: 50,
@@ -29,7 +28,7 @@
 		},
 		onError: () => createSnackbar.addSnackbar('failure', 'グループの登録に失敗しました')
 	})
-	const { delayed, enhance } = form
+	const { delayed, enhance, errors } = form
 
 	const formWrapper = css({
 		width: '100%',
@@ -49,7 +48,7 @@
 		rows={9}
 	/>
 	<Spacer />
-	<FileInput name="img" label="画像" {imgError} />
+	<FileInput name="img" label="画像" imgError={$errors.img} />
 	<Spacer />
 	<ToggleInput
 		{form}
