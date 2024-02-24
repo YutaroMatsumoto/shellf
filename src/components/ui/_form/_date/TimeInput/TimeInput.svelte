@@ -1,19 +1,20 @@
 <script lang="ts" context="module">
-	import type { AnyZodObject } from 'zod'
-	type T = AnyZodObject
+	type T = Record<string, unknown>;
 </script>
 
-<script lang="ts" generics="T extends AnyZodObject">
+<script lang="ts" generics="T extends Record<string, unknown>">
 	import { fieldStyle } from '$ui/_form/commonStyle'
 	import ErrorMessage from '$ui/_form/ErrorMessage/ErrorMessage.svelte'
 
-	import type { z } from 'zod'
-	import type { ZodValidation, FormPathLeaves } from 'sveltekit-superforms'
-	import { formFieldProxy, type SuperForm } from 'sveltekit-superforms/client'
+	import { 
+    formFieldProxy, 
+    type SuperForm, 
+    type FormPathLeaves 
+  } from 'sveltekit-superforms';
 
 	// 基本的なhtml属性はrestPropsで受け取るようにする
-	export let form: SuperForm<ZodValidation<T>, unknown>
-	export let field: FormPathLeaves<z.infer<T>>
+	export let form: SuperForm<T>
+	export let field: FormPathLeaves<T>
 	export let label: string
 
 	/**
