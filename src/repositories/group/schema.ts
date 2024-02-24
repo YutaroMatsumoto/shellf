@@ -16,4 +16,4 @@ export const groupNewSchema = z.object({
 	isPrivate: z.boolean().default(true)
 })
 
-export type GroupNewSchema = typeof groupNewSchema
+export type GroupNewSchema = z.infer<typeof groupNewSchema>

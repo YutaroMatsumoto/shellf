@@ -5,29 +5,17 @@
 	import PrimaryButton from '$ui/_button/PrimaryButton/PrimaryButton.svelte'
 	import SecondaryButton from '$ui/_button/SecondaryButton/SecondaryButton.svelte'
 	import Spacer from '$ui/Spacer/Spacer.svelte'
+	import { buttonGroupArea } from '$ui/_button/button.style'
 	import TextArea from '$ui/_form/TextArea/TextArea.svelte'
 	import TextInput from '$ui/_form/TextInput/TextInput.svelte'
 	import FileInput from '$ui/_form/FileInput/FileInput.svelte'
 	import ToggleInput from '$ui/_form/ToggleInput/ToggleInput.svelte'
-	import { buttonGroupArea } from '$ui/_button/button.style'
 
-	import type { SuperValidated } from 'sveltekit-superforms'
-	import { superForm } from 'sveltekit-superforms/client'
+	import type { SuperForm } from 'sveltekit-superforms'
 	import { pathName } from '$lib/route'
-	import { createSnackbar } from '$globalStates/snackbar'
 
-	export let data: SuperValidated<GroupNewSchema>
+	export let form: SuperForm<GroupNewSchema>
 
-	const form = superForm(data, {
-		delayMs: 50,
-		onResult: ({ result }) => {
-			if (result.type === 'success') {
-				createSnackbar.addSnackbar('success', 'グループの登録に成功しました')
-				return goto(pathName.my)
-			}
-		},
-		onError: () => createSnackbar.addSnackbar('failure', 'グループの登録に失敗しました')
-	})
 	const { delayed, enhance, errors } = form
 
 	const formWrapper = css({
