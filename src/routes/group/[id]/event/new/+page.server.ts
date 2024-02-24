@@ -5,9 +5,10 @@ import { error, type ServerLoad } from '@sveltejs/kit'
 import { superValidate } from 'sveltekit-superforms/server'
 import { eventNewSchema } from '$repositories/event/schema'
 import { formatDate } from '$lib/date'
+import { zod } from 'sveltekit-superforms/adapters'
 
 export const load: ServerLoad = async () => {
-	const form = await superValidate(eventNewSchema)
+	const form = await superValidate(zod(eventNewSchema))
 	return { form }
 }
 
@@ -20,7 +21,7 @@ export const actions: Actions = {
 		}
 
 		// formDataを利用する場合、superValidateの第二引数はrequestではなくformDataをセットする必要がある
-		const form = await superValidate(request, eventNewSchema)
+		const form = await superValidate(request, zod(eventNewSchema))
 
 		// validation error 発生時
 		if (!form.valid) {

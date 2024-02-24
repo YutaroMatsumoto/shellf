@@ -11,7 +11,7 @@
 	// export let form: SuperForm<ZodValidation<T>, unknown>
 	export let name: string
 	export let label: string
-	export let imgError: string | undefined
+	export let imgError: string[] | undefined
 
 	const errormessageId = `errormessage-${$$restProps.id}`
 </script>

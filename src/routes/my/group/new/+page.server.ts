@@ -2,12 +2,13 @@ import { fail } from '@sveltejs/kit'
 import type { Actions } from './$types'
 import { error, type ServerLoad } from '@sveltejs/kit'
 
-import { groupNewImgSchema, groupNewSchema } from '$repositories/group/schema'
-import { superValidate } from 'sveltekit-superforms/server'
+import { groupNewSchema } from '$repositories/group/schema'
+import { superValidate, withFiles } from 'sveltekit-superforms'
 import { v4 as uuidv4 } from 'uuid'
+import { zod } from 'sveltekit-superforms/adapters'
 
 export const load: ServerLoad = async () => {
-	const form = await superValidate(groupNewSchema)
+	const form = await superValidate(zod(groupNewSchema))
 	return { form }
 }
 
@@ -19,25 +20,16 @@ export const actions: Actions = {
 			error(401, 'ログインが必要です。')
 		}
 
-		// formDataを利用する場合、superValidateの第二引数はrequestではなくformDataをセットする必要がある
-		let imgError: string | undefined = undefined
-		const formData = await request.formData()
-		const form = await superValidate(formData, groupNewSchema)
+		const form = await superValidate(request, zod(groupNewSchema))
 
-		const img = formData.get('img')
-		const imgValidationResult = groupNewImgSchema.safeParse({ img })
-		if (!imgValidationResult.success) {
-			imgError = imgValidationResult.error.formErrors.fieldErrors.img?.[0]
-		}
-
-		// validation error 発生時
-		if (!form.valid || !imgValidationResult.success) {
-			return fail(400, { form, imgError })
+		if (!form.valid) {
+			return fail(400, withFiles({ form }))
 		}
 
 		let imgPublicUrl: string | null = null
 
-		// ファイルアップロードしていない時もsize 0のFileオブジェクトと判定されるため、sizeのチェックも行う
+		const { name, description, isPrivate, img } = form.data
+
 		if (img instanceof File && img.size > 0 && session?.user.id) {
 			const fileExt = img.name.split('.').pop() // 拡張子
 			const randomNumber = uuidv4()
@@ -55,26 +47,22 @@ export const actions: Actions = {
 				imgPublicUrl = await supabase.storage.from('images').getPublicUrl(path).data.publicUrl
 		}
 
-		const { name, description, isPrivate } = form.data
-
-		const { error: groupError } = await supabase
-			.from('group')
-			.insert([
-				{
-					name,
-					description,
-					is_private: isPrivate,
-					img_url: imgPublicUrl,
-					created_by: session.user.id
-				}
-			])
+		const { error: groupError } = await supabase.from('group').insert([
+			{
+				name,
+				description,
+				is_private: isPrivate,
+				img_url: imgPublicUrl,
+				created_by: session.user.id
+			}
+		])
 
 		if (groupError) {
 			// TODO: エラーハンドリング
 			error(400, 'エラーハンドリング機能は開発中です')
 		}
 
-		return { form }
+		return withFiles({ form })
 	}
 }
 
