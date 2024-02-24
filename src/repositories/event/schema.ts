@@ -19,4 +19,4 @@ export const eventNewSchema = z.object({
 	// isPublic: z.boolean()
 })
 
-export type EventNewSchema = typeof eventNewSchema
+export type EventNewSchema = z.infer<typeof eventNewSchema>

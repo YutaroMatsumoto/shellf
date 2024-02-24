@@ -11,10 +11,22 @@
 	import FileInput from '$ui/_form/FileInput/FileInput.svelte'
 	import ToggleInput from '$ui/_form/ToggleInput/ToggleInput.svelte'
 
-	import type { SuperForm } from 'sveltekit-superforms'
+	import { superForm, type SuperValidated } from 'sveltekit-superforms'
 	import { pathName } from '$lib/route'
+	import { createSnackbar } from '$globalStates/snackbar'
 
-	export let form: SuperForm<GroupNewSchema>
+	export let data: SuperValidated<GroupNewSchema>
+
+	const form = superForm(data, {
+		delayMs: 50,
+		onResult: ({ result }) => {
+			if (result.type === 'success') {
+				createSnackbar.addSnackbar('success', 'グループの登録に成功しました')
+				return goto(pathName.my)
+			}
+		},
+		onError: () => createSnackbar.addSnackbar('failure', 'グループの登録に失敗しました')
+	})
 
 	const { delayed, enhance, errors } = form
 
