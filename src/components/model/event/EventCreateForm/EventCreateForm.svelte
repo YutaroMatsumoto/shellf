@@ -5,9 +5,10 @@
 	import { superForm, formFieldProxy } from 'sveltekit-superforms/client'
 	import type { SuperValidated } from 'sveltekit-superforms'
 	import type { EventNewSchema } from '$repositories/event/schema'
-	import TextArea from '$ui/_form/TextArea/TextArea.svelte'
-	import Spacer from '$ui/Spacer/Spacer.svelte'
 	import { dateTimeArea, flexBox, formWrapper, timeToggleArea } from './eventCreateForm.style'
+	import TextArea from '$ui/_form/TextArea/TextArea.svelte'
+	import FileInput from '$ui/_form/FileInput/FileInput.svelte'
+	import Spacer from '$ui/Spacer/Spacer.svelte'
 	import DateInput from '$ui/_form/_date/DateInput/DateInput.svelte'
 	import TimeInput from '$ui/_form/_date/TimeInput/TimeInput.svelte'
 	import ToggleInput from '$ui/_form/ToggleInput/ToggleInput.svelte'
@@ -36,10 +37,10 @@
 	const { value: hasEndDateValue } = formFieldProxy(form, 'hasEndDate')
 	$: groupIsPrivate = !!group?.data?.[0].is_private
 
-	const { delayed, enhance } = form
+	const { delayed, enhance, errors } = form
 </script>
 
-<form class={formWrapper} method="POST" use:enhance>
+<form enctype="multipart/form-data" class={formWrapper} method="POST" use:enhance>
 	<section>
 		<div class={flexBox}>
 			<div>
@@ -84,6 +85,8 @@
 			fildId="event-new-fieldid-description"
 			rows={9}
 		/>
+		<Spacer />
+		<FileInput name="img" label="画像" imgError={$errors.img} />
 		<input type="hidden" name="groupIsPrivate" bind:value={groupIsPrivate} />
 	</section>
 	<Spacer />

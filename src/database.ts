@@ -18,6 +18,7 @@ export type Database = {
           group_id: string | null
           has_time: boolean
           id: string
+          img_url: string | null
           is_private: boolean
           start_datetime: string
           title: string
@@ -30,6 +31,7 @@ export type Database = {
           group_id?: string | null
           has_time?: boolean
           id?: string
+          img_url?: string | null
           is_private?: boolean
           start_datetime: string
           title: string
@@ -42,6 +44,7 @@ export type Database = {
           group_id?: string | null
           has_time?: boolean
           id?: string
+          img_url?: string | null
           is_private?: boolean
           start_datetime?: string
           title?: string

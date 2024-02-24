@@ -15,7 +15,11 @@ export const eventNewSchema = z.object({
 	startTime: z.string().nullable(), // 要確認
 	endDate: z.date().nullable(), // 要確認
 	endTime: z.string().nullable(), // 要確認
-	groupIsPrivate: z.boolean()
+	groupIsPrivate: z.boolean(),
+	img: z
+		.custom<File>((f) => f instanceof File, 'Please upload a file.')
+		.refine((f) => f.size < 1_000_000, 'ファイルサイズは最大1MBです')
+		.nullable()
 	// isPublic: z.boolean()
 })
 

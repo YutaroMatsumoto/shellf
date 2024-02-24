@@ -2,10 +2,11 @@ import { fail } from '@sveltejs/kit'
 import type { Actions } from './$types'
 import { error, type ServerLoad } from '@sveltejs/kit'
 
-import { superValidate } from 'sveltekit-superforms/server'
+import { superValidate, withFiles } from 'sveltekit-superforms/server'
 import { eventNewSchema } from '$repositories/event/schema'
 import { formatDate } from '$lib/date'
 import { zod } from 'sveltekit-superforms/adapters'
+import { v4 as uuidv4 } from 'uuid'
 
 export const load: ServerLoad = async () => {
 	const form = await superValidate(zod(eventNewSchema))
@@ -25,7 +26,7 @@ export const actions: Actions = {
 
 		// validation error 発生時
 		if (!form.valid) {
-			return fail(400, { form })
+			return fail(400, withFiles({ form }))
 		}
 
 		const {
@@ -37,8 +38,28 @@ export const actions: Actions = {
 			startTime,
 			endDate,
 			endTime,
-			groupIsPrivate
+			groupIsPrivate,
+			img
 		} = form.data
+
+		let imgPublicUrl: string | null = null
+
+		if (img instanceof File && img.size > 0 && session?.user.id) {
+			const fileExt = img.name.split('.').pop() // 拡張子
+			const randomNumber = uuidv4()
+			const path = `${session.user.id}/${randomNumber}.${fileExt}`
+
+			// TODO: RLSを見直す必要があれば見直す（selectのpolicyを見直す必要がありそう）
+			const { data, error: uploadError } = await supabase.storage.from('images').upload(path, img)
+
+			if (uploadError) {
+				// TODO: エラーハンドリング
+				error(400, 'エラーハンドリング機能は開発中です')
+			}
+
+			if (data.path)
+				imgPublicUrl = await supabase.storage.from('images').getPublicUrl(path).data.publicUrl
+		}
 
 		const startDatetime = hasTime && !!startTime ? formatDate(startDate, startTime) : startDate
 
@@ -63,11 +84,12 @@ export const actions: Actions = {
 				has_time: hasTime,
 				is_private: groupIsPrivate, // MEMO: MVPではgroupのisPrivateを登録
 				created_by: session.user.id,
-				group_id: params.id
+				group_id: params.id,
+				img_url: imgPublicUrl
 			}
 		])
 
-		return { form }
+		return withFiles({ form })
 	}
 }
 
