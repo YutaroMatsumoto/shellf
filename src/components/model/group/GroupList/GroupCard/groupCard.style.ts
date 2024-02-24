@@ -26,5 +26,6 @@ export const noImg = css({
 })
 
 export const img = css({
+	objectFit: 'contain',
 	...groupImgCommonStyle
 })
