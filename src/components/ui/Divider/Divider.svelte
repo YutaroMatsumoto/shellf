@@ -4,7 +4,7 @@
 	const divider = css({
 		width: '100%',
 		height: '1px',
-		marginY: '4px',
+		marginY: '8px',
 		backgroundColor: 'gray.300',
 		backgroundClip: 'content-box'
 	})
