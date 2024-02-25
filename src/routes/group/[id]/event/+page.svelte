@@ -24,10 +24,10 @@
 </div>
 <Spacer />
 {#if !events.data || events.count === 0}
-	所属グループはありません。
+	開催予定のイベントはありません。
 {:else}
 	<EventList events={events.data} />
 {/if}
-{#if events.data}
+{#if events?.data && events.data.length > 0}
 	<Pagination pathKey="groupEventList" params={groupData?.id} {total} {currentPage} />
 {/if}
