@@ -1,6 +1,6 @@
 <script lang="ts">
-	import MyGroupListPage from '$page/my/MyGroupListPage.svelte'
 	import type { PageData } from './$types'
+	import MyGroupListPage from '$page/my/MyGroupListPage.svelte'
 
 	export let data: PageData
 
