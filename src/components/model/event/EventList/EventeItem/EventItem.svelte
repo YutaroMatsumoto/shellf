@@ -22,6 +22,7 @@
 		: dayjs(startDatetime).format('YYYY/MM/DD（ddd）')
 </script>
 
+<!-- TODO: イベント画像を設定できるようにする -->
 <li>
 	<a href={eventPageUrl}>
 		<article class={item}>
