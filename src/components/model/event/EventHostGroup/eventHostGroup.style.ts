@@ -26,9 +26,10 @@ export const groupImage = css({
 	borderColor: 'gray.300'
 })
 
-export const administratorSection = css({
+export const hostGroupArea = css({
 	width: '100%',
 	display: 'flex',
+	alignItems: 'center',
 	gap: '20px',
 	padding: '8px',
 	backgroundColor: 'white'
