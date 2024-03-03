@@ -1,3 +1,4 @@
+/** private moduleはserver側でのみimoprt可能とのこと。工夫が必要となる。 */
 import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public'
 import type { Database } from 'src/database'
 import type { LayoutLoad } from './$types'
