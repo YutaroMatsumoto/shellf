@@ -1,8 +1,19 @@
 import { sveltekit } from '@sveltejs/kit/vite'
 import { defineConfig } from 'vite'
+import { visualizer } from 'rollup-plugin-visualizer'
 
-export default defineConfig({
-	plugins: [sveltekit()],
+export default defineConfig(({ mode }) => ({
+	plugins: [
+		sveltekit(),
+		mode === 'analyze' &&
+			visualizer({
+				open: true,
+				emitFile: true,
+				filename: 'stats.html',
+				gzipSize: true,
+				brotliSize: true
+			})
+	],
 	server: {
 		fs: {
 			/**
@@ -13,4 +24,4 @@ export default defineConfig({
 			allow: ['styled-system']
 		}
 	}
-})
+}))
