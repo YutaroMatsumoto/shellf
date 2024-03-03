@@ -1,4 +1,4 @@
-import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public'
+import { SUPABASE_ANON_KEY, SUPABASE_URL } from '$env/static/private'
 import type { Database } from 'src/database'
 import type { LayoutLoad } from './$types'
 import { createSupabaseLoadClient } from '@supabase/auth-helpers-sveltekit'
@@ -9,8 +9,8 @@ export const load: LayoutLoad = async ({ fetch, data, depends }) => {
 
 	// クライアント用のsupabase instanceを作成
 	const supabase = createSupabaseLoadClient<Database>({
-		supabaseUrl: PUBLIC_SUPABASE_URL,
-		supabaseKey: PUBLIC_SUPABASE_ANON_KEY,
+		supabaseUrl: SUPABASE_URL,
+		supabaseKey: SUPABASE_ANON_KEY,
 		event: { fetch },
 		// dataは、+layout.server.tsでreturnされた値
 		serverSession: data.session
