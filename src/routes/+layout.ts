@@ -1,4 +1,5 @@
-import { SUPABASE_ANON_KEY, SUPABASE_URL } from '$env/static/private'
+/** private moduleはserver側でのみimoprt可能とのこと。工夫が必要となる。 */
+import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public'
 import type { Database } from 'src/database'
 import type { LayoutLoad } from './$types'
 import { createSupabaseLoadClient } from '@supabase/auth-helpers-sveltekit'
@@ -9,8 +10,8 @@ export const load: LayoutLoad = async ({ fetch, data, depends }) => {
 
 	// クライアント用のsupabase instanceを作成
 	const supabase = createSupabaseLoadClient<Database>({
-		supabaseUrl: SUPABASE_URL,
-		supabaseKey: SUPABASE_ANON_KEY,
+		supabaseUrl: PUBLIC_SUPABASE_URL,
+		supabaseKey: PUBLIC_SUPABASE_ANON_KEY,
 		event: { fetch },
 		// dataは、+layout.server.tsでreturnされた値
 		serverSession: data.session
