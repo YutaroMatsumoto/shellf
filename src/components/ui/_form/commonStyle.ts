@@ -3,6 +3,7 @@ import { cva } from 'styled-system/css'
 
 export const commonTextStyle: SystemStyleObject = {
 	display: 'inline-flex',
+	width: '100%',
 	padding: '4px',
 	borderWidth: '1px',
 	borderColor: 'gray.300',
