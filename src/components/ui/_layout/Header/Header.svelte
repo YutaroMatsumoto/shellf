@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { css } from 'styled-system/css'
 	import Logo from '$ui/_layout/Logo/Logo.svelte'
-	import Button from '$ui/_button/Button.svelte'
+	import PrimaryButton from '$ui/_button/PrimaryButton/PrimaryButton.svelte'
 	import { getUser } from '$globalStates/user'
 	import UserAvatarButton from '$model/user/UserAvatarButton/UserAvatarButton.svelte'
 	import { createModal } from '$globalStates/modal'
@@ -30,6 +30,6 @@
 	{#if session}
 		<UserAvatarButton src={$user?.avatar_url} />
 	{:else if !session}
-		<Button onClick={modal.login}>ログイン</Button>
+		<PrimaryButton onClick={modal.login}>ログイン</PrimaryButton>
 	{/if}
 </header>
