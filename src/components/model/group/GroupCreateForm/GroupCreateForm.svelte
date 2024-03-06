@@ -6,7 +6,7 @@
 	import SecondaryButton from '$ui/_button/SecondaryButton/SecondaryButton.svelte'
 	import Spacer from '$ui/Spacer/Spacer.svelte'
 	import { buttonGroupArea } from '$ui/_button/button.style'
-	import TextArea from '$ui/_form/TextArea/TextArea.svelte'
+	import MarkdownEditor from '$ui/_form/MarkdownEditor/MarkdownEditor.svelte'
 	import TextInput from '$ui/_form/TextInput/TextInput.svelte'
 	import FileInput from '$ui/_form/FileInput/FileInput.svelte'
 	import ToggleInput from '$ui/_form/ToggleInput/ToggleInput.svelte'
@@ -39,7 +39,7 @@
 <form enctype="multipart/form-data" class={formWrapper} method="POST" use:enhance>
 	<TextInput {form} field="name" label="グループ名" id="group-new-fieldid-name" />
 	<Spacer />
-	<TextArea
+	<MarkdownEditor
 		{form}
 		field="description"
 		label="グループの説明"
