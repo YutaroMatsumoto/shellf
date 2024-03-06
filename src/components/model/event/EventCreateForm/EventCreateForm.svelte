@@ -6,7 +6,7 @@
 	import type { SuperValidated } from 'sveltekit-superforms'
 	import type { EventNewSchema } from '$repositories/event/schema'
 	import { dateTimeArea, flexBox, formWrapper, timeToggleArea } from './eventCreateForm.style'
-	import TextArea from '$ui/_form/TextArea/TextArea.svelte'
+	import MarkdownEditor from '$ui/_form/MarkdownEditor/MarkdownEditor.svelte'
 	import FileInput from '$ui/_form/FileInput/FileInput.svelte'
 	import Spacer from '$ui/Spacer/Spacer.svelte'
 	import DateInput from '$ui/_form/_date/DateInput/DateInput.svelte'
@@ -77,7 +77,7 @@
 		<Spacer />
 		<TextInput {form} field="title" label="イベント名" id="event-new-fieldid-title" />
 		<Spacer />
-		<TextArea
+		<MarkdownEditor
 			{form}
 			field="description"
 			label="イベントの説明"
