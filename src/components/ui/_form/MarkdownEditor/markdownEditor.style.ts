@@ -45,20 +45,6 @@ export const textareaWrapper = cva({
 })
 
 /** recipe */
-export const markdownWrapper = cva({
-	base: {
-		...textareaWrapperStyle,
-		padding: '9px' /** 8px + borderの1px */
-	},
-	variants: {
-		isPreview: {
-			true: { display: 'block' },
-			false: { display: 'none' }
-		}
-	}
-})
-
-/** recipe */
 export const modeChangeButton = cva({
 	base: {
 		display: 'inline-flex',

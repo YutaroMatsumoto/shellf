@@ -3,15 +3,12 @@
 </script>
 
 <script lang="ts" generics="T extends Record<string, unknown>">
-	import { markdownEditorWrapper, modeChangeButton, modeChangeButtonWrapper, textareaWrapper, markdownWrapper } from "./markdownEditor.style"
+	import { markdownEditorWrapper, modeChangeButton, modeChangeButtonWrapper, textareaWrapper } from "./markdownEditor.style"
 
   // prettier-ignore
-  import "./github-markdown.css"
 	import ErrorMessage from '$ui/_form/ErrorMessage/ErrorMessage.svelte'
+	import Markdown from '$ui/Markdown/Markdown.svelte'
 	import { fieldStyle } from '$ui/_form//commonStyle'
-
-  import Markdown from 'svelte-exmarkdown';
-  import { gfmPlugin } from 'svelte-exmarkdown/gfm';
 
 	import { 
     formFieldProxy, 
@@ -27,7 +24,6 @@
 	/** 初期行数 */
 	export let rows: number = 5
 	const { value, errors } = formFieldProxy(form, field)
-  const plugins = [gfmPlugin()];
 	const errormessageId = `errormessage-${$$restProps.id}`
 
   // 例外的にasを活用する
@@ -66,9 +62,7 @@
         <ErrorMessage id={errormessageId}>{$errors}</ErrorMessage>
       {/if}
     </div>
-    <div class={`${markdownWrapper({isPreview})} markdown-body`}>
-      <Markdown {md} {plugins} />
-    </div>
+    <Markdown {md} {isPreview} />
 </div>
 
 
