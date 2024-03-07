@@ -15,16 +15,19 @@
     type SuperForm, 
     type FormPathLeaves 
   } from 'sveltekit-superforms';
+	import FormLabel from "$ui/_form/FormLabel/FormLabel.svelte"
 
 	// 基本的なhtml属性はrestPropsで受け取るようにする
 	export let form: SuperForm<T>
 	export let field: FormPathLeaves<T>
 	export let label: string
+	export let isRequired: boolean = false
 
 	/** 初期行数 */
 	export let rows: number = 5
 	const { value, errors } = formFieldProxy(form, field)
 	const errormessageId = `errormessage-${$$restProps.id}`
+	const fieldId = `field-id-${$$restProps.id}`
 
   // 例外的にasを活用する
   $: md = $value as string
@@ -41,7 +44,7 @@
 </script>
 
 <div class={markdownEditorWrapper}>
-  <label for={$$restProps.id}>{label}</label>
+  <FormLabel {fieldId} {label} {isRequired} />
   <div class={modeChangeButtonWrapper}>
     <button class={modeChangeButton({isActive: !isPreview})} type="button" on:click={toMarkdown}>マークダウン</button>
     <button class={modeChangeButton({isActive: isPreview})} type="button" on:click={toPreview}>プレビュー</button>
@@ -49,7 +52,7 @@
     <div class={textareaWrapper({isPreview})}>
       <span class={fieldStyle({ isError: !!$errors })}>
         <textarea
-          id={$$restProps.id}
+          id={fieldId}
           name={field}
           {rows}
           bind:value={$value}
@@ -67,11 +70,6 @@
 
 
 <style>
-	label {
-		font-size: 16px;
-		font-weight: bold;
-	}
-
 	textarea {
 		width: 100%;
 		font-size: 16px;
