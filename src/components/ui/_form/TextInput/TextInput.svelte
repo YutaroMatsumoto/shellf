@@ -3,7 +3,9 @@
 </script>
 
 <script lang="ts" generics="T extends Record<string, unknown>">
+
 	import { fieldStyle } from '$ui/_form/commonStyle'
+	import FormLabel from '$ui/_form/FormLabel/FormLabel.svelte'
 	import ErrorMessage from '$ui/_form/ErrorMessage/ErrorMessage.svelte'
 
 	import { 
@@ -17,7 +19,8 @@
 	export let form: SuperForm<T>
 	export let field: FormPathLeaves<T>
 	export let label: string
-
+	export let isRequired: boolean = false
+	
 	/**
 	 * MEMO: 注意点
 	 * - formFieldProxyのconstraintsは利用しない。
@@ -26,11 +29,12 @@
 	 */
 	const { value, errors } = formFieldProxy(form, field)
 
+	const fieldId = `field-id-${$$restProps.id}`
 	const errormessageId = `errormessage-${$$restProps.id}`
 </script>
 
 <div>
-	<label for={$$restProps.id}>{label}</label>
+  <FormLabel {fieldId} {label} {isRequired} />
 	<span class={fieldStyle({ isError: !!$errors })}>
 		<input
 			id={$$restProps.id}
@@ -52,11 +56,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: 8px;
-	}
-
-	label {
-		font-size: 16px;
-		font-weight: bold;
 	}
 
 	input {

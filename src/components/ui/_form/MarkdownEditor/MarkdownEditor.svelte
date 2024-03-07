@@ -6,6 +6,7 @@
 	import { markdownEditorWrapper, modeChangeButton, modeChangeButtonWrapper, textareaWrapper } from "./markdownEditor.style"
 
   // prettier-ignore
+	import FormLabel from "$ui/_form/FormLabel/FormLabel.svelte"
 	import ErrorMessage from '$ui/_form/ErrorMessage/ErrorMessage.svelte'
 	import Markdown from '$ui/Markdown/Markdown.svelte'
 	import { fieldStyle } from '$ui/_form//commonStyle'
@@ -15,7 +16,6 @@
     type SuperForm, 
     type FormPathLeaves 
   } from 'sveltekit-superforms';
-	import FormLabel from "$ui/_form/FormLabel/FormLabel.svelte"
 
 	// 基本的なhtml属性はrestPropsで受け取るようにする
 	export let form: SuperForm<T>
@@ -26,8 +26,8 @@
 	/** 初期行数 */
 	export let rows: number = 5
 	const { value, errors } = formFieldProxy(form, field)
-	const errormessageId = `errormessage-${$$restProps.id}`
 	const fieldId = `field-id-${$$restProps.id}`
+	const errormessageId = `errormessage-${$$restProps.id}`
 
   // 例外的にasを活用する
   $: md = $value as string
