@@ -51,7 +51,8 @@ export const modeChangeButton = cva({
 		padding: '4px 8px',
 		borderTopRadius: 'sm',
 		cursor: 'pointer',
-		fontWeight: '400'
+		fontWeight: '600',
+		fontSize: '14px'
 	},
 	variants: {
 		isActive: {
