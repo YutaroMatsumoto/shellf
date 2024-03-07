@@ -43,8 +43,8 @@
 <div class={markdownEditorWrapper}>
   <label for={$$restProps.id}>{label}</label>
   <div class={modeChangeButtonWrapper}>
-    <button class={modeChangeButton({isActive: !isPreview})} type="button" on:click={toMarkdown}>markdown</button>
-    <button class={modeChangeButton({isActive: isPreview})} type="button" on:click={toPreview}>preview</button>
+    <button class={modeChangeButton({isActive: !isPreview})} type="button" on:click={toMarkdown}>マークダウン</button>
+    <button class={modeChangeButton({isActive: isPreview})} type="button" on:click={toPreview}>プレビュー</button>
   </div>
     <div class={textareaWrapper({isPreview})}>
       <span class={fieldStyle({ isError: !!$errors })}>
