@@ -16,7 +16,6 @@ export type Database = {
           description: string | null
           end_datetime: string | null
           group_id: string | null
-          has_time: boolean
           id: string
           img_url: string | null
           is_private: boolean
@@ -29,7 +28,6 @@ export type Database = {
           description?: string | null
           end_datetime?: string | null
           group_id?: string | null
-          has_time?: boolean
           id?: string
           img_url?: string | null
           is_private?: boolean
@@ -42,7 +40,6 @@ export type Database = {
           description?: string | null
           end_datetime?: string | null
           group_id?: string | null
-          has_time?: boolean
           id?: string
           img_url?: string | null
           is_private?: boolean
