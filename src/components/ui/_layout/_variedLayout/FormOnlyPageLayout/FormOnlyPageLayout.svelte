@@ -10,8 +10,9 @@
 	})
 
 	const content = css({
-		width: '60%',
-		padding: '32px',
+		width: '64%',
+		minWidth: '580px',
+		padding: '24px',
 		backgroundColor: 'white',
 		borderWidth: '1px',
 		borderColor: 'gray.300',
