@@ -17,7 +17,8 @@
 		width: '100%',
 		padding: '8px 24px',
 		bg: 'white',
-		shadow: 'sm'
+		shadow: 'sm',
+		zIndex: '100'
 	})
 
 	const session = getSession()
