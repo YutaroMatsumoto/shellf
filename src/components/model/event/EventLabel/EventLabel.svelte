@@ -6,10 +6,12 @@
 
 	const eventLabel = cva({
 		base: {
+			width: '72px',
 			borderRadius: 'sm',
-			padding: '4px',
+			padding: '2px',
 			color: 'white',
-			fontWeight: 'bold'
+			fontWeight: 'bold',
+			textAlign: 'center'
 		},
 		variants: {
 			status: {
@@ -20,6 +22,6 @@
 	})
 </script>
 
-<div>
-	<span class={eventLabel({ status })}>{EventLabel[status]}</span>
+<div class={eventLabel({ status })}>
+	<span>{EventLabel[status]}</span>
 </div>

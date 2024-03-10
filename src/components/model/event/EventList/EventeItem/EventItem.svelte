@@ -2,24 +2,23 @@
 	import { page } from '$app/stores'
 	import { generatePath } from '$lib/route'
 	import dayjs from '$lib/dayjs'
+	import type { Event } from '$models/event'
 	import { item, timeAndLabel } from './eventItem.style'
 	import EventLabel from '$model/event/EventLabel/EventLabel.svelte'
 
 	export let id: string
 	export let title: string
-	export let startDatetime: string
-	export let hasTime: boolean
+	export let startDatetime: Event['start_datetime']
+	export let endDatetime: Event['end_datetime']
 
 	$: eventPageUrl = generatePath('eventDetail', [$page.params.id, id])
 
 	const start = new Date(startDatetime)
 
-	$: isToday = dayjs(startDatetime).isToday()
+	$: isToday = dayjs(startDatetime).isToday() || dayjs(endDatetime).isToday()
 	$: isAfter = dayjs(startDatetime).isAfter()
 
-	$: formatdate = hasTime
-		? dayjs(startDatetime).format('YYYY/MM/DD（ddd）HH:mm~')
-		: dayjs(startDatetime).format('YYYY/MM/DD（ddd）')
+	$: formatdate = dayjs(startDatetime).format('YYYY/MM/DD（ddd）HH:mm~')
 </script>
 
 <!-- TODO: イベント画像を設定できるようにする -->
