@@ -46,6 +46,7 @@
 <div class={markdownEditorWrapper}>
   <FormLabel {fieldId} {label} {isRequired} />
   <div class={modeChangeButtonWrapper}>
+    <!-- TODO: 「マークダウン」という言葉伝わるか -->
     <button class={modeChangeButton({isActive: !isPreview})} type="button" on:click={toMarkdown}>マークダウン</button>
     <button class={modeChangeButton({isActive: isPreview})} type="button" on:click={toPreview}>プレビュー</button>
   </div>
