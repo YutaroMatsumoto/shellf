@@ -8,7 +8,7 @@ export const formWrapper = css({
 
 export const dateTimeArea = css({
 	...flexRowBaseStyle,
-	width: '250px'
+	minWidth: '300px'
 })
 
 export const flexBox = css({
@@ -18,4 +18,8 @@ export const flexBox = css({
 export const timeToggleArea = css({
 	...flexRowBaseStyle,
 	marginLeft: '52px'
+})
+
+export const edndDateTimeArea = css({
+	width: '186px'
 })
