@@ -2,8 +2,7 @@ import { css, cva } from 'styled-system/css'
 
 import type { SystemStyleObject } from 'styled-system/types'
 
-const baseBorderStyle: SystemStyleObject = {
-	border: '1px solid',
+const baseColorStyle: SystemStyleObject = {
 	borderColor: 'gray.300'
 }
 
@@ -11,7 +10,9 @@ const baseBorderStyle: SystemStyleObject = {
 const textareaWrapperStyle: SystemStyleObject = {
 	width: '100%',
 	minHeight: '240px',
-	...baseBorderStyle,
+	...baseColorStyle,
+	borderX: '1px solid',
+	borderBottom: '1px solid',
 	borderBottomRadius: 'sm',
 	borderTop: 'none'
 }
@@ -24,7 +25,8 @@ export const markdownEditorWrapper = css({
 export const modeChangeButtonWrapper = css({
 	display: 'flex',
 	backgroundColor: 'gray.100',
-	...baseBorderStyle,
+	...baseColorStyle,
+	border: '1px solid',
 	borderTopRadius: 'sm',
 	borderBottom: 'none',
 	marginTop: '8px'
