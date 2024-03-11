@@ -14,8 +14,8 @@ export const groupName = css({
 })
 
 export const groupImage = css({
-	width: '200px',
-	height: '100px',
+	width: '192px',
+	height: '108px',
 	objectFit: 'contain',
 	border: '1px solid',
 	borderRadius: 'sm',
