@@ -8,13 +8,10 @@ export const eventNewSchema = z.object({
 		.max(50, { message: '50文字以下で入力してください' })
 		.min(1, { message: requiredMessage }),
 	description: z.string().min(1, { message: requiredMessage }),
-	// participantCount: z.number().int().positive().min(0).nullable(),
-	hasTime: z.boolean().default(true),
-	hasEndDate: z.boolean(),
-	startDate: z.date(), // 要確認
-	startTime: z.string().nullable(), // 要確認
-	endDate: z.date().nullable(), // 要確認
-	endTime: z.string().nullable(), // 要確認
+	isCrossDays: z.boolean(),
+	startDatetime: z.date({ required_error: requiredMessage }), // 要確認
+	endDatetime: z.date().nullable(), // 要確認
+	endTime: z.string(), // 要確認
 	groupIsPrivate: z.boolean(),
 	img: z
 		.custom<File>((f) => f instanceof File, 'Please upload a file.')
