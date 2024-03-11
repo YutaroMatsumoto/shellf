@@ -5,8 +5,8 @@
 </script>
 
 <ul>
-	{#each events as { id, title, start_datetime: startDatetime, end_datetime: endDatetime } (id)}
-		<EventItem {id} {title} {startDatetime} {endDatetime} />
+	{#each events as { id, title, start_datetime: startDatetime, end_datetime: endDatetime, img_url: src } (id)}
+		<EventItem {id} {title} {startDatetime} {endDatetime} {src} />
 	{/each}
 </ul>
 
