@@ -32,18 +32,24 @@ export const modeChangeButtonWrapper = css({
 	marginTop: '8px'
 })
 
-/** recipe */
-export const textareaWrapper = cva({
-	base: {
-		...textareaWrapperStyle,
-		padding: '4px'
-	},
+export const textareaWrapper = css({
+	...textareaWrapperStyle,
+	padding: '4px'
+})
+
+// textareaとmarkdownを切り替えるためのstyle
+export const viewSwitcher = cva({
 	variants: {
 		isPreview: {
 			true: { display: 'none' },
 			false: { display: 'block' }
 		}
 	}
+})
+
+// textareaとpreviewの切り替えで文字の表示位置にずれが起きないようにするためのpadding
+export const markdownWrapper = css({
+	padding: '5px'
 })
 
 /** recipe */

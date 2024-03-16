@@ -3,7 +3,7 @@
 </script>
 
 <script lang="ts" generics="T extends Record<string, unknown>">
-	import { markdownEditorWrapper, modeChangeButton, modeChangeButtonWrapper, textareaWrapper } from "./markdownEditor.style"
+	import { markdownEditorWrapper, markdownWrapper, modeChangeButton, modeChangeButtonWrapper, textareaWrapper, viewSwitcher } from "./markdownEditor.style"
 
   // prettier-ignore
 	import FormLabel from "$ui/_form/FormLabel/FormLabel.svelte"
@@ -50,7 +50,12 @@
     <button class={modeChangeButton({isActive: !isPreview})} type="button" on:click={toMarkdown}>マークダウン</button>
     <button class={modeChangeButton({isActive: isPreview})} type="button" on:click={toPreview}>プレビュー</button>
   </div>
-    <div class={textareaWrapper({isPreview})}>
+
+  <!-- 少しdomの構造がわかりにくくなっているかもしれないが、 -->
+  <div class={textareaWrapper}>
+
+    <!-- MEMO: textareaはdomから消してはいけないため、プレビューモード時はdisplay: noneを適用 -->
+    <div class={viewSwitcher({isPreview})}>
       <span class={fieldStyle({ isError: !!$errors })}>
         <textarea
           id={fieldId}
@@ -62,11 +67,20 @@
           {...$$restProps}
         />
       </span>
-      {#if $errors}
-        <ErrorMessage id={errormessageId}>{$errors}</ErrorMessage>
-      {/if}
     </div>
-    <Markdown {md} {isPreview} />
+
+    <!-- MEMO: エディタモードの時はmarkdownWrapperも非表示にしたいかつdomから消えても良いため、ifで分岐 -->
+    {#if isPreview}
+      <div class={markdownWrapper}>
+        <Markdown {md} />
+      </div>
+    {/if}
+
+  </div>
+  
+  {#if $errors}
+    <ErrorMessage id={errormessageId}>{$errors}</ErrorMessage>
+  {/if}
 </div>
 
 
