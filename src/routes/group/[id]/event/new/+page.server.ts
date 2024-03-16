@@ -32,12 +32,10 @@ export const actions: Actions = {
 		const {
 			title,
 			description,
-			hasTime,
-			hasEndDate,
-			startDate,
-			startTime,
-			endDate,
+			startDatetime,
+			endDatetime,
 			endTime,
+			isCrossDays,
 			groupIsPrivate,
 			img
 		} = form.data
@@ -61,27 +59,21 @@ export const actions: Actions = {
 				imgPublicUrl = await supabase.storage.from('images').getPublicUrl(path).data.publicUrl
 		}
 
-		const startDatetime = hasTime && !!startTime ? formatDate(startDate, startTime) : startDate
-
-		// 終了日だけが入力された場合 -> 時間話でも問題ない
-		// 終了日の時間だけが入力された場合 -> 日付はstartDateを使う
-
-		// endDateは必須ではないので、入力されてなければstartDateを利用する
-		const endDateOrStartDate = endDate ?? startDate
-		const endDatetime =
-			hasTime && hasEndDate && !!endTime
-				? formatDate(endDateOrStartDate, endTime)
-				: endDateOrStartDate
-
 		const startDatetimeISOS = new Date(startDatetime).toISOString()
-		const endDatetimeISOS = hasEndDate ? new Date(endDatetime).toISOString() : null
+
+		let endDatetimeISOS: string | null = null
+
+		if (isCrossDays && endDatetime) {
+			endDatetimeISOS = new Date(endDatetime).toISOString()
+		} else if (!isCrossDays && endTime) {
+			endDatetimeISOS = formatDate(startDatetime, endTime)
+		}
 		const { error: eventNewError } = await supabase.from('event').insert([
 			{
 				title,
 				description,
 				start_datetime: startDatetimeISOS,
 				end_datetime: endDatetimeISOS,
-				has_time: hasTime,
 				is_private: groupIsPrivate, // MEMO: MVPではgroupのisPrivateを登録
 				created_by: session.user.id,
 				group_id: params.id,
