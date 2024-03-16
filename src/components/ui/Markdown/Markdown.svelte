@@ -3,6 +3,7 @@
 	import { markdownWrapper } from './markdown.style'
 	import { Markdown as ExMarkdown } from 'svelte-exmarkdown'
 	import { gfmPlugin } from 'svelte-exmarkdown/gfm'
+
 	const plugins = [gfmPlugin()]
 
 	export let isPreview = false
