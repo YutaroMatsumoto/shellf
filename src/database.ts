@@ -14,7 +14,7 @@ export type Database = {
           created_at: string
           created_by: string | null
           description: string | null
-          end_datetime: string | null
+          end_datetime: string
           group_id: string | null
           id: string
           img_url: string | null
@@ -26,7 +26,7 @@ export type Database = {
           created_at?: string
           created_by?: string | null
           description?: string | null
-          end_datetime?: string | null
+          end_datetime: string
           group_id?: string | null
           id?: string
           img_url?: string | null
@@ -38,7 +38,7 @@ export type Database = {
           created_at?: string
           created_by?: string | null
           description?: string | null
-          end_datetime?: string | null
+          end_datetime?: string
           group_id?: string | null
           id?: string
           img_url?: string | null
