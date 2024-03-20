@@ -3,7 +3,6 @@
 </script>
 
 <script lang="ts" generics="T extends Record<string, unknown>">
-
 	import { fieldStyle } from '$ui/_form/commonStyle'
 	import FormLabel from '$ui/_form/FormLabel/FormLabel.svelte'
 	import ErrorMessage from '$ui/_form/ErrorMessage/ErrorMessage.svelte'
@@ -13,7 +12,6 @@
     type SuperForm, 
     type FormPathLeaves 
   } from 'sveltekit-superforms';
-
 
 	// 基本的なhtml属性はrestPropsで受け取るようにする
 	export let form: SuperForm<T>
