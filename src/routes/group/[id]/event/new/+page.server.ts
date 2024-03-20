@@ -4,7 +4,6 @@ import { error, type ServerLoad } from '@sveltejs/kit'
 
 import { superValidate, withFiles } from 'sveltekit-superforms/server'
 import { eventNewSchema } from '$repositories/event/schema'
-import { formatDate } from '$lib/date'
 import { zod } from 'sveltekit-superforms/adapters'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -29,16 +28,7 @@ export const actions: Actions = {
 			return fail(400, withFiles({ form }))
 		}
 
-		const {
-			title,
-			description,
-			startDatetime,
-			endDatetime,
-			endTime,
-			isCrossDays,
-			groupIsPrivate,
-			img
-		} = form.data
+		const { title, description, startDatetime, endDatetime, groupIsPrivate, img } = form.data
 
 		let imgPublicUrl: string | null = null
 
@@ -61,13 +51,8 @@ export const actions: Actions = {
 
 		const startDatetimeISOS = new Date(startDatetime).toISOString()
 
-		let endDatetimeISOS: string | null = null
+		const endDatetimeISOS = new Date(endDatetime).toISOString()
 
-		if (isCrossDays && endDatetime) {
-			endDatetimeISOS = new Date(endDatetime).toISOString()
-		} else if (!isCrossDays && endTime) {
-			endDatetimeISOS = formatDate(startDatetime, endTime)
-		}
 		const { error: eventNewError } = await supabase.from('event').insert([
 			{
 				title,

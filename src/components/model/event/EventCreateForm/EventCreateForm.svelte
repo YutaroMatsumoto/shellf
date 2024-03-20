@@ -2,22 +2,13 @@
 	import { goto } from '$app/navigation'
 	import { page } from '$app/stores'
 	import TextInput from '$ui/_form/TextInput/TextInput.svelte'
-	import { superForm, formFieldProxy } from 'sveltekit-superforms/client'
+	import { superForm, formFieldProxy, dateProxy } from 'sveltekit-superforms/client'
 	import type { SuperValidated } from 'sveltekit-superforms'
 	import type { EventNewSchema } from '$repositories/event/schema'
-	import {
-		dateTimeArea,
-		edndDateTimeArea,
-		flexBox,
-		formWrapper,
-		timeToggleArea
-	} from './eventCreateForm.style'
+	import { dateTimeArea, edndDateTimeArea, flexBox, formWrapper } from './eventCreateForm.style'
 	import MarkdownEditor from '$ui/_form/MarkdownEditor/MarkdownEditor.svelte'
 	import FileInput from '$ui/_form/FileInput/FileInput.svelte'
 	import Spacer from '$ui/Spacer/Spacer.svelte'
-	import DateInput from '$ui/_form/_date/DateInput/DateInput.svelte'
-	import TimeInput from '$ui/_form/_date/TimeInput/TimeInput.svelte'
-	import ToggleInput from '$ui/_form/ToggleInput/ToggleInput.svelte'
 	import PrimaryButton from '$ui/_button/PrimaryButton/PrimaryButton.svelte'
 	import SecondaryButton from '$ui/_button/SecondaryButton/SecondaryButton.svelte'
 	import { generatePath } from '$lib/route'
@@ -40,8 +31,8 @@
 		}
 	})
 
-	const { value: isCrossDays } = formFieldProxy(form, 'isCrossDays')
 	$: groupIsPrivate = !!group?.data?.[0].is_private
+	const proxyStartDatetime = dateProxy(form, 'startDatetime', { format: 'datetime-local' })
 
 	const { delayed, enhance, errors } = form
 </script>
@@ -60,36 +51,29 @@
 						isRequired
 					/>
 					<div class={edndDateTimeArea}>
-						{#if $isCrossDays}
-							<DatetimeInput
-								{form}
-								field="endDatetime"
-								label="終了日時"
-								id="event-new-fieldid-start-date"
-							/>
-						{:else}
-							<TimeInput
-								{form}
-								field="endTime"
-								label="終了時間"
-								id="event-new-fieldid-start-time"
-							/>
-						{/if}
+						<DatetimeInput
+							{form}
+							field="endDatetime"
+							label="終了日時"
+							id="event-new-fieldid-start-date"
+							isRequired
+							min={$proxyStartDatetime}
+						/>
 					</div>
 				</div>
 
 				<!-- TODO: 開始日が入力されているかつ終了日が入力されていなければ、自動的に開始日と同じ値を入れる -->
 			</div>
 
-			<div class={timeToggleArea}>
+			<!-- <div class={timeToggleArea}>
 				<ToggleInput
 					{form}
 					field="isCrossDays"
 					label="日を跨ぐ"
 					id="event-new-fieldid-has-end-date"
 				/>
-				<!-- TODO: 何時間開催なのかを入力できるようにした方が良いのでは -->
-			</div>
+			</div> -->
+			<!-- TODO: 何時間開催なのかを入力できるようにした方が良いのでは -->
 		</div>
 		<Spacer />
 		<TextInput {form} field="title" label="タイトル" id="event-new-fieldid-title" isRequired />
