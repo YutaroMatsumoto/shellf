@@ -10,7 +10,8 @@
 	import { 
     formFieldProxy, 
     type SuperForm, 
-    type FormPathLeaves 
+    type FormPathLeaves, 
+		dateProxy
   } from 'sveltekit-superforms';
 
 	// 基本的なhtml属性はrestPropsで受け取るようにする
@@ -25,10 +26,12 @@
 	 * - formFieldProxyのerrorsは、submitのたびに一度errorsがundefinedになるデメリットがある。
 	 *   - それにより画面のかつくきが発生する。
 	 */
-	const { value, errors } = formFieldProxy(form, field)
+	const { errors } = formFieldProxy(form, field)
 
 	const fieldId = `field-id-${$$restProps.id}`
 	const errormessageId = `errormessage-${$$restProps.id}`
+	const proxyDate = dateProxy(form, field, { format: 'datetime-local' });
+
 </script>
 
 <div>
@@ -37,7 +40,7 @@
 		<input
 			name={field}
 			type="datetime-local"
-			bind:value={$value}
+			bind:value={$proxyDate}
 			aria-invalid={$errors ? 'true' : undefined}
 			aria-errormessage={errormessageId}
 			{...$$restProps}
