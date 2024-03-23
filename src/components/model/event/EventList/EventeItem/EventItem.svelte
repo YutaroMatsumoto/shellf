@@ -16,7 +16,13 @@
 
 	const start = new Date(startDatetime)
 
-	$: isToday = dayjs(startDatetime).isToday() || dayjs(endDatetime).isToday()
+	// 開始日と終了日の間の日付の場合、何もラベルが表示されない
+	$: isToday =
+		dayjs(startDatetime).isToday() ||
+		dayjs(endDatetime).isToday() ||
+		/** ↓開始日と終了日の間の日付の場合 */
+		(dayjs(startDatetime).isBefore() && dayjs(endDatetime).isAfter())
+
 	$: isAfter = dayjs(startDatetime).isAfter()
 
 	$: formatdate = dayjs(startDatetime).format('YYYY/MM/DD（ddd）HH:mm~')
