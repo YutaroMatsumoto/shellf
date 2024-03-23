@@ -6,7 +6,7 @@
 
 	const eventLabel = cva({
 		base: {
-			width: '72px',
+			width: '100%',
 			borderRadius: 'sm',
 			padding: '2px',
 			color: 'white',
@@ -17,7 +17,7 @@
 			status: {
 				future: { backgroundColor: 'green.400' },
 				today: { backgroundColor: 'orange.400' },
-				past: {} // 終了日している場合はラベルを表示しない
+				past: { backgroundColor: 'black' }
 			}
 		}
 	})
