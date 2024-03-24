@@ -28,6 +28,7 @@ export const groupImage = css({
 
 export const descriptionSection = css({
 	width: '100%',
+	height: '100%',
 	padding: '8px',
 	backgroundColor: 'white'
 })
