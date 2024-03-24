@@ -6,6 +6,8 @@
 	export let currentPage: number
 	export let pathKey: PathName
 	export let params: string | string[] | undefined = undefined
+
+	// ±1ページだけ表示する
 	const PAGE_RANGE = 1
 
 	function* range(start: number, end: number) {
@@ -14,23 +16,22 @@
 		}
 	}
 
+	// 最初からわかるのは、今のページとtotal
+	// paginationで表示するのは
+	// startは1より小さくならなければ良い
+	// endはtotalpageより大きくならなければ良い
+
+	$: console.log({ total })
+
 	$: totalPageNum = Math.ceil(total / 10)
 	$: formatParams = typeof params === 'string' ? [params] : params
 	$: href = generatePath(pathKey, formatParams)
 
-	// TODO: startは直す必要ありそう（totalが3かつcurrentが3のときに2になる）
-	$: paginationStart =
-		currentPage >= totalPageNum
-			? currentPage - PAGE_RANGE
-			: currentPage - PAGE_RANGE < 1
-			? 1
-			: currentPage - PAGE_RANGE
-	$: paginationEnd =
-		currentPage >= totalPageNum
-			? totalPageNum
-			: currentPage - PAGE_RANGE < 1
-			? 3
-			: currentPage + PAGE_RANGE
+	$: paginationStart = currentPage > 1 ? currentPage - PAGE_RANGE : currentPage
+
+	$: paginationEnd = currentPage >= totalPageNum ? totalPageNum : currentPage + PAGE_RANGE
+
+	$: console.log({ currentPage, totalPageNum, paginationStart, paginationEnd })
 </script>
 
 <ul class={paginationWrapper}>
