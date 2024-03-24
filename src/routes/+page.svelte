@@ -1,12 +1,5 @@
 <script>
-	import { css } from 'styled-system/css'
+	import TopPage from '$page/top/TopPage.svelte'
 </script>
 
-<div
-	class={css({
-		fontSize: '2xl',
-		fontWeight: 'bold'
-	})}
->
-	Hello 🐼!
-</div>
+<TopPage />

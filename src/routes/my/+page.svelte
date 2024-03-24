@@ -1,18 +1,10 @@
 <script lang="ts">
-	import GroupList from '$model/group/GroupList/GroupList.svelte'
-	import Spacer from '$ui/Spacer/Spacer.svelte'
-	import AnchorButton from '$ui/_button/AnchorButton/AnchorButton.svelte'
 	import type { PageData } from './$types'
+	import MyGroupListPage from '$page/my/MyGroupListPage.svelte'
 
 	export let data: PageData
 
 	$: ({ data: groups } = data.groups)
 </script>
 
-<AnchorButton pathKey="groupNew" title="グループ作成" />
-<Spacer />
-{#if !groups || groups.length === 0}
-	所属グループはありません。
-{:else}
-	<GroupList {groups} />
-{/if}
+<MyGroupListPage groups={groups ?? []} />
