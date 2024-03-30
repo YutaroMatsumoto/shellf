@@ -2,7 +2,7 @@
 	import { page } from '$app/stores'
 	import { generatePath } from '$lib/route'
 	import dayjs from '$lib/dayjs'
-	import type { Event } from '$models/event'
+	import { getEventStatus, type Event } from '$models/event'
 	import { article, eventImage, item, noImage, timeAndLabel } from './eventItem.style'
 	import EventLabel from '$model/event/EventLabel/EventLabel.svelte'
 
@@ -16,14 +16,7 @@
 
 	const start = new Date(startDatetime)
 
-	// 開始日と終了日の間の日付の場合、何もラベルが表示されない
-	$: isToday =
-		dayjs(startDatetime).isToday() ||
-		dayjs(endDatetime).isToday() ||
-		/** ↓開始日と終了日の間の日付の場合 */
-		(dayjs(startDatetime).isBefore() && dayjs(endDatetime).isAfter())
-
-	$: isAfter = dayjs(startDatetime).isAfter()
+	$: eventStatus = getEventStatus(startDatetime, endDatetime)
 
 	$: formatdate = dayjs(startDatetime).format('YYYY/MM/DD（ddd）HH:mm~')
 </script>
@@ -38,8 +31,8 @@
 			{/if}
 			<div class={item}>
 				<div class={timeAndLabel}>
-					{#if isToday || isAfter}
-						<EventLabel status={isToday ? 'today' : 'future'} />
+					{#if eventStatus !== 'past'}
+						<EventLabel status={eventStatus} />
 					{/if}
 					<span>
 						<!-- TODO: 終了日表示させる -->
