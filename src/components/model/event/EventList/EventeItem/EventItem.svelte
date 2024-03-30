@@ -14,8 +14,6 @@
 
 	$: eventPageUrl = generatePath('eventDetail', [$page.params.id, id])
 
-	const start = new Date(startDatetime)
-
 	$: eventStatus = getEventStatus(startDatetime, endDatetime)
 
 	$: formatdate = dayjs(startDatetime).format('YYYY/MM/DD（ddd）HH:mm~')
