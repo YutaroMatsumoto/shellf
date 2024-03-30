@@ -1,7 +1,6 @@
 import { css } from 'styled-system/css'
 
 export const sectionWrapper = css({
-	width: '280px',
 	height: '160px',
 	display: 'flex',
 	flexShrink: 0,
