@@ -4,10 +4,11 @@
 
 	export let loading: boolean = false
 	export let size: 'sm' | 'lg' = 'lg'
+	export let disabled: boolean = false
 	export let onClick: (() => void) | undefined = undefined
 </script>
 
-<button class={secondaryButton({ size })} on:click={onClick} {...$$restProps}>
+<button class={secondaryButton({ size, disabled })} on:click={onClick} {...$$restProps}>
 	{#if loading}
 		<Loading />
 	{:else}
