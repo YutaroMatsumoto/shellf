@@ -8,10 +8,11 @@
 	export let pathKey: PathName
 	export let params: string | string[] | undefined = undefined
 	export let size: 'sm' | 'lg' = 'sm'
+	export let disabled: boolean = false
 
 	$: formatParams = typeof params === 'string' ? [params] : params
 
 	$: href = generatePath(pathKey, formatParams)
 </script>
 
-<a class={primaryButton({ size })} {href}>{title}</a>
+<a class={primaryButton({ size, disabled })} {href}>{title}</a>
