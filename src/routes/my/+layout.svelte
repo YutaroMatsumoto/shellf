@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import MyPageTab from '$model/user/MyPageTab/MyPageTab.svelte'
 </script>
 
