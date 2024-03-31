@@ -1,16 +1,26 @@
 <script lang="ts">
 	import { generatePath } from '$lib/route'
-	import { card, cardLink, img, noImg } from '$model/group/GroupList/GroupCard/groupCard.style'
+	import {
+		card,
+		cardLink,
+		img,
+		noImg,
+		adminMark
+	} from '$model/group/GroupList/GroupCard/groupCard.style'
 
 	export let id: string
 	export let name: string
 	export let imgSrc: string = ''
+	export let isAdmin: boolean = false
 
 	$: groupPageUrl = generatePath('group', [id])
 </script>
 
 <li>
 	<article class={card}>
+		{#if isAdmin}
+			<p class={adminMark}>管理者</p>
+		{/if}
 		<a class={cardLink} href={groupPageUrl}>
 			{#if imgSrc}
 				<img class={img} src={imgSrc} alt="group img" />

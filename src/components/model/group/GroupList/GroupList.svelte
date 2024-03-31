@@ -6,8 +6,8 @@
 </script>
 
 <ul>
-	{#each groups as group (group.id)}
-		<GroupCard id={group.id} name={group.name} imgSrc={group.img_url} />
+	{#each groups as { id, name, img_url: imgSrc, is_admin: isAdmin } (id)}
+		<GroupCard {id} {name} {imgSrc} {isAdmin} />
 	{/each}
 </ul>
 
