@@ -17,7 +17,8 @@
 	}
 
 	const wrapper = css({
-		position: 'relative'
+		position: 'relative',
+		zIndex: 10
 	})
 
 	const tooltip = css({
