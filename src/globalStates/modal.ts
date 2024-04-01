@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store'
 
-export type Modal = 'hidden' | 'login'
+export type Modal = 'hidden' | 'login' | 'deleteGroup'
 
 const modal = writable<Modal>('hidden')
 
@@ -14,5 +14,8 @@ export const createModal = {
 	},
 	login: () => {
 		modal.set('login')
+	},
+	deleteGroup: () => {
+		modal.set('deleteGroup')
 	}
 }
