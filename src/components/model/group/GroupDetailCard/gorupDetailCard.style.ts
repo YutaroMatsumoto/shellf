@@ -21,3 +21,7 @@ export const groupImage = css({
 	borderRadius: 'sm',
 	borderColor: 'gray.300'
 })
+
+export const dangerButtonWrapper = css({
+	marginLeft: 'auto'
+})
