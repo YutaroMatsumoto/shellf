@@ -1,13 +1,13 @@
 <script lang="ts">
+	import { css } from 'styled-system/css'
+
 	export let title: string
-	/** fontsizeもpropsで受け取れた方が良いかも */
+	/** fontsizeもpropsで受け取れた方が良いかも？ */
+
+	const subHeading = css({
+		fontSize: 'xl',
+		fontWeight: 'bold'
+	})
 </script>
 
-<h2>{title}</h2>
-
-<style>
-	h2 {
-		font-size: 16px;
-		font-weight: bold;
-	}
-</style>
+<h2 class={subHeading}>{title}</h2>
