@@ -8,7 +8,7 @@ export const secondaryButton = cva({
 		display: 'inline-flex',
 		border: '1px solid',
 		borderRadius: 'sm',
-		color: 'green.500',
+		color: 'black',
 		fontWeight: 'bold',
 		transition: 'background',
 		bg: 'white',
