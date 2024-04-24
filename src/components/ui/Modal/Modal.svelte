@@ -3,7 +3,7 @@
 <script lang="ts">
 	import { createModal } from '$globalStates/modal'
 	import { content, overlay } from '$ui/Modal/modal.style'
-	import DeleteGroupContent from '$ui/Modal/modalContent/DeleteGroupContent.svelte'
+	import DeleteGroup from '$ui/Modal/modalContent/DeleteGroup/DeleteGroup.svelte'
 	import LoginContent from '$ui/Modal/modalContent/LoginContent.svelte'
 	import { useFocusTrap } from '$ui/Modal/useFocusTrap'
 
@@ -29,7 +29,7 @@
 		{#if $modal === 'login'}
 			<LoginContent />
 		{:else if $modal === 'deleteGroup'}
-			<DeleteGroupContent />
+			<DeleteGroup />
 		{/if}
 	</div>
 </div>
