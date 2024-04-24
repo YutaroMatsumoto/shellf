@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation'
 	import { page } from '$app/stores'
 	import TextInput from '$ui/_form/TextInput/TextInput.svelte'
-	import { superForm, formFieldProxy, dateProxy } from 'sveltekit-superforms/client'
+	import { superForm, dateProxy } from 'sveltekit-superforms/client'
 	import type { SuperValidated } from 'sveltekit-superforms'
 	import type { EventNewSchema } from '$repositories/event/schema'
 	import { dateTimeArea, edndDateTimeArea, flexBox, formWrapper } from './eventCreateForm.style'
