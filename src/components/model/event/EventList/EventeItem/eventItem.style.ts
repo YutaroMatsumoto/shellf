@@ -15,10 +15,7 @@ export const article = css({
 	gap: '16px',
 	padding: '16px',
 	borderBottomWidth: '1px',
-	borderColor: 'gray.300',
-	_hover: {
-		backgroundColor: 'gray.100'
-	}
+	borderColor: 'gray.300'
 })
 
 export const eventImage = css({
@@ -45,4 +42,23 @@ export const item = css({
 export const timeAndLabel = css({
 	display: 'flex',
 	gap: '8px'
+})
+
+export const iconWrapper = css({
+	marginLeft: 'auto',
+	display: 'flex',
+	alignItems: 'center'
+})
+
+export const iconButton = css({
+	width: '32px',
+	height: '32px',
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'center',
+	borderRadius: 'sm',
+	cursor: 'pointer',
+	_hover: {
+		backgroundColor: 'gray.100'
+	}
 })
