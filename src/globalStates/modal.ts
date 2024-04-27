@@ -7,7 +7,7 @@ type Modal = {
 	meta?: string
 }
 
-const modal = writable<Modal>({ status: 'hidden' })
+const modal = writable<Modal>({ status: 'hidden', meta: undefined })
 
 export const createModal = {
 	subscribe: modal.subscribe,
@@ -15,7 +15,7 @@ export const createModal = {
 	// 	modal.set(arg)
 	// },
 	close: () => {
-		modal.set({ status: 'hidden' })
+		modal.set({ status: 'hidden', meta: undefined })
 	},
 	login: () => {
 		modal.set({ status: 'login' })
@@ -23,7 +23,7 @@ export const createModal = {
 	deleteGroup: () => {
 		modal.set({ status: 'deleteGroup' })
 	},
-	deleteEvent: () => {
-		modal.set({ status: 'deleteEvent' })
+	deleteEvent: (eventId: string) => {
+		modal.set({ status: 'deleteEvent', meta: eventId })
 	}
 }

@@ -13,13 +13,16 @@
 		iconButton
 	} from './eventItem.style'
 	import EventLabel from '$model/event/EventLabel/EventLabel.svelte'
-	import MenuIcon from '$ui/icon/MenuIcon.svelte'
+	import DeleteIcon from '$ui/icon/DeleteIcon.svelte'
+	import { createModal } from '$globalStates/modal'
 
 	export let id: string
 	export let title: string
 	export let startDatetime: Event['start_datetime']
 	export let endDatetime: Event['end_datetime']
 	export let src: Event['img_url']
+
+	const modal = createModal
 
 	$: eventPageUrl = generatePath('eventDetail', [$page.params.id, id])
 
@@ -51,8 +54,8 @@
 			</a>
 		</div>
 		<div class={iconWrapper}>
-			<button class={iconButton}>
-				<MenuIcon />
+			<button class={iconButton} on:click={() => modal.deleteEvent(id)}>
+				<DeleteIcon />
 			</button>
 		</div>
 	</article>

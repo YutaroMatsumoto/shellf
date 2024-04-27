@@ -45,6 +45,7 @@ export const timeAndLabel = css({
 })
 
 export const iconWrapper = css({
+	position: 'relative',
 	marginLeft: 'auto',
 	display: 'flex',
 	alignItems: 'center'
