@@ -4,6 +4,7 @@
 	import { createModal } from '$globalStates/modal'
 	import { content, overlay } from '$ui/Modal/modal.style'
 	import DeleteGroup from '$ui/Modal/modalContent/DeleteGroup/DeleteGroup.svelte'
+	import DeleteEvent from '$ui/Modal/modalContent/DeleteEvent/DeleteEvent.svelte'
 	import LoginContent from '$ui/Modal/modalContent/LoginContent.svelte'
 	import { useFocusTrap } from '$ui/Modal/useFocusTrap'
 
@@ -11,7 +12,7 @@
 
 	const modal = createModal
 
-	$: useFocusTrap(ref, $modal, modal.close)
+	$: useFocusTrap(ref, $modal.status, modal.close)
 </script>
 
 <div id="modal">
@@ -26,10 +27,12 @@
 		bind:this={ref}
 		aria-describedby="modal-describe"
 	>
-		{#if $modal === 'login'}
+		{#if $modal.status === 'login'}
 			<LoginContent />
-		{:else if $modal === 'deleteGroup'}
+		{:else if $modal.status === 'deleteGroup'}
 			<DeleteGroup />
+		{:else if $modal.status === 'deleteEvent'}
+			<DeleteEvent />
 		{/if}
 	</div>
 </div>

@@ -1,8 +1,13 @@
 import { writable } from 'svelte/store'
 
-export type Modal = 'hidden' | 'login' | 'deleteGroup'
+export type ModalStatus = 'hidden' | 'login' | 'deleteGroup' | 'deleteEvent'
 
-const modal = writable<Modal>('hidden')
+type Modal = {
+	status: ModalStatus
+	meta?: string
+}
+
+const modal = writable<Modal>({ status: 'hidden' })
 
 export const createModal = {
 	subscribe: modal.subscribe,
@@ -10,12 +15,15 @@ export const createModal = {
 	// 	modal.set(arg)
 	// },
 	close: () => {
-		modal.set('hidden')
+		modal.set({ status: 'hidden' })
 	},
 	login: () => {
-		modal.set('login')
+		modal.set({ status: 'login' })
 	},
 	deleteGroup: () => {
-		modal.set('deleteGroup')
+		modal.set({ status: 'deleteGroup' })
+	},
+	deleteEvent: () => {
+		modal.set({ status: 'deleteEvent' })
 	}
 }

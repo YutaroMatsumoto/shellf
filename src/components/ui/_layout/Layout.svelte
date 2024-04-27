@@ -22,7 +22,7 @@
 	<Footer />
 </div>
 
-{#if $modal !== 'hidden'}
+{#if $modal.status !== 'hidden'}
 	<Modal />
 {/if}
 

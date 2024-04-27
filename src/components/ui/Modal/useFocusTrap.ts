@@ -1,10 +1,10 @@
-import type { Modal } from '$globalStates/modal'
+import type { ModalStatus } from '$globalStates/modal'
 import { afterUpdate, onDestroy } from 'svelte'
 import { tabbable } from 'tabbable'
 
 export function useFocusTrap(
 	ref: HTMLDivElement | null,
-	modal: Modal,
+	modalStatus: ModalStatus,
 	closeModal: () => void
 ): void {
 	const handleKeydown = (event: KeyboardEvent) => {
@@ -24,7 +24,7 @@ export function useFocusTrap(
 	}
 
 	afterUpdate(() => {
-		if (modal === 'hidden' || !ref) {
+		if (modalStatus === 'hidden' || !ref) {
 			return
 		}
 		// 元々handleKeydownを定義していた場所
