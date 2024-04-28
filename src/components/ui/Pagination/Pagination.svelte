@@ -21,8 +21,6 @@
 	// startは1より小さくならなければ良い
 	// endはtotalpageより大きくならなければ良い
 
-	$: console.log({ total })
-
 	$: totalPageNum = Math.ceil(total / 10)
 	$: formatParams = typeof params === 'string' ? [params] : params
 	$: href = generatePath(pathKey, formatParams)
