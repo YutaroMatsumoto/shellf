@@ -22,6 +22,9 @@ export const groupImage = css({
 	borderColor: 'gray.300'
 })
 
-export const dangerButtonWrapper = css({
-	marginLeft: 'auto'
+export const buttonWrapper = css({
+	marginLeft: 'auto',
+	display: 'flex',
+	flexDirection: 'column',
+	gap: '8px'
 })
