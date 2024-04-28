@@ -98,8 +98,9 @@
 	<Spacer />
 
 	<div class={buttonGroupArea}>
-		<SecondaryButton type="button" onClick={() => goto(generatePath('group', [$page.params.id]))}
-			>戻る</SecondaryButton
+		<SecondaryButton
+			type="button"
+			onClick={() => goto(generatePath('groupDetail', [$page.params.id]))}>戻る</SecondaryButton
 		>
 		<PrimaryButton type="submit" loading={$delayed} aria-busy={$delayed}>保存</PrimaryButton>
 	</div>

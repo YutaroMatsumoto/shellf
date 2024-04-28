@@ -13,7 +13,7 @@
 	export let imgSrc: string = ''
 	export let isAdmin: boolean = false
 
-	$: groupPageUrl = generatePath('group', [id])
+	$: groupPageUrl = generatePath('groupDetail', [id])
 </script>
 
 <li>

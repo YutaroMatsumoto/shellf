@@ -5,7 +5,8 @@ export const pathName = {
 	my: '/my',
 	myEventList: '/my/event',
 	groupNew: '/my/group/new',
-	group: ([groupId]: Params) => `/group/${groupId}`,
+	groupDetail: ([groupId]: Params) => `/group/${groupId}`,
+	groupEdit: ([groupId]: Params) => `/group/${groupId}/edit`,
 	eventNew: ([groupId]: Params) => `/group/${groupId}/event/new`,
 	groupEventList: ([groupId]: Params) => `/group/${groupId}/event`,
 	eventDetail: ([groupId, eventId]: Params) => `/group/${groupId}/event/${eventId}`
