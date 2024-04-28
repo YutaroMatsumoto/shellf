@@ -15,14 +15,17 @@
 	import EventLabel from '$model/event/EventLabel/EventLabel.svelte'
 	import DeleteIcon from '$ui/icon/DeleteIcon.svelte'
 	import { createModal } from '$globalStates/modal'
+	import { getUser } from '$globalStates/user'
 
 	export let id: string
 	export let title: string
 	export let startDatetime: Event['start_datetime']
 	export let endDatetime: Event['end_datetime']
 	export let src: Event['img_url']
+	export let createdBy: Event['created_by']
 
 	const modal = createModal
+	const user = getUser()
 
 	$: eventPageUrl = generatePath('eventDetail', [$page.params.id, id])
 
@@ -53,11 +56,13 @@
 				<h2>{title}</h2>
 			</a>
 		</div>
-		<div class={iconWrapper}>
-			<button class={iconButton} on:click={() => modal.deleteEvent(id)}>
-				<DeleteIcon />
-			</button>
-		</div>
+		{#if $user?.id && $user?.id === createdBy}
+			<div class={iconWrapper}>
+				<button class={iconButton} on:click={() => modal.deleteEvent(id)}>
+					<DeleteIcon />
+				</button>
+			</div>
+		{/if}
 	</article>
 </li>
 
