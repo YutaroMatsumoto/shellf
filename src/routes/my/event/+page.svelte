@@ -12,7 +12,7 @@
 </script>
 
 {#if !events.data || events.count === 0}
-	開催予定のイベントはありません。
+	作成したイベントはありません。
 {:else}
 	<EventList events={events.data} />
 {/if}
