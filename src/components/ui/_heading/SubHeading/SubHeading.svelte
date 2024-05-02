@@ -6,7 +6,8 @@
 
 	const subHeading = css({
 		fontSize: 'xl',
-		fontWeight: 'bold'
+		fontWeight: 'bold',
+		whiteSpace: 'pre-wrap'
 	})
 </script>
 
