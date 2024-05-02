@@ -4,7 +4,6 @@
 	import { createModal } from '$globalStates/modal'
 	import { content, overlay } from '$ui/Modal/modal.style'
 	import DeleteGroup from '$ui/Modal/modalContent/DeleteGroup/DeleteGroup.svelte'
-	import DeleteEvent from '$ui/Modal/modalContent/DeleteEvent/DeleteEvent.svelte'
 	import LoginContent from '$ui/Modal/modalContent/LoginContent.svelte'
 	import { useFocusTrap } from '$ui/Modal/useFocusTrap'
 
@@ -31,8 +30,8 @@
 			<LoginContent />
 		{:else if $modal.status === 'deleteGroup'}
 			<DeleteGroup />
-		{:else if $modal.status === 'deleteEvent'}
-			<DeleteEvent />
+			<!-- {:else if $modal.status === 'deleteEvent'}
+			<DeleteEvent /> -->
 		{/if}
 	</div>
 </div>

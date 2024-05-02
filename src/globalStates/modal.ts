@@ -22,8 +22,8 @@ export const createModal = {
 	},
 	deleteGroup: () => {
 		modal.set({ status: 'deleteGroup' })
-	},
-	deleteEvent: (eventId: string) => {
-		modal.set({ status: 'deleteEvent', meta: eventId })
 	}
+	// deleteEvent: (eventId: string) => {
+	// 	modal.set({ status: 'deleteEvent', meta: eventId })
+	// }
 }

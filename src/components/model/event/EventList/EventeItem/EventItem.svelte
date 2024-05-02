@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores'
+	import { goto } from '$app/navigation'
 	import { generatePath } from '$lib/route'
 	import dayjs from '$lib/dayjs'
 	import { getEventStatus, type Event } from '$models/event'
@@ -14,8 +15,8 @@
 	} from './eventItem.style'
 	import EventLabel from '$model/event/EventLabel/EventLabel.svelte'
 	import DeleteIcon from '$ui/icon/DeleteIcon.svelte'
-	import { createModal } from '$globalStates/modal'
 	import { getUser } from '$globalStates/user'
+	import { createSnackbar } from '$globalStates/snackbar'
 
 	export let id: string
 	export let title: string
@@ -24,7 +25,8 @@
 	export let src: Event['img_url']
 	export let createdBy: Event['created_by']
 
-	const modal = createModal
+	let loading: boolean = false
+
 	const user = getUser()
 
 	$: eventPageUrl = generatePath('eventDetail', [$page.params.id, id])
@@ -32,6 +34,31 @@
 	$: eventStatus = getEventStatus(startDatetime, endDatetime)
 
 	$: formatdate = dayjs(startDatetime).format('YYYY/MM/DD（ddd）HH:mm~')
+
+	const deleteEvent = async () => {
+		if (!window.confirm('本当に削除しますか？')) {
+			return
+		}
+		loading = true
+		await fetch(`/api/event/delete/${id}`, { method: 'DELETE' })
+			.then((response) => {
+				console.log({ response })
+				response.ok && createSnackbar.addSnackbar('success', 'グループの削除に成功しました')
+				/**
+				 * MEMO: 現在のページに飛ぶことで、最新のデータを取得し直す。
+				 * supabaseのrealtime機能を使うと別の方法を実現できるかも？
+				 * 1ページに戻ってしまうという課題はある。
+				 * */
+				/**
+				 * TODO: イベント削除をしてもページが更新されない時がある
+				 * - イベント作成ページで作成→一覧にリダイレクトされる→削除→更新される
+				 * - イベント作成ページで作成→一覧にリダイレクトされる→リロード→削除→更新されない
+				 */
+				goto($page.url.pathname)
+			})
+			.catch(() => createSnackbar.addSnackbar('failure', 'グループの削除に失敗しました'))
+			.finally(() => (loading = false))
+	}
 </script>
 
 <li>
@@ -58,7 +85,7 @@
 		</div>
 		{#if $user?.id && $user?.id === createdBy}
 			<div class={iconWrapper}>
-				<button class={iconButton} on:click={() => modal.deleteEvent(id)}>
+				<button class={iconButton} on:click={deleteEvent}>
 					<DeleteIcon />
 				</button>
 			</div>
