@@ -15,6 +15,10 @@
 	const modal = createModal
 
 	const deleteGroup = async () => {
+		if (!window.confirm('本当の本当に削除しますか？')) {
+			modal.close()
+			return
+		}
 		loading = true
 		await fetch(`/api/group/delete/${$page.params.id}`, { method: 'DELETE' })
 			.then((response) => {
@@ -29,7 +33,7 @@
 </script>
 
 <div class={wrapper}>
-	<SubHeading title="本当に削除してよろしいですか？" />
+	<SubHeading title={`本当に削除しますか？\n危険な操作です。`} />
 
 	<Spacer />
 	<p>グループデータだけでなく、</p>
