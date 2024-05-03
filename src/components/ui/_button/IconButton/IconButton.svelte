@@ -2,8 +2,9 @@
 	import { css } from 'styled-system/css'
 	import EditIcon from '$ui/icon/EditIcon.svelte'
 	import DeleteIcon from '$ui/icon/DeleteIcon.svelte'
+	import SaveIcon from '$ui/icon/SaveIcon.svelte'
 
-	export let iconType: 'edit' | 'delete'
+	export let iconType: 'edit' | 'delete' | 'save'
 	export let onClick: () => void
 
 	const iconButton = css({
@@ -23,6 +24,8 @@
 <button class={iconButton} on:click={onClick}>
 	{#if iconType === 'edit'}
 		<EditIcon />
+	{:else if iconType === 'save'}
+		<SaveIcon />
 	{:else if iconType === 'delete'}
 		<DeleteIcon />
 	{/if}
