@@ -5,7 +5,7 @@
 	import Spacer from '$ui/Spacer/Spacer.svelte'
 	import DangerButton from '$ui/_button/DangerButton/DangerButton.svelte'
 	import SecondaryButton from '$ui/_button/SecondaryButton/SecondaryButton.svelte'
-	import SubHeading from '$ui/_heading/SubHeading/SubHeading.svelte'
+	import H2 from '$ui/_heading/H2/H2.svelte'
 	import { buttonWrapper, wrapper } from './deleteEvent.style'
 	import { createSnackbar } from '$globalStates/snackbar'
 
@@ -41,7 +41,7 @@
 </script>
 
 <div class={wrapper}>
-	<SubHeading title="本当に削除してよろしいですか？" />
+	<H2 title="本当に削除してよろしいですか？" />
 
 	<Spacer />
 	<p>イベントデータが削除されます。</p>

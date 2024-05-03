@@ -8,11 +8,6 @@ export const cardWrapper = css({
 	bg: 'white'
 })
 
-export const groupName = css({
-	fontSize: '2xl',
-	fontWeight: 'bold'
-})
-
 export const groupImage = css({
 	width: '192px',
 	height: '108px',

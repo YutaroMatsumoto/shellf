@@ -5,7 +5,7 @@
 	import Spacer from '$ui/Spacer/Spacer.svelte'
 	import DangerButton from '$ui/_button/DangerButton/DangerButton.svelte'
 	import SecondaryButton from '$ui/_button/SecondaryButton/SecondaryButton.svelte'
-	import SubHeading from '$ui/_heading/SubHeading/SubHeading.svelte'
+	import H2 from '$ui/_heading/H2/H2.svelte'
 	import { buttonWrapper, wrapper } from './deleteGroup.style'
 	import { createSnackbar } from '$globalStates/snackbar'
 	import { generatePath } from '$lib/route'
@@ -33,7 +33,7 @@
 </script>
 
 <div class={wrapper}>
-	<SubHeading title={`本当に削除しますか？\n危険な操作です。`} />
+	<H2 title={`本当に削除しますか？\n危険な操作です。`} />
 
 	<Spacer />
 	<p>グループデータだけでなく、</p>

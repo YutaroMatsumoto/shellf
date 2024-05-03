@@ -8,7 +8,7 @@
 		section
 	} from '$model/event/EventDetail/eventDetail'
 	import Divider from '$ui/Divider/Divider.svelte'
-	import SubHeading from '$ui/_heading/SubHeading/SubHeading.svelte'
+	import H2 from '$ui/_heading/H2/H2.svelte'
 	import Spacer from '$ui/Spacer/Spacer.svelte'
 	import EventDescription from '$model/event/EventDescription/EventDescription.svelte'
 
@@ -19,7 +19,7 @@
 
 <section class={sectionWrapper}>
 	<section class={section}>
-		<SubHeading {title} />
+		<H2 {title} />
 		<Divider />
 		<div class={imgWrapper}>
 			{#if src}
