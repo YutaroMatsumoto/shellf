@@ -4,7 +4,7 @@
 	import { generatePath } from '$lib/route'
 	import dayjs from '$lib/dayjs'
 	import { getEventStatus, type Event } from '$models/event'
-	import { article, eventImage, item, noImage, timeAndLabel } from './eventItem.style'
+	import { article, eventImage, iconWrapper, item, noImage, timeAndLabel } from './eventItem.style'
 	import EventLabel from '$model/event/EventLabel/EventLabel.svelte'
 	import { getUser } from '$globalStates/user'
 	import { createSnackbar } from '$globalStates/snackbar'
@@ -76,7 +76,10 @@
 			</a>
 		</div>
 		{#if $user?.id && $user?.id === createdBy}
-			<IconButton iconType="delete" onClick={deleteEvent} />
+			<div class={iconWrapper}>
+				<IconButton iconType="edit" onClick={() => console.log('edit')} />
+				<IconButton iconType="delete" onClick={deleteEvent} />
+			</div>
 		{/if}
 	</article>
 </li>

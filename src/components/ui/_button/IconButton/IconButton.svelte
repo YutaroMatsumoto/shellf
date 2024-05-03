@@ -6,13 +6,7 @@
 	export let iconType: 'edit' | 'delete'
 	export let onClick: () => void
 
-	export const iconWrapper = css({
-		marginLeft: 'auto',
-		display: 'flex',
-		alignItems: 'center'
-	})
-
-	export const iconButton = css({
+	const iconButton = css({
 		width: '32px',
 		height: '32px',
 		display: 'flex',
@@ -26,12 +20,10 @@
 	})
 </script>
 
-<div class={iconWrapper}>
-	<button class={iconButton} on:click={onClick}>
-		{#if iconType === 'edit'}
-			<EditIcon />
-		{:else if iconType === 'delete'}
-			<DeleteIcon />
-		{/if}
-	</button>
-</div>
+<button class={iconButton} on:click={onClick}>
+	{#if iconType === 'edit'}
+		<EditIcon />
+	{:else if iconType === 'delete'}
+		<DeleteIcon />
+	{/if}
+</button>
