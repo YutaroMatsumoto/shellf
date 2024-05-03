@@ -15,5 +15,5 @@ export const menuItem = css({
 	display: 'flex',
 	width: '100%',
 	padding: '8px',
-	_hover: { bg: 'gray.50' }
+	_hover: { bg: 'gray.100' }
 })
