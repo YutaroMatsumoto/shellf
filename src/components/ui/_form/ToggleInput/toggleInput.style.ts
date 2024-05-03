@@ -41,7 +41,7 @@ export const circle = cva({
 	}
 })
 
-export const toggleAreaDefaultStyle: SystemStyleObject = {
+const toggleAreaDefaultStyle: SystemStyleObject = {
 	display: 'flex',
 	height: '24px',
 	width: '100%',

@@ -7,7 +7,7 @@
 	import { tooltip, wrapper, type TooltipPosition } from './tooltipIcon'
 
 	export let iconType: IconType = 'info'
-	export let size: number = 16
+	export let size: number = 24
 	export let message: string
 	export let position: TooltipPosition = 'lowerRight'
 
@@ -35,16 +35,16 @@
 		<InfoIcon {size} />
 		<!-- MEMO: sizeについては要検討 -->
 	{:else if iconType === 'edit'}
-		<EditIcon />
+		<EditIcon {size} />
 	{:else if iconType === 'save'}
-		<SaveIcon />
+		<SaveIcon {size} />
 	{:else if iconType === 'delete'}
-		<DeleteIcon />
+		<DeleteIcon {size} />
 	{/if}
 
-	<!-- {#if isHover} -->
-	<p class={tooltip({ position })}>
-		{message}
-	</p>
-	<!-- {/if} -->
+	{#if isHover}
+		<div class={tooltip({ position })}>
+			<p>{message}</p>
+		</div>
+	{/if}
 </div>

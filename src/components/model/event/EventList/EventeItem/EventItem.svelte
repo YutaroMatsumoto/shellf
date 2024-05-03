@@ -18,6 +18,7 @@
 	import { createSnackbar } from '$globalStates/snackbar'
 	import IconButton from '$ui/_button/IconButton/IconButton.svelte'
 	import H3 from '$ui/_heading/H3/H3.svelte'
+	import type { TooltipPosition } from '$ui/TooltipIcon/tooltipIcon'
 
 	export let id: string
 	export let title: string
@@ -86,8 +87,18 @@
 		</div>
 		{#if $user?.id && $user?.id === createdBy}
 			<div class={iconWrapper}>
-				<IconButton iconType="edit" onClick={() => console.log('edit')} />
-				<IconButton iconType="delete" onClick={deleteEvent} />
+				<IconButton
+					iconType="edit"
+					onClick={() => console.log('edit')}
+					message="イベントを編集"
+					position="lowerLeft"
+				/>
+				<IconButton
+					iconType="delete"
+					onClick={deleteEvent}
+					message="イベントを削除"
+					position="lowerLeft"
+				/>
 			</div>
 		{/if}
 	</article>

@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { css } from 'styled-system/css'
-	import EditIcon from '$ui/icon/EditIcon.svelte'
-	import DeleteIcon from '$ui/icon/DeleteIcon.svelte'
-	import SaveIcon from '$ui/icon/SaveIcon.svelte'
+	import TooltipIcon from '$ui/TooltipIcon/TooltipIcon.svelte'
+	import type { IconType } from '$ui/icon/iconType'
+	import type { TooltipPosition } from '$ui/TooltipIcon/tooltipIcon'
 
-	export let iconType: 'edit' | 'delete' | 'save'
+	export let iconType: IconType
 	export let onClick: () => void
+	export let message: string
+	export let position: TooltipPosition = 'lowerRight'
 
 	const iconButton = css({
 		width: '32px',
@@ -22,11 +24,5 @@
 </script>
 
 <button class={iconButton} on:click={onClick}>
-	{#if iconType === 'edit'}
-		<EditIcon />
-	{:else if iconType === 'save'}
-		<SaveIcon />
-	{:else if iconType === 'delete'}
-		<DeleteIcon />
-	{/if}
+	<TooltipIcon {iconType} {message} {position} />
 </button>

@@ -12,18 +12,47 @@ export const wrapper = css({
 export const tooltip = cva({
 	base: {
 		position: 'absolute',
-		backgroundColor: 'white',
-		shadow: 'lg',
+		backgroundColor: 'black',
+		shadow: 'xl',
 		padding: '8px',
 		borderRadius: 'sm',
 		fontSize: 'sm',
-		width: 'max-content'
+		width: 'max-content',
+		color: 'white',
+		fontWeight: 'bold',
+		_after: {
+			content: '""',
+			height: '5px',
+			width: '10px',
+			position: 'absolute',
+			backgroundColor: 'black'
+		}
 	},
 
 	variants: {
 		position: {
-			lowerRight: {},
-			lowerLeft: { right: '10000px' }
+			lowerRight: {
+				left: '0px',
+				top: '30px',
+				_after: {
+					clipPath: 'polygon(50% 0,100% 100%,0 100%)',
+					top: '-5px',
+					left: '10px'
+				}
+			},
+			lowerLeft: {
+				right: '0px',
+				top: '30px',
+				_after: {
+					clipPath: 'polygon(50% 0,100% 100%,0 100%)',
+					top: '-5px',
+					right: '10px'
+				}
+			}
 		}
 	}
+})
+
+export const message = css({
+	color: 'white'
 })
