@@ -7,7 +7,6 @@
 	export let onClick: () => void
 
 	export const iconWrapper = css({
-		position: 'relative',
 		marginLeft: 'auto',
 		display: 'flex',
 		alignItems: 'center'
