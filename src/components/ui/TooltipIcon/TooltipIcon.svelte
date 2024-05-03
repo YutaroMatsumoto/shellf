@@ -1,10 +1,15 @@
 <script lang="ts">
-	import { css } from 'styled-system/css'
 	import InfoIcon from '$ui/icon/InfoIcon.svelte'
+	import EditIcon from '$ui/icon/EditIcon.svelte'
+	import DeleteIcon from '$ui/icon/DeleteIcon.svelte'
+	import SaveIcon from '$ui/icon/SaveIcon.svelte'
+	import type { IconType } from '$ui/icon/iconType'
+	import { tooltip, wrapper, type TooltipPosition } from './tooltipIcon'
 
-	export let iconType: 'info' = 'info'
+	export let iconType: IconType = 'info'
 	export let size: number = 16
 	export let message: string
+	export let position: TooltipPosition = 'lowerRight'
 
 	let isHover = false
 
@@ -15,21 +20,6 @@
 	function handleMouseout() {
 		isHover = false
 	}
-
-	const wrapper = css({
-		position: 'relative',
-		zIndex: 10
-	})
-
-	const tooltip = css({
-		position: 'absolute',
-		backgroundColor: 'white',
-		shadow: 'lg',
-		padding: '8px',
-		borderRadius: 'sm',
-		fontSize: 'sm',
-		width: '280px'
-	})
 </script>
 
 <!-- ↓divにmouseover等のイベントを割り当てることを許容する -->
@@ -43,13 +33,18 @@
 >
 	{#if iconType === 'info'}
 		<InfoIcon {size} />
+		<!-- MEMO: sizeについては要検討 -->
+	{:else if iconType === 'edit'}
+		<EditIcon />
+	{:else if iconType === 'save'}
+		<SaveIcon />
+	{:else if iconType === 'delete'}
+		<DeleteIcon />
 	{/if}
 
-	{#if isHover}
-		<div class={tooltip}>
-			<p>
-				{message}
-			</p>
-		</div>
-	{/if}
+	<!-- {#if isHover} -->
+	<p class={tooltip({ position })}>
+		{message}
+	</p>
+	<!-- {/if} -->
 </div>
