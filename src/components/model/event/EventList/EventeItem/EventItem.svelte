@@ -4,11 +4,20 @@
 	import { generatePath } from '$lib/route'
 	import dayjs from '$lib/dayjs'
 	import { getEventStatus, type Event } from '$models/event'
-	import { article, eventImage, iconWrapper, item, noImage, timeAndLabel } from './eventItem.style'
+	import {
+		article,
+		eventImage,
+		iconWrapper,
+		item,
+		link,
+		noImage,
+		timeAndLabel
+	} from './eventItem.style'
 	import EventLabel from '$model/event/EventLabel/EventLabel.svelte'
 	import { getUser } from '$globalStates/user'
 	import { createSnackbar } from '$globalStates/snackbar'
 	import IconButton from '$ui/_button/IconButton/IconButton.svelte'
+	import H3 from '$ui/_heading/H3/H3.svelte'
 
 	export let id: string
 	export let title: string
@@ -71,8 +80,8 @@
 				</span>
 			</div>
 
-			<a href={eventPageUrl}>
-				<h2>{title}</h2>
+			<a class={link} href={eventPageUrl}>
+				<H3 {title} />
 			</a>
 		</div>
 		{#if $user?.id && $user?.id === createdBy}
@@ -83,11 +92,3 @@
 		{/if}
 	</article>
 </li>
-
-<style>
-	h2 {
-		font-size: 16px;
-		font-weight: bold;
-		cursor: pointer;
-	}
-</style>

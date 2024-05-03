@@ -50,3 +50,7 @@ export const iconWrapper = css({
 	alignItems: 'center',
 	gap: '4px'
 })
+
+export const link = css({
+	textDecoration: 'underline'
+})
