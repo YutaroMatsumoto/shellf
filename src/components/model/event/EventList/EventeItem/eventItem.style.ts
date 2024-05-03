@@ -43,23 +43,3 @@ export const timeAndLabel = css({
 	display: 'flex',
 	gap: '8px'
 })
-
-export const iconWrapper = css({
-	position: 'relative',
-	marginLeft: 'auto',
-	display: 'flex',
-	alignItems: 'center'
-})
-
-export const iconButton = css({
-	width: '32px',
-	height: '32px',
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'center',
-	borderRadius: 'sm',
-	cursor: 'pointer',
-	_hover: {
-		backgroundColor: 'gray.100'
-	}
-})

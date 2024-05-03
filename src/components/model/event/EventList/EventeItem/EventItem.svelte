@@ -4,19 +4,11 @@
 	import { generatePath } from '$lib/route'
 	import dayjs from '$lib/dayjs'
 	import { getEventStatus, type Event } from '$models/event'
-	import {
-		article,
-		eventImage,
-		item,
-		noImage,
-		timeAndLabel,
-		iconWrapper,
-		iconButton
-	} from './eventItem.style'
+	import { article, eventImage, item, noImage, timeAndLabel } from './eventItem.style'
 	import EventLabel from '$model/event/EventLabel/EventLabel.svelte'
-	import DeleteIcon from '$ui/icon/DeleteIcon.svelte'
 	import { getUser } from '$globalStates/user'
 	import { createSnackbar } from '$globalStates/snackbar'
+	import IconButton from '$ui/_button/IconButton/IconButton.svelte'
 
 	export let id: string
 	export let title: string
@@ -84,11 +76,7 @@
 			</a>
 		</div>
 		{#if $user?.id && $user?.id === createdBy}
-			<div class={iconWrapper}>
-				<button class={iconButton} on:click={deleteEvent}>
-					<DeleteIcon />
-				</button>
-			</div>
+			<IconButton iconType="delete" onClick={deleteEvent} />
 		{/if}
 	</article>
 </li>
