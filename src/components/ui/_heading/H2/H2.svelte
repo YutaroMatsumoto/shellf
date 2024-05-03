@@ -4,11 +4,11 @@
 	export let title: string
 	/** fontsizeもpropsで受け取れた方が良いかも？ */
 
-	const subHeading = css({
+	const h2 = css({
 		fontSize: 'xl',
 		fontWeight: 'bold',
 		whiteSpace: 'pre-wrap'
 	})
 </script>
 
-<h2 class={subHeading}>{title}</h2>
+<h2 class={h2}>{title}</h2>
