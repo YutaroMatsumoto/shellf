@@ -3,13 +3,14 @@
 	import EditIcon from '$ui/icon/EditIcon.svelte'
 	import DeleteIcon from '$ui/icon/DeleteIcon.svelte'
 	import SaveIcon from '$ui/icon/SaveIcon.svelte'
-	import type { IconType } from '$ui/icon/iconType'
+	import type { IconType, IconFillType } from '$ui/icon/iconType'
 	import { tooltip, wrapper, type TooltipPosition } from './tooltipIcon'
 
 	export let iconType: IconType = 'info'
 	export let size: number = 24
 	export let message: string
 	export let position: TooltipPosition = 'lowerRight'
+	export let fill: IconFillType = 'black'
 
 	let isHover = false
 
@@ -32,14 +33,14 @@
 	on:blur={handleMouseout}
 >
 	{#if iconType === 'info'}
-		<InfoIcon {size} />
+		<InfoIcon {size} {fill} />
 		<!-- MEMO: sizeについては要検討 -->
 	{:else if iconType === 'edit'}
-		<EditIcon {size} />
+		<EditIcon {size} {fill} />
 	{:else if iconType === 'save'}
-		<SaveIcon {size} />
+		<SaveIcon {size} {fill} />
 	{:else if iconType === 'delete'}
-		<DeleteIcon {size} />
+		<DeleteIcon {size} {fill} />
 	{/if}
 
 	{#if isHover}

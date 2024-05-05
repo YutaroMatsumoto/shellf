@@ -1,28 +1,29 @@
 <script lang="ts">
-	import { css } from 'styled-system/css'
+	import { css, cva } from 'styled-system/css'
 	import TooltipIcon from '$ui/TooltipIcon/TooltipIcon.svelte'
 	import type { IconType } from '$ui/icon/iconType'
 	import type { TooltipPosition } from '$ui/TooltipIcon/tooltipIcon'
 
 	export let iconType: IconType
-	export let onClick: () => void
 	export let message: string
 	export let position: TooltipPosition = 'lowerRight'
+	export let disabled: boolean = false
+	export let onClick: (() => void) | undefined = undefined
 
-	const iconButton = css({
+	$: iconButton = css({
 		width: '32px',
 		height: '32px',
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
 		borderRadius: 'sm',
-		cursor: 'pointer',
+		cursor: disabled ? 'not-allowed' : 'pointer',
 		_hover: {
-			backgroundColor: 'gray.100'
+			backgroundColor: disabled ? 'none' : 'gray.100'
 		}
 	})
 </script>
 
-<button class={iconButton} on:click={onClick}>
-	<TooltipIcon {iconType} {message} {position} />
+<button class={iconButton} on:click={onClick} {...$$restProps} {disabled}>
+	<TooltipIcon {iconType} {message} {position} fill={disabled ? 'gray' : 'black'} />
 </button>
