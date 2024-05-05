@@ -16,7 +16,7 @@
 	// 基本的なhtml属性はrestPropsで受け取るようにする
 	export let form: SuperForm<T>
 	export let field: FormPathLeaves<T>
-	export let label: string
+	export let label: string | undefined = undefined
 	export let isRequired: boolean = false
 	
 	/**
@@ -32,7 +32,9 @@
 </script>
 
 <div>
-  <FormLabel {fieldId} {label} {isRequired} />
+	{#if label}
+  	<FormLabel {fieldId} {label} {isRequired} />
+	{/if}
 	<span class={fieldStyle({ isError: !!$errors })}>
 		<input
 			id={$$restProps.id}
