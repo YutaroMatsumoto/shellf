@@ -17,3 +17,9 @@ export const groupNewSchema = z.object({
 })
 
 export type GroupNewSchema = z.infer<typeof groupNewSchema>
+
+export const groupNameShema = groupNewSchema.pick({ name: true })
+export type GroupNameShema = z.infer<typeof groupNameShema>
+
+export const groupDescriptionSchema = groupNewSchema.pick({ description: true })
+export type GroupDescriptionSchema = z.infer<typeof groupNameShema>
