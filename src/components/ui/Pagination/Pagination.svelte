@@ -28,8 +28,6 @@
 	$: paginationStart = currentPage > 1 ? currentPage - PAGE_RANGE : currentPage
 
 	$: paginationEnd = currentPage >= totalPageNum ? totalPageNum : currentPage + PAGE_RANGE
-
-	$: console.log({ currentPage, totalPageNum, paginationStart, paginationEnd })
 </script>
 
 <ul class={paginationWrapper}>

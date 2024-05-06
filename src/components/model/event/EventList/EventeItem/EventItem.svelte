@@ -44,7 +44,6 @@
 		loading = true
 		await fetch(`/api/event/delete/${id}`, { method: 'DELETE' })
 			.then((response) => {
-				console.log({ response })
 				response.ok && createSnackbar.addSnackbar('success', 'グループの削除に成功しました')
 				/**
 				 * MEMO: 現在のページに飛ぶことで、最新のデータを取得し直す。

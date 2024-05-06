@@ -18,7 +18,6 @@
 		delayMs: 50,
 		resetForm: false, // これを設定しないとsubmit時にformが初期値にリセットされる
 		onResult: ({ result }) => {
-			console.log({ result })
 			if (result.type === 'success') {
 				createSnackbar.addSnackbar('success', 'グループ名の更新に成功しました')
 			}
@@ -27,7 +26,6 @@
 	})
 
 	const { isTainted, enhance, tainted } = form
-	$: console.log({ form, groupNameForm })
 
 	const groupNameWrapper = css({
 		display: 'flex',
