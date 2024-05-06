@@ -31,7 +31,5 @@
 	</section>
 
 	<Spacer />
-
-	<Spacer />
 	<EventDescription {description} />
 </section>

@@ -35,7 +35,7 @@
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
-		gap: 20px;
+		gap: 40px;
 	}
 	div {
 		width: 280px;
