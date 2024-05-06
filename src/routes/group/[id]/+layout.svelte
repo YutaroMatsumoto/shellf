@@ -4,12 +4,23 @@
 	import type { LayoutData } from './$types'
 
 	export let data: LayoutData
+
+	let isEditMode: boolean = false
+	function editModeSwitch() {
+		isEditMode = !isEditMode
+	}
+
 	$: ({ data: group } = data.group)
 	$: groupData = group?.[0]
 </script>
 
 {#if groupData}
-	<GroupDetailCard group={groupData} />
+	<GroupDetailCard
+		group={groupData}
+		{isEditMode}
+		{editModeSwitch}
+		groupNameForm={data.groupNameForm}
+	/>
 {/if}
 <GroupPageTab />
 

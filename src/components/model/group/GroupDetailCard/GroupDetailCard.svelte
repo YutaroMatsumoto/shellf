@@ -1,16 +1,18 @@
 <script lang="ts">
-	import { goto } from '$app/navigation'
-	import { page } from '$app/stores'
 	import { createModal } from '$globalStates/modal'
 	import { getUser } from '$globalStates/user'
-	import { generatePath } from '$lib/route'
+	import EditModeSwitchToggle from '$model/group/GroupDetailCard/EditModeSwitchToggle/EditModeSwitchToggle.svelte'
 	import GroupName from '$model/group/GroupDetailCard/GroupName/GroupName.svelte'
 	import type { GroupWithCreateUser } from '$models/group'
 	import DangerButton from '$ui/_button/DangerButton/DangerButton.svelte'
-	import PrimaryButton from '$ui/_button/PrimaryButton/PrimaryButton.svelte'
-	import { cardWrapper, groupImage, buttonWrapper } from './gorupDetailCard.style'
+	import type { SuperValidated } from 'sveltekit-superforms'
+	import { cardWrapper, groupImage, editModeWrapper, buttonWrapper } from './gorupDetailCard.style'
+	import type { GroupNameShema } from '$repositories/group/schema'
 
 	export let group: GroupWithCreateUser
+	export let isEditMode: boolean
+	export let editModeSwitch: () => void
+	export let groupNameForm: SuperValidated<GroupNameShema>
 
 	const modal = createModal
 	const user = getUser()
@@ -18,14 +20,16 @@
 
 <article class={cardWrapper}>
 	<img class={groupImage} src={group.img_url} alt="group img" />
-	<GroupName id={group.id} name={group.name} />
+	<GroupName {isEditMode} id={group.id} name={group.name} {groupNameForm} />
 
 	{#if $user?.id && $user?.id === group.created_by}
-		<div class={buttonWrapper}>
-			<PrimaryButton size="sm" onClick={() => goto(generatePath('groupEdit', [$page.params.id]))}
-				>編集する</PrimaryButton
-			>
-			<DangerButton size="sm" onClick={modal.deleteGroup}>削除する</DangerButton>
+		<div class={editModeWrapper}>
+			<EditModeSwitchToggle label="編集モード" {isEditMode} onClick={editModeSwitch} />
+			{#if isEditMode}
+				<div class={buttonWrapper}>
+					<DangerButton size="sm" onClick={modal.deleteGroup}>削除する</DangerButton>
+				</div>
+			{/if}
 		</div>
 	{/if}
 </article>
