@@ -6,7 +6,8 @@ export const sectionWrapper = css({
 	marginLeft: 'auto',
 	border: '1px solid',
 	borderRadius: 'sm',
-	borderColor: 'gray.300'
+	borderColor: 'gray.300',
+	width: '240px'
 })
 
 export const title = css({
@@ -17,6 +18,7 @@ export const title = css({
 
 export const administratorSection = css({
 	display: 'flex',
-	gap: '4px',
+	alignItems: 'center',
+	gap: '8px',
 	padding: '8px'
 })

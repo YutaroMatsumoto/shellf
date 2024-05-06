@@ -14,10 +14,3 @@
 		<span>{name}</span>
 	</section>
 </section>
-
-<style>
-	section {
-		display: flex;
-		align-items: center;
-	}
-</style>
