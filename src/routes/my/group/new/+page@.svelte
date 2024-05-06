@@ -8,6 +8,6 @@
 </script>
 
 <FormOnlyPageLayout>
-	<PageHeading title="グループを作成する" />
+	<PageHeading title="グループを作成する" textAlignCenter />
 	<GroupCreateForm data={data.form} />
 </FormOnlyPageLayout>

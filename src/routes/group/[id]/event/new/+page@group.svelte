@@ -8,6 +8,6 @@
 </script>
 
 <FormOnlyPageLayout>
-	<PageHeading title="イベントを作成する" />
+	<PageHeading title="イベントを作成する" textAlignCenter />
 	<EventCreateForm data={data.form} group={data.group} />
 </FormOnlyPageLayout>
