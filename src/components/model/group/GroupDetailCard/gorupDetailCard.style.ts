@@ -17,9 +17,14 @@ export const groupImage = css({
 	borderColor: 'gray.300'
 })
 
-export const buttonWrapper = css({
+export const editModeWrapper = css({
 	marginLeft: 'auto',
 	display: 'flex',
 	flexDirection: 'column',
 	gap: '8px'
+})
+
+export const buttonWrapper = css({
+	marginLeft: 'auto',
+	display: 'flex'
 })
