@@ -11,6 +11,7 @@
 	import Spacer from '$ui/Spacer/Spacer.svelte'
 	import SectionBoxWithTitle from '$ui/SectionBoxWithTitle/SectionBoxWithTitle.svelte'
 	import PageHeading from '$ui/_heading/PageHeading/PageHeading.svelte'
+	import Markdown from '$ui/Markdown/Markdown.svelte'
 
 	export let event: Event
 
@@ -31,5 +32,8 @@
 	</section>
 
 	<Spacer />
-	<SectionBoxWithTitle title="イベントの説明" content={description} />
+
+	<SectionBoxWithTitle title="イベントの説明">
+		<Markdown md={description ?? ''} />
+	</SectionBoxWithTitle>
 </section>

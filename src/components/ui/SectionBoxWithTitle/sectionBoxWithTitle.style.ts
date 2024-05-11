@@ -2,7 +2,7 @@ import { css } from 'styled-system/css'
 
 export const sectionWrapper = css({
 	width: '100%',
-	minHeight: '160px',
+	// minHeight: '160px', ← 不要そうなので一旦コメントアウト。リリースまで問題なければ削除する。
 	display: 'flex',
 	flexShrink: 0,
 	flexDirection: 'column',
