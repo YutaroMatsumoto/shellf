@@ -8,9 +8,9 @@
 		section
 	} from '$model/event/EventDetail/eventDetail'
 	import Divider from '$ui/Divider/Divider.svelte'
-	import H2 from '$ui/_heading/H2/H2.svelte'
 	import Spacer from '$ui/Spacer/Spacer.svelte'
-	import EventDescription from '$model/event/EventDescription/EventDescription.svelte'
+	import SectionBoxWithTitle from '$ui/SectionBoxWithTitle/SectionBoxWithTitle.svelte'
+	import PageHeading from '$ui/_heading/PageHeading/PageHeading.svelte'
 
 	export let event: Event
 
@@ -19,7 +19,7 @@
 
 <section class={sectionWrapper}>
 	<section class={section}>
-		<H2 {title} />
+		<PageHeading {title} />
 		<Divider />
 		<div class={imgWrapper}>
 			{#if src}
@@ -31,5 +31,5 @@
 	</section>
 
 	<Spacer />
-	<EventDescription {description} />
+	<SectionBoxWithTitle title="イベントの説明" content={description} />
 </section>

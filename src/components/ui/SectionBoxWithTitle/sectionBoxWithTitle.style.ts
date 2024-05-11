@@ -11,7 +11,7 @@ export const sectionWrapper = css({
 	borderColor: 'gray.300'
 })
 
-export const title = css({
+export const h2 = css({
 	padding: '8px',
 	width: '100%',
 	bg: 'gray.200'
@@ -26,7 +26,7 @@ export const groupImage = css({
 	borderColor: 'gray.300'
 })
 
-export const descriptionSection = css({
+export const contentSectionWrapper = css({
 	width: '100%',
 	height: '100%',
 	padding: '8px',
