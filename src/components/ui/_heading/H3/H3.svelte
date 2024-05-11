@@ -5,7 +5,7 @@
 	/** fontsizeもpropsで受け取れた方が良いかも？ */
 
 	const h3 = css({
-		fontSize: 'l',
+		fontSize: 'lg',
 		fontWeight: 'bold',
 		whiteSpace: 'pre-wrap'
 	})
