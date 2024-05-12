@@ -9,7 +9,7 @@
 
 	const sectionWrapper = css({
 		marginLeft: 'auto',
-		width: '240px'
+		minWidth: '240px'
 	})
 
 	const content = css({
