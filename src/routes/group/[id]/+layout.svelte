@@ -2,13 +2,17 @@
 	import GroupPageTab from '$model/group/GroupPageTab/GroupPageTab.svelte'
 	import GroupDetailCard from '$model/group/GroupDetailCard/GroupDetailCard.svelte'
 	import type { LayoutData } from './$types'
+	import { createGroupEditMode } from '$globalStates/group'
+	import { onDestroy } from 'svelte'
 
 	export let data: LayoutData
 
-	let isEditMode: boolean = false
-	function editModeSwitch() {
-		isEditMode = !isEditMode
+	const groupEditMode = createGroupEditMode
+	$: editModeSwitch = () => {
+		$groupEditMode === 'on' ? groupEditMode.turnOff() : groupEditMode.turnOn()
 	}
+
+	onDestroy(() => groupEditMode.turnOff())
 
 	$: ({ data: group } = data.group)
 	$: groupData = group?.[0]
@@ -16,9 +20,9 @@
 
 {#if groupData}
 	<GroupDetailCard
-		group={groupData}
-		{isEditMode}
+		isEditMode={$groupEditMode === 'on'}
 		{editModeSwitch}
+		group={groupData}
 		groupNameForm={data.groupNameForm}
 	/>
 {/if}
