@@ -82,7 +82,6 @@
 			{form}
 			field="description"
 			label="説明"
-			name="description"
 			fildId="event-new-fieldid-description"
 			rows={9}
 			isRequired
