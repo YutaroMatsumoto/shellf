@@ -1,9 +1,12 @@
+<!-- 例外的に編集モードに関するpropsも受け取る -->
 <script lang="ts" context="module">
   type T = Record<string, unknown>;
 </script>
 
 <script lang="ts" generics="T extends Record<string, unknown>">
-	import { markdownEditorWrapper, markdownWrapper, modeChangeButton, modeChangeButtonWrapper, textareaWrapper, viewSwitcher } from "./markdownEditor.style"
+	import IconButton from "$ui/_button/IconButton/IconButton.svelte"
+
+	import { iconButtonWrapper, markdownEditorWrapper, markdownWrapper, modeChangeButton, modeChangeButtonWrapper, textareaWrapper, viewSwitcher } from "./markdownEditor.style"
 
   // prettier-ignore
 	import FormLabel from "$ui/_form/FormLabel/FormLabel.svelte"
@@ -20,11 +23,15 @@
 	// 基本的なhtml属性はrestPropsで受け取るようにする
 	export let form: SuperForm<T>
 	export let field: FormPathLeaves<T>
-	export let label: string
+	export let label: string | undefined = undefined
 	export let isRequired: boolean = false
+  // ↓編集モード用のprops
+	export let isEditMode: boolean = false
+  export let disabled: boolean = false
 
 	/** 初期行数 */
 	export let rows: number = 5
+  
 	const { value, errors } = formFieldProxy(form, field)
 	const fieldId = `field-id-${$$restProps.id}`
 	const errormessageId = `errormessage-${$$restProps.id}`
@@ -44,16 +51,28 @@
 </script>
 
 <div class={markdownEditorWrapper}>
-  <FormLabel {fieldId} {label} {isRequired} />
+	{#if label}
+    <FormLabel {fieldId} {label} {isRequired} />
+	{/if}
+  <div>
   <div class={modeChangeButtonWrapper}>
     <!-- TODO: 「マークダウン」という言葉伝わるか -->
     <button class={modeChangeButton({isActive: !isPreview})} type="button" on:click={toMarkdown}>マークダウン</button>
     <button class={modeChangeButton({isActive: isPreview})} type="button" on:click={toPreview}>プレビュー</button>
+    {#if isEditMode}
+      <div class={iconButtonWrapper}>
+        <IconButton
+          type="submit"
+          iconType="save"
+          message="保存"
+          {disabled}
+        />
+      </div>
+    {/if}
   </div>
 
   <!-- 少しdomの構造がわかりにくくなっているかもしれないが、 -->
   <div class={textareaWrapper}>
-
     <!-- MEMO: textareaはdomから消してはいけないため、プレビューモード時はdisplay: noneを適用 -->
     <div class={viewSwitcher({isPreview})}>
       <span class={fieldStyle({ isError: !!$errors })}>
@@ -77,6 +96,7 @@
     {/if}
 
   </div>
+</div>
   
   {#if $errors}
     <ErrorMessage id={errormessageId}>{$errors}</ErrorMessage>

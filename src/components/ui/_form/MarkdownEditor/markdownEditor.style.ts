@@ -14,12 +14,14 @@ const textareaWrapperStyle: SystemStyleObject = {
 	borderX: '1px solid',
 	borderBottom: '1px solid',
 	borderBottomRadius: 'sm',
-	borderTop: 'none'
+	borderTop: 'none',
+	backgroundColor: 'white'
 }
 
 export const markdownEditorWrapper = css({
 	display: 'flex',
-	flexDirection: 'column'
+	flexDirection: 'column',
+	gap: '8px'
 })
 
 export const modeChangeButtonWrapper = css({
@@ -28,8 +30,11 @@ export const modeChangeButtonWrapper = css({
 	...baseColorStyle,
 	border: '1px solid',
 	borderTopRadius: 'sm',
-	borderBottom: 'none',
-	marginTop: '8px'
+	borderBottom: 'none'
+})
+
+export const iconButtonWrapper = css({
+	marginLeft: 'auto'
 })
 
 export const textareaWrapper = css({
