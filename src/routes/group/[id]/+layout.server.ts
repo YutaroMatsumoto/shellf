@@ -22,7 +22,6 @@ export const load: LayoutServerLoad = async ({
 	if (!id || !data?.[0]) error(404)
 
 	const { name } = data?.[0] ?? {}
-	console.log({ name })
 
 	const groupNameForm = await superValidate({ name }, zod(groupNameShema))
 
