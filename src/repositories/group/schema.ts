@@ -22,4 +22,4 @@ export const groupNameShema = groupNewSchema.pick({ name: true })
 export type GroupNameShema = z.infer<typeof groupNameShema>
 
 export const groupDescriptionSchema = groupNewSchema.pick({ description: true })
-export type GroupDescriptionSchema = z.infer<typeof groupNameShema>
+export type GroupDescriptionSchema = z.infer<typeof groupDescriptionSchema>
