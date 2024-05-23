@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { createModal } from '$globalStates/modal'
 	import { getUser } from '$globalStates/user'
-	import EditModeSwitchToggle from '$model/group/GroupDetailCard/EditModeSwitchToggle/EditModeSwitchToggle.svelte'
 	import GroupName from '$model/group/GroupDetailCard/GroupName/GroupName.svelte'
 	import type { GroupWithCreateUser } from '$models/group'
 	import DangerButton from '$ui/_button/DangerButton/DangerButton.svelte'
+	import EditModeSwitchToggle from '$ui/EditModeSwitchToggle/EditModeSwitchToggle.svelte'
 	import type { SuperValidated } from 'sveltekit-superforms'
 	import { cardWrapper, groupImage, editModeWrapper, buttonWrapper } from './gorupDetailCard.style'
 	import type { GroupNameShema } from '$repositories/group/schema'
