@@ -8,9 +8,9 @@
 		toggleWrapper
 	} from './editModeSwitchToggle.style'
 
-	export let label: string
+	export let label: string = '編集モード'
 	export let isEditMode: boolean = false
-	export let onClick: () => void
+	export let editModeSwitch: () => void
 </script>
 
 <div class={fieldWrapper}>
@@ -20,7 +20,7 @@
 		<div class={toggleArea({ checked: isEditMode })}>
 			<div class={circle({ checked: isEditMode })} />
 		</div>
-		<button class={input} on:click={onClick} />
+		<button class={input} on:click={editModeSwitch} />
 	</div>
 </div>
 

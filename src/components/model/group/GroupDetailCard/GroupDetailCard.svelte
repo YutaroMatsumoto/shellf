@@ -24,7 +24,7 @@
 
 	{#if $user?.id && $user?.id === group.created_by}
 		<div class={editModeWrapper}>
-			<EditModeSwitchToggle label="編集モード" {isEditMode} onClick={editModeSwitch} />
+			<EditModeSwitchToggle {isEditMode} {editModeSwitch} />
 			{#if isEditMode}
 				<div class={buttonWrapper}>
 					<DangerButton size="sm" onClick={modal.deleteGroup}>削除する</DangerButton>
