@@ -4,7 +4,7 @@
 
 	export let havePadding: boolean = true
 
-	const wrapper = css({
+	$: wrapper = css({
 		maxWidth: '1280px',
 		minWidth: '768px', // ipad mini
 		padding: havePadding ? '24px' : '0px',
