@@ -1,16 +1,21 @@
 <script lang="ts">
+	import { css } from 'styled-system/css'
 	import MyPageTab from '$model/user/MyPageTab/MyPageTab.svelte'
+	import ContentWidthController from '$ui/_layout/_variedLayout/ContentWidthController/ContentWidthController.svelte'
+	import ContentColorController from '$ui/_layout/_variedLayout/ContentColorController/ContentColorController.svelte'
+	const contentWrapper = css({
+		height: 'calc(100% - 38px)'
+	})
 </script>
 
-<MyPageTab />
-<div>
-	<slot />
-</div>
+<ContentColorController>
+	<ContentWidthController havePadding={false}>
+		<MyPageTab />
+	</ContentWidthController>
+</ContentColorController>
 
-<style>
-	div {
-		/* 38pxはTabItemの高さ + TabItemのborder幅 */
-		height: calc(100% - 38px);
-		padding: 24px;
-	}
-</style>
+<ContentWidthController>
+	<div class={contentWrapper}>
+		<slot />
+	</div>
+</ContentWidthController>
