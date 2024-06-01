@@ -9,8 +9,7 @@
 		display: 'flex',
 		gap: '24px',
 		width: '100%',
-		paddingX: '24px',
-		bg: 'white'
+		paddingX: '24px'
 	})
 </script>
 
