@@ -6,7 +6,12 @@
 	import DangerButton from '$ui/_button/DangerButton/DangerButton.svelte'
 	import EditModeSwitchToggle from '$ui/EditModeSwitchToggle/EditModeSwitchToggle.svelte'
 	import type { SuperValidated } from 'sveltekit-superforms'
-	import { cardWrapper, groupImage, editModeWrapper, buttonWrapper } from './gorupDetailCard.style'
+	import {
+		cardWrapper,
+		groupImage,
+		editModeToggleWrapper,
+		buttonWrapper
+	} from './gorupDetailCard.style'
 	import type { GroupNameShema } from '$repositories/group/schema'
 
 	export let group: GroupWithCreateUser
@@ -23,7 +28,7 @@
 	<GroupName {isEditMode} id={group.id} name={group.name} {groupNameForm} />
 
 	{#if $user?.id && $user?.id === group.created_by}
-		<div class={editModeWrapper}>
+		<div class={editModeToggleWrapper}>
 			<EditModeSwitchToggle {isEditMode} {editModeSwitch} />
 			{#if isEditMode}
 				<div class={buttonWrapper}>

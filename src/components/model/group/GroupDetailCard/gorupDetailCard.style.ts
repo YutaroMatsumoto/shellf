@@ -17,7 +17,7 @@ export const groupImage = css({
 	borderColor: 'gray.300'
 })
 
-export const editModeWrapper = css({
+export const editModeToggleWrapper = css({
 	marginLeft: 'auto',
 	display: 'flex',
 	flexDirection: 'column',
