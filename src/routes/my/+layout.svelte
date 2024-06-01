@@ -1,11 +1,7 @@
 <script lang="ts">
-	import { css } from 'styled-system/css'
 	import MyPageTab from '$model/user/MyPageTab/MyPageTab.svelte'
 	import ContentWidthController from '$ui/_layout/_variedLayout/ContentWidthController/ContentWidthController.svelte'
 	import ContentColorController from '$ui/_layout/_variedLayout/ContentColorController/ContentColorController.svelte'
-	const contentWrapper = css({
-		height: 'calc(100% - 38px)'
-	})
 </script>
 
 <ContentColorController>
@@ -15,7 +11,13 @@
 </ContentColorController>
 
 <ContentWidthController>
-	<div class={contentWrapper}>
+	<div>
 		<slot />
 	</div>
 </ContentWidthController>
+
+<style>
+	div {
+		height: calc(100% - 38px);
+	}
+</style>
