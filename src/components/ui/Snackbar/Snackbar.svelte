@@ -1,13 +1,11 @@
 <script lang="ts">
 	import { css } from 'styled-system/css'
-	import { createSnackbar, type Status } from '$globalStates/snackbar'
+	import type { Status } from '$globalStates/snackbar'
 	import StatusCircle from '$ui/StatusCircle/StatusCircle.svelte'
 	import { slide } from 'svelte/transition'
 
 	export let status: Status
 	export let message: string
-
-	const snackbar = createSnackbar
 
 	const snackbarStyle = css({
 		display: 'flex',
@@ -19,7 +17,8 @@
 		shadow: 'lg',
 		borderRadius: 'sm',
 		fontSize: 'sm',
-		marginBottom: '20px'
+		marginBottom: '20px',
+		zIndex: '10'
 	})
 
 	const snackbarMessage = css({

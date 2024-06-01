@@ -4,8 +4,8 @@ import { css, cva } from 'styled-system/css'
 export type TooltipPosition = 'lowerRight' | 'lowerLeft'
 
 export const wrapper = css({
-	position: 'relative',
-	zIndex: 10
+	position: 'relative'
+	// zIndex: 10
 })
 
 // recipe
