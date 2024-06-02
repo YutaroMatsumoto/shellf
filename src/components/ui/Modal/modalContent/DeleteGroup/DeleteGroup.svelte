@@ -22,7 +22,6 @@
 		loading = true
 		await fetch(`/api/group/delete/${$page.params.id}`, { method: 'DELETE' })
 			.then((response) => {
-				console.log('あいうえお', { response })
 				response.ok && createSnackbar.addSnackbar('success', 'グループの削除に成功しました')
 				goto(generatePath('my'))
 			})
