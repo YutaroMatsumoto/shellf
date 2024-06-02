@@ -26,7 +26,8 @@ const config = {
 			'$ui/*': 'src/components/ui/*',
 			'$models/*': 'src/models/*',
 			'$repositories/*': 'src/repositories/*',
-			'$globalStates/*': 'src/globalStates/*'
+			'$globalStates/*': 'src/globalStates/*',
+			'$usecases/*': 'src/usecases/*'
 		},
 		files: {
 			// clientとserverのみ
