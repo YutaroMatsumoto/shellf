@@ -18,10 +18,10 @@
 		resetForm: false, // これを設定しないとsubmit時にformが初期値にリセットされる
 		onResult: ({ result }) => {
 			if (result.type === 'success') {
-				createSnackbar.addSnackbar('success', 'グループの説明の更新に成功しました')
+				createSnackbar.addSnackbar('success', '説明の更新に成功しました')
 			}
 		},
-		onError: () => createSnackbar.addSnackbar('failure', 'グループの説明の更新に失敗しました')
+		onError: () => createSnackbar.addSnackbar('failure', '説明の更新に失敗しました')
 	})
 
 	const { isTainted, enhance, tainted } = form
