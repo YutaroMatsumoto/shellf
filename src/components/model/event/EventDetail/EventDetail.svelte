@@ -10,17 +10,23 @@
 	import Divider from '$ui/Divider/Divider.svelte'
 	import Spacer from '$ui/Spacer/Spacer.svelte'
 	import SectionBoxWithTitle from '$ui/SectionBoxWithTitle/SectionBoxWithTitle.svelte'
-	import PageHeading from '$ui/_heading/PageHeading/PageHeading.svelte'
 	import Markdown from '$ui/Markdown/Markdown.svelte'
+	import type { SuperValidated } from 'sveltekit-superforms'
+	import type { EventTitleShema, EventDescriptionSchema } from '$repositories/event/schema'
+	import EventName from './EventName/EventName.svelte'
 
+	export let isEditMode: boolean
 	export let event: Event
+	export let eventTitleForm: SuperValidated<EventTitleShema>
+	export let eventDescriptionForm: SuperValidated<EventDescriptionSchema>
 
+	$: console.log({ eventTitleForm, eventDescriptionForm })
 	$: ({ title, description, img_url: src } = event)
 </script>
 
 <section class={sectionWrapper}>
 	<section class={section}>
-		<PageHeading {title} />
+		<EventName {isEditMode} {title} {eventTitleForm} />
 		<Divider />
 		<div class={imgWrapper}>
 			{#if src}
