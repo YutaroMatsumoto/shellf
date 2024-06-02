@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { SuperValidated } from 'sveltekit-superforms'
 	import type { Event } from '$models/event'
 	import {
 		eventImg,
@@ -7,13 +8,11 @@
 		sectionWrapper,
 		section
 	} from '$model/event/EventDetail/eventDetail'
+	import type { EventTitleShema, EventDescriptionSchema } from '$repositories/event/schema'
 	import Divider from '$ui/Divider/Divider.svelte'
 	import Spacer from '$ui/Spacer/Spacer.svelte'
-	import SectionBoxWithTitle from '$ui/SectionBoxWithTitle/SectionBoxWithTitle.svelte'
-	import Markdown from '$ui/Markdown/Markdown.svelte'
-	import type { SuperValidated } from 'sveltekit-superforms'
-	import type { EventTitleShema, EventDescriptionSchema } from '$repositories/event/schema'
 	import EventName from './EventName/EventName.svelte'
+	import EventDescription from './EventDescription/EventDescription.svelte'
 
 	export let isEditMode: boolean
 	export let event: Event
@@ -39,7 +38,5 @@
 
 	<Spacer />
 
-	<SectionBoxWithTitle title="イベントの説明">
-		<Markdown md={description ?? ''} />
-	</SectionBoxWithTitle>
+	<EventDescription {isEditMode} {description} {eventDescriptionForm} />
 </section>
