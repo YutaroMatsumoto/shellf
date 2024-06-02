@@ -1,6 +1,5 @@
-import { fail } from '@sveltejs/kit'
+import { fail, error } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
-import { error } from '@sveltejs/kit'
 
 import { groupDescriptionSchema, groupNameShema } from '$repositories/group/schema'
 import { superValidate, withFiles } from 'sveltekit-superforms'
@@ -21,7 +20,6 @@ export const load: PageServerLoad = async ({ params: { id }, parent }) => {
 
 export const actions: Actions = {
 	updateGroupName: async ({ request, locals: { getSession, supabase }, params: { id } }) => {
-		console.log('updateGroupName関数')
 		const session = await getSession()
 
 		if (!session) {
