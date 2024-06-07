@@ -9,7 +9,7 @@
 	$: ({ data: groups } = data.groups)
 	$: createdByMeGroupNum = groups?.filter(({ is_admin }) => is_admin).length ?? 0
 
-	$: prohibitCreateGroup = createdByMeGroupNum > 2 ? '作成できるグループは２つまでです。' : ''
+	$: prohibitCreateGroup = createdByMeGroupNum >= 2 ? '作成できるグループは２つまでです。' : ''
 </script>
 
 <AnchorButton pathKey="groupNew" title="グループ作成" disabledReason={prohibitCreateGroup} />
