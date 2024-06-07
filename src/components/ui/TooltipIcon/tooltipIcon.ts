@@ -5,7 +5,6 @@ export type TooltipPosition = 'lowerRight' | 'lowerLeft'
 
 export const wrapper = css({
 	position: 'relative'
-	// zIndex: 10
 })
 
 // recipe
@@ -20,6 +19,7 @@ export const tooltip = cva({
 		width: 'max-content',
 		color: 'white',
 		fontWeight: 'bold',
+		zIndex: 10,
 		_after: {
 			content: '""',
 			height: '5px',

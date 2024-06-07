@@ -18,7 +18,7 @@
 		borderRadius: 'sm',
 		fontSize: 'sm',
 		marginBottom: '20px',
-		zIndex: '10'
+		zIndex: 20
 	})
 
 	const snackbarMessage = css({
