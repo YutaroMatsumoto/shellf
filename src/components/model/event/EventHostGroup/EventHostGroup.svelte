@@ -6,21 +6,21 @@
 	export let name: GroupWithCreateUser['name']
 	export let src: GroupWithCreateUser['img_url']
 
+	const hostGroupArea = css({
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+		gap: '4px',
+		backgroundColor: 'white'
+	})
+
 	const groupImage = css({
-		width: '100px',
-		height: '100px',
+		width: '192px',
+		height: '108px',
 		objectFit: 'contain',
 		border: '1px solid',
 		borderRadius: 'sm',
 		borderColor: 'gray.300'
-	})
-
-	const hostGroupArea = css({
-		width: '100%',
-		display: 'flex',
-		alignItems: 'center',
-		gap: '20px',
-		backgroundColor: 'white'
 	})
 </script>
 
