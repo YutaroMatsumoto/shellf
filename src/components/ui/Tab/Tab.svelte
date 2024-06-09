@@ -9,7 +9,8 @@
 		display: 'flex',
 		gap: '24px',
 		width: '100%',
-		paddingX: '24px'
+		paddingX: '24px',
+		paddingTop: '4px'
 	})
 </script>
 
