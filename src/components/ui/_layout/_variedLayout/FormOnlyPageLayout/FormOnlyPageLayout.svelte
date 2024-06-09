@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { css } from 'styled-system/css'
+	import ContentWidthController from '$ui/_layout/_variedLayout/ContentWidthController/ContentWidthController.svelte'
 
 	const wrapper = css({
 		height: '100%',
-		padding: '24px',
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center'
@@ -20,6 +20,8 @@
 	})
 </script>
 
-<div class={wrapper}>
-	<div class={content}><slot /></div>
-</div>
+<ContentWidthController>
+	<div class={wrapper}>
+		<div class={content}><slot /></div>
+	</div>
+</ContentWidthController>
