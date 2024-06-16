@@ -87,7 +87,7 @@
 			isRequired
 		/>
 		<Spacer />
-		<FileInput name="img" label="画像" imgError={$errors.img} />
+		<FileInput name="img" label="画像" imgError={$errors.img} id="event-new-fieldid-image" />
 		<input type="hidden" name="groupIsPrivate" bind:value={groupIsPrivate} />
 	</section>
 	<Spacer />
