@@ -19,7 +19,6 @@
 	export let eventTitleForm: SuperValidated<EventTitleShema>
 	export let eventDescriptionForm: SuperValidated<EventDescriptionSchema>
 
-	$: console.log({ eventTitleForm, eventDescriptionForm })
 	$: ({ title, description, img_url: src } = event)
 </script>
 
